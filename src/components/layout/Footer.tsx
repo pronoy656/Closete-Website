@@ -1,58 +1,81 @@
 import Link from "next/link";
-import { Twitter, Instagram, Facebook } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0b0b0b] pt-20 pb-8 relative overflow-hidden border-t border-white/5">
+    <footer className="bg-[#121212] pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between">
+      {/* Golden bottom glow */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[250px] bg-gradient-to-t from-[#C98C28]/10 to-transparent blur-[80px] pointer-events-none z-0" />
+
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-10 relative z-10">
           
-          <div className="col-span-1 md:col-span-4">
-            <Link href="#home" className="text-3xl font-serif text-gold-400 mb-6 block">
+          {/* Column 1 */}
+          <div className="col-span-1 sm:col-span-2 md:col-span-4">
+            <Link href="#home" className="text-3xl font-serif text-gradient-gold mb-6 block tracking-tight">
               Closeté
             </Link>
-            <p className="text-[#f2f2f2]/60 text-sm max-w-sm mb-6 leading-relaxed">
-              Buy and sell authentic luxury bags, shoes, and accessories. The premium secondary market experience.
+            <p className="text-[#f2f2f2]/60 text-[14px] max-w-[280px] leading-relaxed">
+              Luxury Resale Secured. Authenticated, insured, and curated for the archival fashion collector.
             </p>
           </div>
           
-          <div className="col-span-1 md:col-span-2 md:col-start-6">
-            <h4 className="text-white font-bold text-sm tracking-wider mb-6">COMPANY</h4>
-            <ul className="space-y-4">
-              <li><Link href="#about" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">About Us</Link></li>
-              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">How it works</Link></li>
-              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
+          {/* Column 2 */}
+          <div className="col-span-1 md:col-span-3">
+            <h4 className="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">
+              NAVIGATION
+            </h4>
+            <ul className="space-y-3 mt-5">
+              <li><Link href="#" className="text-white text-[14px] hover:text-gold-400 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="#" className="text-white text-[14px] hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="#" className="text-white text-[14px] hover:text-gold-400 transition-colors">Returns & Delivery Policy</Link></li>
             </ul>
           </div>
 
-          <div className="col-span-1 md:col-span-2">
-            <h4 className="text-white font-bold text-sm tracking-wider mb-6">PLATFORM</h4>
-            <ul className="space-y-4">
-              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Sell with us</Link></li>
-              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Authentication</Link></li>
-            </ul>
+          {/* Column 3 */}
+          <div className="col-span-1 md:col-span-3">
+            <h4 className="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">
+              CONTACT US
+            </h4>
+            <div className="mt-5 flex flex-col gap-1.5">
+              <div className="flex items-center gap-2 text-[#f2f2f2]/50 text-[13px] mb-1">
+                <Mail size={15} strokeWidth={1.5} />
+                <span>Email</span>
+              </div>
+              <a href="mailto:demo@gmail.com" className="text-white text-[14px] hover:text-gold-400 transition-colors">
+                demo@gmail.com
+              </a>
+            </div>
           </div>
           
+          {/* Column 4 */}
           <div className="col-span-1 md:col-span-2">
-            <h4 className="text-white font-bold text-sm tracking-wider mb-6">CONNECT</h4>
-            <ul className="space-y-4">
-              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Instagram</Link></li>
-              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Twitter</Link></li>
-            </ul>
+            <h4 className="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">
+              LOCATION
+            </h4>
+            <div className="mt-5 flex flex-col gap-1.5">
+              <div className="flex items-center gap-2 text-[#f2f2f2]/50 text-[13px] mb-1">
+                <MapPin size={15} strokeWidth={1.5} />
+                <span>Country</span>
+              </div>
+              <span className="text-white text-[14px]">
+                Dubai, UAE
+              </span>
+            </div>
           </div>
 
         </div>
         
         {/* Giant Watermark Logo */}
-        <div className="w-full flex justify-center items-end mt-12 mb-8 pointer-events-none select-none relative z-0">
-          <h1 className="text-[12vw] font-serif font-bold text-white/5 leading-none m-0 p-0 tracking-tight">
+        <div className="w-full flex justify-center items-end mt-4 mb-4 pointer-events-none select-none relative z-0 overflow-hidden">
+          <h1 className="text-[22vw] sm:text-[20vw] font-serif text-white/[0.04] leading-[0.8] m-0 p-0 tracking-[-0.04em] translate-y-[-2%]">
             Closeté
           </h1>
         </div>
         
-        <div className="border-t border-white/5 pt-8 text-center text-xs text-[#f2f2f2]/40 relative z-10">
-          <p>&copy; {new Date().getFullYear()} CLOSETE. ALL RIGHTS RESERVED.</p>
+        <div className="border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10">
+          <p>© 2026 Closete. All rights reserved.</p>
         </div>
 
       </div>
