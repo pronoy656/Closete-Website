@@ -116,38 +116,38 @@ const Stars = () => (
 
 const CAROUSEL_POSITIONS = [
   // 0: Center
-  { xOffset: "0vw", scale: 1, opacity: 1, zIndex: 40, isCenter: true },
+  { xPx: 0, xVw: 0, scale: 1, opacity: 1, zIndex: 40, isCenter: true },
   
   // 1: Right-1
-  { xOffset: "12vw", scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
+  { xPx: 40, xVw: 8, scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
   
   // 2: Right-2
-  { xOffset: "23vw", scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
+  { xPx: 60, xVw: 18, scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
   
   // 3: Right-3
-  { xOffset: "33vw", scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
+  { xPx: 80, xVw: 27, scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
   
   // 4: Right-4 (Far Edge)
-  { xOffset: "42vw", scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
+  { xPx: 100, xVw: 35, scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
   
   // 5, 6: Hidden on the far RIGHT off-screen
-  { xOffset: "70vw", scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
-  { xOffset: "70vw", scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  { xPx: 200, xVw: 70, scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  { xPx: 200, xVw: 70, scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
   
   // 7: Hidden on the far LEFT off-screen
-  { xOffset: "-70vw", scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  { xPx: -200, xVw: -70, scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
   
   // 8: Left-4 (Far Edge)
-  { xOffset: "-42vw", scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
+  { xPx: -100, xVw: -35, scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
   
   // 9: Left-3
-  { xOffset: "-33vw", scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
+  { xPx: -80, xVw: -27, scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
   
   // 10: Left-2
-  { xOffset: "-23vw", scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
+  { xPx: -60, xVw: -18, scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
   
   // 11: Left-1
-  { xOffset: "-12vw", scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
+  { xPx: -40, xVw: -8, scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
 ];
 
 const CAROUSEL_DATA = [
@@ -179,7 +179,7 @@ export function HeroSection() {
     <section
       id="home"
       className="relative flex flex-col items-center"
-      style={{ background: "#0d0d0d", minHeight: "100vh", overflow: "hidden" }}
+      style={{ minHeight: "100vh", overflow: "hidden" }}
     >
       {/* ── Layer 1: Wide outer glow ─────────────────────── */}
       <div
@@ -280,28 +280,16 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65 }}
-          style={{ 
-            fontFamily: "'Schnyder L', serif",
-            fontWeight: 300,
-            fontSize: "60px",
-            lineHeight: "110%",
-            letterSpacing: "0%",
-            textAlign: "center",
-            marginBottom: "1rem"
-          }}
+          className="font-serif font-light leading-[1.1] tracking-normal text-center mb-4"
         >
-          <span className="block mb-2" style={{
-            fontSize: "72px",
-            paddingBottom: "10px",
+          <span className="block mb-2 text-[52px] sm:text-[60px] md:text-[72px] pb-2" style={{
             background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent"
           }}>
             Buy &amp; Sell
           </span>
-          <span style={{
-            fontSize: "68px",
-            paddingBottom: "10px",
+          <span className="block text-[40px] sm:text-[56px] md:text-[68px] pb-2" style={{
             background: "linear-gradient(89.94deg, #FFFFFF 52.51%, #999999 107.86%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent"
@@ -315,8 +303,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.1 }}
-          className="leading-relaxed mb-8 font-['DM_Sans'] text-white/85"
-          style={{ maxWidth: "850px", fontSize: "18px", fontWeight: 300, fontFamily: "'DM Sans', sans-serif", wordSpacing: "0.15em" }}
+          className="leading-relaxed mb-8 font-['DM_Sans'] text-white/85 text-sm md:text-[18px] font-light max-w-[850px] tracking-wide"
         >
           Closete is a curated marketplace for luxury fashion, combining authentication, secure payments, <br className="hidden md:block" />
           and controlled delivery – so you can buy and sell with complete confidence.
@@ -327,12 +314,9 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.18 }}
-          className="flex items-center gap-2.5 px-4 py-2 rounded-full mb-10"
+          className="flex items-center gap-2.5 px-4 md:px-5 py-2 md:py-2.5 rounded-[100px] mb-10 max-w-[260px] md:max-w-none text-center mx-auto"
           style={{ 
             background: "rgba(255,255,255,0.05)", 
-            fontFamily: "'DM Sans', sans-serif",
-            fontWeight: 400,
-            fontSize: "14px",
             backdropFilter: "blur(90px)",
             WebkitBackdropFilter: "blur(90px)",
             boxShadow: "0px 8px 10.9px 0px rgba(0, 3, 18, 0.12), 0px 1px 1px 0px rgba(0, 3, 18, 0.3)",
@@ -340,9 +324,9 @@ export function HeroSection() {
             borderTop: "1px solid rgba(255,255,255,0.3)",
           }}
         >
-          <span className="text-[#f2f2f2]/80 font-['DM_Sans']">
+          <span className="text-[#f2f2f2]/80 font-['DM_Sans'] text-[11px] md:text-sm leading-snug">
             Now live in <strong className="text-white font-['DM_Sans']">Dubai</strong>. Expanding across{" "}
-            <span className="text-gradient-gold font-semibold font-['DM_Sans']">the US soon</span>
+            <span className="text-gradient-gold font-semibold font-['DM_Sans']">the UAE soon.</span>
           </span>
           {/* Star circle button */}
           <div
@@ -358,13 +342,13 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.25 }}
-          className="flex flex-wrap items-center justify-center gap-4 mb-20"
+          className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4 mb-20 w-full max-w-[280px] md:max-w-none"
         >
-          <GoldButton href="#ios" size="lg" className="flex items-center gap-2">
+          <GoldButton href="#ios" size="lg" className="flex items-center justify-center gap-2 w-full md:w-auto">
             Download On IOS
             <ArrowRight color="black" className="w-5 h-5" />
           </GoldButton>
-          <GoldButton href="#android" size="lg" className="flex items-center gap-2">
+          <GoldButton href="#android" size="lg" className="flex items-center justify-center gap-2 w-full md:w-auto">
             Download On Android
             <ArrowRight color="black" className="w-5 h-5" />
           </GoldButton>
@@ -375,8 +359,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.4 }}
-          className="relative w-full z-10"
-          style={{ height: "500px" }}
+          className="relative w-full z-10 h-[380px] sm:h-[440px] md:h-[500px]"
         >
           {CAROUSEL_DATA.map((item, index) => {
             const posIndex = (index - activeIndex + 12) % 12;
@@ -385,10 +368,10 @@ export function HeroSection() {
             return (
               <motion.div
                 key={index}
-                className="absolute overflow-hidden"
+                className="absolute overflow-hidden w-[240px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[360px] md:h-[480px]"
                 initial={false}
                 animate={{
-                  x: `calc(-50% + ${pos.xOffset})`,
+                  x: `calc(-50% + ${pos.xPx}px + ${pos.xVw}vw)`,
                   y: "-50%",
                   scale: pos.scale,
                   opacity: pos.opacity,
@@ -404,8 +387,6 @@ export function HeroSection() {
                 style={{
                   top: "50%",
                   left: "50%",
-                  width: "360px",
-                  height: "480px",
                   borderRadius: "20px",
                   border: "2px solid transparent",
                   background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box",
@@ -446,6 +427,15 @@ export function HeroSection() {
                     <span>{item.likes}</span>
                   </div>
                 </div>
+
+                {/* Play Button Overlay for Center Card */}
+                {pos.isCenter && (
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                    <div className="w-16 h-16 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white/90 shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-110 cursor-pointer pointer-events-auto border border-white/10">
+                      <Play size={24} className="ml-1" fill="currentColor" />
+                    </div>
+                  </div>
+                )}
 
                 {/* Dark overlay for non-center cards */}
                 {!pos.isCenter && (

@@ -36,8 +36,7 @@ export function HowItWorksSection() {
   return (
     <section
       id="how-it-works"
-      className="relative py-20 overflow-hidden"
-      style={{ background: "#111115" }}
+      className="relative py-20 overflow-hidden bg-transparent"
     >
       <div className="container mx-auto px-8 lg:px-16 relative z-10 max-w-7xl pt-6">
 

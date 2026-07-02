@@ -33,56 +33,67 @@ export function Header() {
         isScrolled ? "bg-black/40 backdrop-blur-md py-4 shadow-lg" : "py-6 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center">
-        <Link href="#home" className="text-3xl font-serif text-gradient-gold tracking-tight" onClick={() => setActiveLink("#home")}>
-          Closeté
-        </Link>
-{/* Desktop Nav */}
-<nav 
-  className="hidden lg:flex items-center gap-1 relative px-2 py-1.5 rounded-full"
-  style={{ 
-    background: "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%)",
-    backdropFilter: "blur(24px)",
-    WebkitBackdropFilter: "blur(24px)",
-    border: "1px solid rgba(255, 255, 255, 0.2)",
-    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
-  }}
->
-  {navLinks.map((link) => (
-    <Link
-      key={link.name}
-      href={link.href}
-      onClick={() => setActiveLink(link.href)}
-      className={`relative text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 ${
-        activeLink === link.href
-          ? "text-white"
-          : "text-white/80 hover:text-white hover:bg-white/5"
-      }`}
-      style={activeLink === link.href ? {
-        background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)",
-        boxShadow: "inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.1)",
-        border: "1px solid rgba(255,255,255,0.1)"
-      } : {}}
-    >
-      {link.name}
-    </Link>
-  ))}
-</nav>
-        
-        <div className="hidden lg:block">
-          <GoldButton href="#contact" size="sm" style={{ fontSize: "0.82rem" }} className="flex items-center gap-1.5 h-auto py-2.5">
-            Contact Us
-            <ArrowRight color="black" className="w-4 h-4" />
-          </GoldButton>
-        </div>
+      <div className="container mx-auto px-4 lg:px-12">
+        {/* Navbar Inner Wrapper (Pill on Mobile, Transparent on Desktop) */}
+        <div className="w-full flex items-center justify-between bg-[#1f2125]/95 lg:bg-transparent rounded-full border border-white/10 lg:border-none p-1.5 lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none backdrop-blur-xl lg:backdrop-blur-none">
+          
+          {/* Left Group (Hamburger + Logo) */}
+          <div className="flex items-center gap-2 lg:gap-0">
+            {/* Mobile Menu Toggle */}
+            <button
+              className="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348]"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="lg:hidden text-[#f2f2f2]/70 hover:text-[#f2f2f2]"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+            {/* Logo */}
+            <Link href="#home" className="text-[22px] lg:text-3xl font-serif text-gradient-gold tracking-tight ml-2 lg:ml-0" onClick={() => setActiveLink("#home")}>
+              Closeté
+            </Link>
+          </div>
+
+          {/* Desktop Nav */}
+          <nav 
+            className="hidden lg:flex items-center gap-1 relative px-2 py-1.5 rounded-full"
+            style={{ 
+              background: "linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1px solid rgba(255, 255, 255, 0.2)",
+              boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)"
+            }}
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setActiveLink(link.href)}
+                className={`relative text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 ${
+                  activeLink === link.href
+                    ? "text-white"
+                    : "text-white/80 hover:text-white hover:bg-white/5"
+                }`}
+                style={activeLink === link.href ? {
+                  background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)",
+                  boxShadow: "inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.1)",
+                  border: "1px solid rgba(255,255,255,0.1)"
+                } : {}}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Right Group (Contact Button) */}
+          <div className="flex items-center">
+            <GoldButton href="#contact" size="sm" className="flex items-center gap-1 h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[13px] lg:text-sm font-medium whitespace-nowrap">
+              Contact Us
+              <ArrowRight color="black" className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
+            </GoldButton>
+          </div>
+
+        </div>
       </div>
 
       {/* Mobile Nav */}

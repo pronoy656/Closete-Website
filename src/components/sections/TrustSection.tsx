@@ -32,7 +32,7 @@ export function TrustSection() {
   ];
 
   return (
-    <section className="py-24 relative bg-[#0b0b0b] border-y border-white/5">
+    <section className="py-24 relative bg-transparent border-y border-white/5">
       <div className="container mx-auto px-6 lg:px-12 text-center">
         
         <motion.h2 
