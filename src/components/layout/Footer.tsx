@@ -1,60 +1,60 @@
 import Link from "next/link";
-import { Mail, ArrowRight, MessageCircle } from "lucide-react";
+import { Twitter, Instagram, Facebook } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#020617] pt-16 pb-8">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
-            <Link href="#home" className="text-2xl font-bold tracking-tighter mb-4 block">
-              Closete<span className="text-brand-500">.</span>
+    <footer className="bg-[#0b0b0b] pt-20 pb-8 relative overflow-hidden border-t border-white/5">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+        
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-24 relative z-10">
+          
+          <div className="col-span-1 md:col-span-4">
+            <Link href="#home" className="text-3xl font-serif text-gold-400 mb-6 block">
+              Closeté
             </Link>
-            <p className="text-slate-400 max-w-sm mb-6">
-              Elevating digital experiences with premium design and cutting-edge web technologies. We build for the future.
+            <p className="text-[#f2f2f2]/60 text-sm max-w-sm mb-6 leading-relaxed">
+              Buy and sell authentic luxury bags, shoes, and accessories. The premium secondary market experience.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                <MessageCircle size={20} />
-              </a>
-              <a href="#" className="text-slate-400 hover:text-white transition-colors">
-                <ArrowRight size={20} />
-              </a>
-            </div>
           </div>
           
-          <div>
-            <h4 className="text-white font-semibold mb-6">Quick Links</h4>
+          <div className="col-span-1 md:col-span-2 md:col-start-6">
+            <h4 className="text-white font-bold text-sm tracking-wider mb-6">COMPANY</h4>
             <ul className="space-y-4">
-              <li><Link href="#home" className="text-slate-400 hover:text-brand-500 transition-colors">Home</Link></li>
-              <li><Link href="#features" className="text-slate-400 hover:text-brand-500 transition-colors">Features</Link></li>
-              <li><Link href="#about" className="text-slate-400 hover:text-brand-500 transition-colors">About Us</Link></li>
-              <li><Link href="#contact" className="text-slate-400 hover:text-brand-500 transition-colors">Contact</Link></li>
+              <li><Link href="#about" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">About Us</Link></li>
+              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">How it works</Link></li>
+              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-white font-semibold mb-6">Contact Us</h4>
+          <div className="col-span-1 md:col-span-2">
+            <h4 className="text-white font-bold text-sm tracking-wider mb-6">PLATFORM</h4>
             <ul className="space-y-4">
-              <li className="flex items-center space-x-3 text-slate-400">
-                <Mail size={16} />
-                <span>hello@closete.com</span>
-              </li>
-              <li className="text-slate-400">
-                123 Innovation Drive<br />
-                Tech City, TC 10010
-              </li>
+              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Sell with us</Link></li>
+              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Authentication</Link></li>
             </ul>
           </div>
+          
+          <div className="col-span-1 md:col-span-2">
+            <h4 className="text-white font-bold text-sm tracking-wider mb-6">CONNECT</h4>
+            <ul className="space-y-4">
+              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Instagram</Link></li>
+              <li><Link href="#" className="text-[#f2f2f2]/60 text-sm hover:text-gold-400 transition-colors">Twitter</Link></li>
+            </ul>
+          </div>
+
         </div>
         
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Closete. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#" className="hover:text-white transition-colors">Terms of Service</Link>
-          </div>
+        {/* Giant Watermark Logo */}
+        <div className="w-full flex justify-center items-end mt-12 mb-8 pointer-events-none select-none relative z-0">
+          <h1 className="text-[12vw] font-serif font-bold text-white/5 leading-none m-0 p-0 tracking-tight">
+            Closeté
+          </h1>
         </div>
+        
+        <div className="border-t border-white/5 pt-8 text-center text-xs text-[#f2f2f2]/40 relative z-10">
+          <p>&copy; {new Date().getFullYear()} CLOSETE. ALL RIGHTS RESERVED.</p>
+        </div>
+
       </div>
     </footer>
   );

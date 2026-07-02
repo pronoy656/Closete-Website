@@ -1,95 +1,463 @@
 "use client";
 
-import { useRef } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Sphere, MeshDistortMaterial } from "@react-three/drei";
-import { ArrowRight } from "lucide-react";
+import { Play, Heart, ArrowRight, Star } from "lucide-react";
+import { GoldButton } from "@/components/ui/GoldButton";
 
-// A simple animated 3D sphere component
-function AnimatedSphere() {
-  const meshRef = useRef<any>(null);
+// Stable star positions (avoids hydration mismatch from Math.random on server)
+const STAR_POSITIONS = [
+  { top: "4%",  left: "12%",  delay: "0.3s",  dur: "3.2s" },
+  { top: "8%",  left: "35%",  delay: "1.1s",  dur: "2.7s" },
+  { top: "5%",  left: "58%",  delay: "0.7s",  dur: "3.5s" },
+  { top: "11%", left: "80%",  delay: "1.8s",  dur: "2.9s" },
+  { top: "17%", left: "6%",   delay: "0.2s",  dur: "4.0s" },
+  { top: "22%", left: "25%",  delay: "2.1s",  dur: "3.1s" },
+  { top: "19%", left: "47%",  delay: "0.9s",  dur: "2.6s" },
+  { top: "25%", left: "70%",  delay: "1.5s",  dur: "3.8s" },
+  { top: "30%", left: "90%",  delay: "0.4s",  dur: "2.4s" },
+  { top: "35%", left: "15%",  delay: "1.9s",  dur: "3.3s" },
+  { top: "38%", left: "55%",  delay: "0.6s",  dur: "4.2s" },
+  { top: "43%", left: "85%",  delay: "1.3s",  dur: "2.8s" },
+  { top: "14%", left: "93%",  delay: "2.5s",  dur: "3.0s" },
+  { top: "7%",  left: "72%",  delay: "1.0s",  dur: "3.6s" },
+  { top: "28%", left: "40%",  delay: "0.8s",  dur: "2.5s" },
+  { top: "2%",  left: "50%",  delay: "1.6s",  dur: "4.1s" },
+  { top: "48%", left: "22%",  delay: "2.3s",  dur: "3.4s" },
+  { top: "45%", left: "65%",  delay: "0.5s",  dur: "2.2s" },
+  { top: "33%", left: "3%",   delay: "1.7s",  dur: "3.9s" },
+  { top: "20%", left: "98%",  delay: "2.0s",  dur: "2.3s" },
+];
+
+// Expanded array for more falling particles, concentrated in the middle
+const FALLING_PARTICLES = [
+  // Middle section (heavily concentrated)
+  { left: "40%", delay: 0.2, dur: 6.5 },
+  { left: "45%", delay: 1.5, dur: 5.5 },
+  { left: "50%", delay: 0.8, dur: 7.0 },
+  { left: "55%", delay: 2.1, dur: 4.8 },
+  { left: "60%", delay: 0.5, dur: 6.2 },
+  { left: "35%", delay: 3.0, dur: 5.0 },
+  { left: "65%", delay: 1.2, dur: 5.5 },
+  { left: "48%", delay: 2.5, dur: 6.0 },
+  { left: "52%", delay: 0.3, dur: 7.5 },
+  { left: "42%", delay: 3.5, dur: 5.0 },
+  { left: "58%", delay: 1.8, dur: 6.5 },
+  { left: "38%", delay: 0.7, dur: 7.0 },
+  { left: "62%", delay: 2.2, dur: 5.2 },
+  { left: "47%", delay: 3.8, dur: 6.0 },
+  { left: "53%", delay: 0.9, dur: 5.8 },
+  { left: "44%", delay: 4.5, dur: 7.2 },
+  { left: "56%", delay: 1.6, dur: 6.3 },
+  { left: "32%", delay: 2.9, dur: 5.6 },
+  { left: "68%", delay: 0.4, dur: 7.0 },
+  { left: "30%", delay: 2.8, dur: 5.4 },
+  { left: "70%", delay: 1.1, dur: 6.8 },
+  { left: "50%", delay: 3.2, dur: 5.0 },
+  { left: "49%", delay: 0.6, dur: 7.5 },
+  { left: "51%", delay: 4.0, dur: 6.2 },
+  { left: "41%", delay: 1.9, dur: 5.7 },
+  { left: "59%", delay: 2.6, dur: 6.6 },
+  { left: "36%", delay: 3.4, dur: 7.1 },
+  { left: "64%", delay: 0.7, dur: 5.9 },
+  { left: "46%", delay: 2.4, dur: 6.4 },
+  { left: "54%", delay: 1.3, dur: 5.5 },
+
+  // Slightly wider center
+  { left: "25%", delay: 3.7, dur: 7.0 },
+  { left: "75%", delay: 2.3, dur: 6.1 },
+  { left: "28%", delay: 4.2, dur: 7.3 },
+  { left: "72%", delay: 1.4, dur: 5.6 },
   
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = state.clock.getElapsedTime() * 0.2;
-      meshRef.current.rotation.y = state.clock.getElapsedTime() * 0.3;
-    }
-  });
+  // Minimal edges
+  { left: "10%", delay: 3.1, dur: 8.2 },
+  { left: "90%", delay: 0.5, dur: 6.7 },
+  { left: "15%", delay: 4.8, dur: 5.9 },
+  { left: "85%", delay: 1.7, dur: 7.4 },
+  { left: "5%",  delay: 3.5, dur: 6.8 },
+  { left: "95%", delay: 0.9, dur: 5.3 }
+];
 
-  return (
-    <Sphere ref={meshRef} visible args={[1, 100, 200]} scale={2.5}>
-      <MeshDistortMaterial
-        color="#4f46e5"
-        attach="material"
-        distort={0.4}
-        speed={2}
-        roughness={0.2}
+const Stars = () => (
+  <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    {STAR_POSITIONS.map((s, i) => (
+      <div
+        key={i}
+        className="absolute w-[3px] h-[3px] bg-white rounded-full"
+        style={{
+          top: s.top,
+          left: s.left,
+          opacity: 0.45,
+          animation: `pulse ${s.dur} ${s.delay} infinite`,
+        }}
       />
-    </Sphere>
-  );
-}
+    ))}
+    {FALLING_PARTICLES.map((p, i) => (
+      <motion.div
+        key={`particle-${i}`}
+        className="absolute w-[2px] h-[2px] bg-white rounded-full"
+        style={{ left: p.left }}
+        initial={{ top: "-15%", opacity: 0 }}
+        animate={{ 
+          top: "100%", 
+          opacity: [0, 0.8, 0.8, 0],
+        }}
+        transition={{
+          duration: p.dur,
+          repeat: Infinity,
+          ease: "linear",
+          delay: p.delay,
+        }}
+      />
+    ))}
+  </div>
+);
+
+const CAROUSEL_POSITIONS = [
+  // 0: Center
+  { xOffset: "0vw", scale: 1, opacity: 1, zIndex: 40, isCenter: true },
+  
+  // 1: Right-1
+  { xOffset: "12vw", scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
+  
+  // 2: Right-2
+  { xOffset: "23vw", scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
+  
+  // 3: Right-3
+  { xOffset: "33vw", scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
+  
+  // 4: Right-4 (Far Edge)
+  { xOffset: "42vw", scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
+  
+  // 5, 6: Hidden on the far RIGHT off-screen
+  { xOffset: "70vw", scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  { xOffset: "70vw", scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  
+  // 7: Hidden on the far LEFT off-screen
+  { xOffset: "-70vw", scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  
+  // 8: Left-4 (Far Edge)
+  { xOffset: "-42vw", scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
+  
+  // 9: Left-3
+  { xOffset: "-33vw", scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
+  
+  // 10: Left-2
+  { xOffset: "-23vw", scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
+  
+  // 11: Left-1
+  { xOffset: "-12vw", scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
+];
+
+const CAROUSEL_DATA = [
+  { image: "/luxury-handbag-2.jpg", name: "Maren B.", likes: "2.4K", avatar: "linear-gradient(135deg, #d4af37, #9b6c26)" },
+  { image: "/louis-vuitton-watch.jpg", name: "David S.", likes: "8.9K", avatar: "linear-gradient(135deg, #f6d365, #fda085)" },
+  { image: "/gucci-bag.webp", name: "Sarah K.", likes: "3.1K", avatar: "linear-gradient(135deg, #ff9a9e, #fecfef)" },
+  { image: "/brown-leather-bag.webp", name: "Emma W.", likes: "2.1K", avatar: "linear-gradient(135deg, #fdfbfb, #ebedee)" },
+  { image: "/black-designer-bag.webp", name: "Elena G.", likes: "4.2K", avatar: "linear-gradient(135deg, #84fab0, #8fd3f4)" },
+  { image: "/luxury-tote-bag.webp", name: "Oliver P.", likes: "3.7K", avatar: "linear-gradient(135deg, #ffecd2, #fcb69f)" },
+  { image: "/luxury-handbag-1.jpg", name: "Chloe M.", likes: "5.5K", avatar: "linear-gradient(135deg, #e0c3fc, #8ec5fc)" },
+  { image: "/luxury-watch.jpg", name: "Liam H.", likes: "6.4K", avatar: "linear-gradient(135deg, #cfd9df, #e2ebf0)" },
+  { image: "/luxury-shoes.jpg", name: "Mia L.", likes: "1.2K", avatar: "linear-gradient(135deg, #fccb90, #d57eeb)" },
+  { image: "/luxury-accessory.jpg", name: "Sophia D.", likes: "4.8K", avatar: "linear-gradient(135deg, #a8edea, #fed6e3)" },
+  { image: "/luxury-dress.jpg", name: "Jessica T.", likes: "950", avatar: "linear-gradient(135deg, #a18cd1, #fbc2eb)" },
+  { image: "/luxury-watch-2.jpg", name: "Alex R.", likes: "1.8K", avatar: "linear-gradient(135deg, #e5e5e5, #a3a3a3)" },
+];
 
 export function HeroSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((current) => (current + 1) % 12);
+    }, 1500); // Rotate every 1.5 seconds
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-50 md:opacity-80 flex justify-end items-center">
-        <div className="w-full md:w-1/2 h-full hidden md:block">
-          <Canvas camera={{ position: [0, 0, 5] }}>
-            <ambientLight intensity={0.5} />
-            <directionalLight position={[10, 10, 5]} intensity={1} />
-            <AnimatedSphere />
-          </Canvas>
-        </div>
+    <section
+      id="home"
+      className="relative flex flex-col items-center"
+      style={{ background: "#0d0d0d", minHeight: "100vh", overflow: "hidden" }}
+    >
+      {/* ── Layer 1: Wide outer glow ─────────────────────── */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "-20%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "1600px",
+          height: "1000px",
+          background:
+            "radial-gradient(ellipse at 50% 18%, rgba(210,140,10,0.55) 0%, rgba(175,100,5,0.35) 30%, rgba(120,60,0,0.12) 55%, transparent 72%)",
+          filter: "blur(8px)",
+        }}
+      />
+
+      {/* ── Layer 2: Bright golden core ──────────────────── */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "-8%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "900px",
+          height: "700px",
+          background:
+            "radial-gradient(ellipse at 50% 12%, rgba(255,215,60,0.45) 0%, rgba(230,170,30,0.3) 28%, rgba(180,110,10,0.12) 52%, transparent 68%)",
+          filter: "blur(4px)",
+        }}
+      />
+
+      {/* ── Layer 3: Specular hot-spot (white-gold shine) ─ */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "-4%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "360px",
+          height: "260px",
+          background:
+            "radial-gradient(ellipse at 50% 10%, rgba(255,245,160,0.35) 0%, rgba(255,210,60,0.15) 38%, transparent 65%)",
+          filter: "blur(2px)",
+        }}
+      />
+
+      {/* ── Torchlight 1: Narrow Beam ──────────────────────── */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "0%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "500px",
+          height: "550px",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(255,215,60,0.15) 5%, rgba(230,170,30,0.05) 40%, transparent 100%)",
+          clipPath: "polygon(35% 0, 65% 0, 100% 100%, 0 100%)",
+          filter: "blur(140px)",
+        }}
+      />
+
+      {/* ── Torchlight 2: Medium Beam ──────────────────────── */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "0%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "900px",
+          height: "600px",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(210,140,10,0.12) 8%, rgba(180,110,10,0.03) 45%, transparent 100%)",
+          clipPath: "polygon(42% 0, 58% 0, 100% 100%, 0 100%)",
+          filter: "blur(180px)",
+        }}
+      />
+
+      {/* ── Torchlight 3: Wide Beam ────────────────────────── */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "0%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "1400px",
+          height: "650px",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(175,100,5,0.08) 12%, rgba(120,60,0,0.02) 50%, transparent 100%)",
+          clipPath: "polygon(46% 0, 54% 0, 100% 100%, 0 100%)",
+          filter: "blur(220px)",
+        }}
+      />
+
+      <Stars />
+
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center pt-40 pb-0">
+
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65 }}
+          style={{ 
+            fontFamily: "'Schnyder L', serif",
+            fontWeight: 300,
+            fontSize: "60px",
+            lineHeight: "110%",
+            letterSpacing: "0%",
+            textAlign: "center",
+            marginBottom: "1rem"
+          }}
+        >
+          <span className="block mb-2" style={{
+            fontSize: "72px",
+            paddingBottom: "10px",
+            background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent"
+          }}>
+            Buy &amp; Sell
+          </span>
+          <span style={{
+            fontSize: "68px",
+            paddingBottom: "10px",
+            background: "linear-gradient(89.94deg, #FFFFFF 52.51%, #999999 107.86%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent"
+          }}>
+            Authentic Luxury, Safely
+          </span>
+        </motion.h1>
+
+        {/* Subtext */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.1 }}
+          className="leading-relaxed mb-8 font-['DM_Sans'] text-white/85"
+          style={{ maxWidth: "850px", fontSize: "18px", fontWeight: 300, fontFamily: "'DM Sans', sans-serif", wordSpacing: "0.15em" }}
+        >
+          Closete is a curated marketplace for luxury fashion, combining authentication, secure payments, <br className="hidden md:block" />
+          and controlled delivery – so you can buy and sell with complete confidence.
+        </motion.p>
+
+        {/* Dubai Pill */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.55, delay: 0.18 }}
+          className="flex items-center gap-2.5 px-4 py-2 rounded-full mb-10"
+          style={{ 
+            background: "rgba(255,255,255,0.05)", 
+            fontFamily: "'DM Sans', sans-serif",
+            fontWeight: 400,
+            fontSize: "14px",
+            backdropFilter: "blur(90px)",
+            WebkitBackdropFilter: "blur(90px)",
+            boxShadow: "0px 8px 10.9px 0px rgba(0, 3, 18, 0.12), 0px 1px 1px 0px rgba(0, 3, 18, 0.3)",
+            border: "1px solid rgba(255,255,255,0.1)",
+            borderTop: "1px solid rgba(255,255,255,0.3)",
+          }}
+        >
+          <span className="text-[#f2f2f2]/80 font-['DM_Sans']">
+            Now live in <strong className="text-white font-['DM_Sans']">Dubai</strong>. Expanding across{" "}
+            <span className="text-gradient-gold font-semibold font-['DM_Sans']">the US soon</span>
+          </span>
+          {/* Star circle button */}
+          <div
+            className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
+            style={{ background: "rgba(255,255,255,0.92)" }}
+          >
+            <Star size={12} className="text-black" fill="currentColor" strokeWidth={0} />
+          </div>
+        </motion.div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.25 }}
+          className="flex flex-wrap items-center justify-center gap-4 mb-20"
+        >
+          <GoldButton href="#ios" size="lg" className="flex items-center gap-2">
+            Download On IOS
+            <ArrowRight color="black" className="w-5 h-5" />
+          </GoldButton>
+          <GoldButton href="#android" size="lg" className="flex items-center gap-2">
+            Download On Android
+            <ArrowRight color="black" className="w-5 h-5" />
+          </GoldButton>
+        </motion.div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="max-w-2xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block py-1 px-3 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-400 text-sm font-semibold mb-6">
-              Next-Gen Web Experiences
-            </span>
-          </motion.div>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight"
-          >
-            Digital <span className="text-gradient">Excellence</span> <br />
-            Redefined.
-          </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl text-slate-400 mb-10 max-w-lg"
-          >
-            We craft highly optimized, visually stunning, and SEO-friendly applications that drive results and captivate audiences.
-          </motion.p>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap gap-4"
-          >
-            <a href="#contact" className="px-8 py-4 rounded-full bg-brand-600 hover:bg-brand-500 text-white font-semibold transition-all shadow-[0_0_20px_rgba(99,102,241,0.4)] hover:shadow-[0_0_30px_rgba(99,102,241,0.7)] flex items-center gap-2">
-              Start Project <ArrowRight size={18} />
-            </a>
-            <a href="#features" className="px-8 py-4 rounded-full bg-white/5 hover:bg-white/10 text-white font-semibold transition-all border border-white/10 glass">
-              Explore Features
-            </a>
-          </motion.div>
-        </div>
-      </div>
+      <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.4 }}
+          className="relative w-full z-10"
+          style={{ height: "500px" }}
+        >
+          {CAROUSEL_DATA.map((item, index) => {
+            const posIndex = (index - activeIndex + 12) % 12;
+            const pos = CAROUSEL_POSITIONS[posIndex];
+
+            return (
+              <motion.div
+                key={index}
+                className="absolute overflow-hidden"
+                initial={false}
+                animate={{
+                  x: `calc(-50% + ${pos.xOffset})`,
+                  y: "-50%",
+                  scale: pos.scale,
+                  opacity: pos.opacity,
+                  zIndex: pos.zIndex,
+                  boxShadow: pos.isCenter
+                    ? "0 0 50px rgba(212,175,55,0.22), 0 24px 48px rgba(0,0,0,0.6)"
+                    : "0 8px 32px rgba(0,0,0,0.4)",
+                }}
+                transition={{
+                  duration: 0.8,
+                  ease: [0.16, 1, 0.3, 1], // Apple-style premium smooth ease
+                }}
+                style={{
+                  top: "50%",
+                  left: "50%",
+                  width: "360px",
+                  height: "480px",
+                  borderRadius: "20px",
+                  border: "2px solid transparent",
+                  background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box",
+                  willChange: "transform, opacity, z-index, box-shadow", // Force hardware acceleration
+                }}
+              >
+                {/* Card image */}
+                <Image
+                  src={item.image}
+                  alt={`Luxury fashion item ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+
+                {/* User info bar for ALL cards */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-3"
+                  style={{
+                    background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
+                    transition: "opacity 0.8s ease",
+                  }}
+                >
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="rounded-full overflow-hidden flex-shrink-0"
+                      style={{
+                        width: "26px",
+                        height: "26px",
+                        background: item.avatar,
+                        border: "1.5px solid rgba(255,255,255,0.3)",
+                      }}
+                    />
+                    <span className="text-white text-xs font-medium">{item.name}</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-white text-xs">
+                    <Heart size={13} className="text-white/90" />
+                    <span>{item.likes}</span>
+                  </div>
+                </div>
+
+                {/* Dark overlay for non-center cards */}
+                {!pos.isCenter && (
+                  <div
+                    className="absolute inset-0"
+                    style={{ background: "rgba(0,0,0,0.15)" }}
+                  />
+                )}
+              </motion.div>
+            );
+          })}
+        </motion.div>
     </section>
   );
 }
