@@ -1,60 +1,134 @@
 "use client";
 
-import { motion } from "framer-motion";
+import React from 'react';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+
+const TypingText = ({ text, className = "", highlight = true }: { text: string; className?: string; highlight?: boolean }) => {
+  return (
+    <span className={className}>
+      {text.split("").map((char, index) => (
+        <motion.span
+          key={index}
+          variants={{
+            hidden: { color: "rgba(242, 242, 242, 0.2)" }, // ash/grey by default
+            visible: { color: highlight ? "rgba(255, 255, 255, 1)" : "rgba(242, 242, 242, 0.2)" }
+          }}
+          transition={{ duration: 0.1 }}
+        >
+          {char}
+        </motion.span>
+      ))}
+    </span>
+  );
+};
 
 export function VisionSection() {
   return (
-    <section id="about" className="py-32 relative overflow-hidden flex flex-col items-center border-t border-white/5">
-      <div className="container mx-auto px-6 lg:px-12 flex flex-col items-center">
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-serif mb-4 text-center text-white"
-        >
-          Our Vision
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-[#f2f2f2]/70 text-center mb-24 max-w-lg"
-        >
-          Learn our vision, why we created this, and our mission in the luxury secondary market.
-        </motion.p>
-        
-        <div className="relative max-w-4xl text-center">
-          {/* Floating elements */}
-          <motion.div 
-            animate={{ y: [0, -10, 0] }}
-            transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-            className="absolute -top-16 -left-12 w-20 h-20 rounded-xl bg-gradient-gold p-1 shadow-2xl rotate-[-12deg]"
-          >
-            <div className="w-full h-full bg-[#1a1a1a] rounded-lg overflow-hidden flex items-center justify-center">
-               <div className="w-8 h-8 rounded-full bg-gold-400" />
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            animate={{ y: [0, 15, 0] }}
-            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
-            className="absolute -bottom-8 -right-8 w-24 h-16 rounded-xl bg-white/10 p-1 shadow-2xl rotate-[10deg] backdrop-blur-sm border border-white/20"
-          >
-            <div className="w-full h-full bg-[#1a1a1a] rounded-lg overflow-hidden" />
-          </motion.div>
+    <section id="our-vision" className="relative min-h-screen w-full bg-[#0a0a0a] text-white flex flex-col items-center justify-center overflow-hidden px-6 py-24 font-sans border-t border-white/5">
+      
+      {/* Background Particle/Star Effect (Simplified with CSS) */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Subtle, rich golden radial glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(201,140,40,0.08)_0%,_transparent_100%)] opacity-80" />
+        {/* Subtle tiny dots */}
+        <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '100px 100px' }}></div>
+      </div>
 
-          <motion.h3
-            initial={{ opacity: 0, y: 20 }}
+      {/* --- CONTENT LAYER --- */}
+      <div className="relative z-10 max-w-5xl text-center space-y-12">
+        {/* Golden glow covering the entire text area from Our Vision to the bottom of the main text */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[1600px] h-[140%] bg-[radial-gradient(ellipse_at_center,_rgba(201,140,40,0.15)_0%,_transparent_60%)] pointer-events-none -z-10" />
+        
+        {/* Header Text */}
+        <div className="space-y-4 relative">
+          <h2 className="text-5xl md:text-6xl font-serif tracking-tight">Our Vision</h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-wider leading-relaxed text-white"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-gray-400 max-w-lg mx-auto text-sm md:text-base leading-relaxed"
           >
-            WE BELIEVE BUYING AND SELLING HIGH-VALUE ITEMS SHOULD <span className="text-gold-400">FEEL SEAMLESS, SECURE, AND PREMIUM AT EVERY STEP.</span>
-          </motion.h3>
+            Closete was created to bring trust, transparency, and simplicity to the luxury resale market.
+          </motion.p>
+        </div>
+
+        {/* Hero Text */}
+        <div className="mt-20 relative">
+          <motion.h1 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.03,
+                  delayChildren: 0.2,
+                }
+              }
+            }}
+            className="text-[20px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full max-w-6xl relative z-10 font-sans"
+          >
+            <TypingText text="WE BELIEVE BUYING AND SELLING HIGH-VALUE " highlight={true} />
+            <br className="hidden md:block" />
+            <TypingText text="ITEMS SHOULD FEEL SEAMLESS, SECURE, AND " highlight={true} />
+            <br className="hidden md:block" />
+            <TypingText text="PREMIUM AT EVERY STEP." highlight={true} />
+          </motion.h1>
         </div>
       </div>
+
+      {/* --- FLOATING DECORATIONS --- */}
+
+      {/* Top Left: Shield/Lock Icon */}
+      <div className="absolute top-[20%] left-[10%] hidden md:block transition-transform hover:scale-105">
+        <div className="relative w-38 h-38">
+          <Image 
+            src="/Group 1707483227.png" 
+            alt="Shield Icon" 
+            fill 
+            className="object-contain"
+          />
+        </div>
+      </div>
+
+      {/* Top Right: Watch Image */}
+      <div className="absolute top-[15%] right-[10%] rotate-12 transition-transform hover:scale-105 hidden md:block">
+        <div className="relative w-48 h-64 overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+          <Image 
+            src="/louis-vuitton-watch.jpg"
+            alt="Luxury Watch"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Bottom Left: Bag Image */}
+      <div className="absolute bottom-[15%] left-[8%] -rotate-6 transition-transform hover:scale-105 hidden md:block">
+        <div className="relative w-56 h-40 overflow-hidden rounded-2xl border border-white/10 shadow-2xl">
+          <Image 
+            src="/luxury-handbag-1.jpg"
+            alt="Luxury Handbag"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Bottom Right: Crown Icon */}
+      <div className="absolute bottom-[20%] right-[15%] hidden md:block transition-transform hover:scale-105">
+        <div className="relative w-[152px] h-[152px]">
+          <Image 
+            src="/Group 1707483228.png" 
+            alt="Crown Icon" 
+            fill 
+            className="object-contain"
+          />
+        </div>
+      </div>
+
     </section>
   );
 }

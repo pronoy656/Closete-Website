@@ -69,7 +69,7 @@ export function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setActiveLink(link.href)}
-                className={`relative text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 ${
+                className={`relative text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none ${
                   activeLink === link.href
                     ? "text-white"
                     : "text-white/80 hover:text-white hover:bg-white/5"
@@ -107,7 +107,7 @@ export function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-lg font-medium ${activeLink === link.href ? "text-gold-400" : "text-[#f2f2f2]/70 hover:text-[#f2f2f2]"}`}
+              className={`text-lg font-medium focus:outline-none outline-none ${activeLink === link.href ? "text-gold-400" : "text-[#f2f2f2]/70 hover:text-[#f2f2f2]"}`}
               onClick={() => {
                 setActiveLink(link.href);
                 setIsMobileMenuOpen(false);

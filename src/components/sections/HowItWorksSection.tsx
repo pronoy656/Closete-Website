@@ -67,13 +67,14 @@ export function HowItWorksSection() {
           >
             {/* ── Ambient glow behind circle ── */}
             <defs>
-              <radialGradient id="circleGrad" cx="35%" cy="28%" r="70%">
-                <stop offset="0%"  stopColor="#FFF5A0" stopOpacity="1" />
-                <stop offset="20%" stopColor="#FFD84D" stopOpacity="1" />
-                <stop offset="45%" stopColor="#D4A017" stopOpacity="1" />
-                <stop offset="72%" stopColor="#9B6C0A" stopOpacity="1" />
-                <stop offset="100%" stopColor="#5A3804" stopOpacity="1" />
-              </radialGradient>
+              <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="4.77%" stopColor="#AF7413" stopOpacity="1" />
+                <stop offset="19.33%" stopColor="#C98C28" stopOpacity="1" />
+                <stop offset="38.93%" stopColor="#E2B744" stopOpacity="1" />
+                <stop offset="50.54%" stopColor="#FFED81" stopOpacity="1" />
+                <stop offset="62.1%" stopColor="#E1C24E" stopOpacity="1" />
+                <stop offset="90.74%" stopColor="#A06008" stopOpacity="1" />
+              </linearGradient>
               <radialGradient id="glowGrad" cx="50%" cy="50%" r="50%">
                 <stop offset="0%"  stopColor="#FFD700" stopOpacity="0.38" />
                 <stop offset="60%" stopColor="#D4A017" stopOpacity="0.12" />
@@ -91,36 +92,8 @@ export function HowItWorksSection() {
               </filter>
             </defs>
 
-            {/* Outer ambient glow */}
-            <ellipse cx={cx} cy={cy} rx="220" ry="220" fill="url(#glowGrad)" />
-
-            {/* ── Sunburst rays ── */}
-            {RAY_ANGLES.map((angle, i) => {
-              const rad = (angle * Math.PI) / 180;
-              const innerR = r + 8;
-              // Alternate long and short rays
-              const outerR = i % 2 === 0 ? r + 160 : r + 80;
-              const x1 = cx + innerR * Math.cos(rad);
-              const y1 = cy + innerR * Math.sin(rad);
-              const x2 = cx + outerR * Math.cos(rad);
-              const y2 = cy + outerR * Math.sin(rad);
-              return (
-                <line
-                  key={angle}
-                  x1={x1} y1={y1}
-                  x2={x2} y2={y2}
-                  stroke="rgba(200,160,30,0.35)"
-                  strokeWidth={i % 2 === 0 ? "1.5" : "1"}
-                  strokeLinecap="round"
-                />
-              );
-            })}
-
             {/* ── Gold circle ── */}
             <circle cx={cx} cy={cy} r={r} fill="url(#circleGrad)" />
-
-            {/* Specular shine highlight on circle */}
-            <circle cx={cx} cy={cy} r={r} fill="url(#shineGrad)" />
 
             {/* Circle border ring */}
             <circle
@@ -132,11 +105,13 @@ export function HowItWorksSection() {
 
             {/* ── Dashed connector lines from circle to each card ── */}
             {cardY.map((y, i) => {
+              if (i === 1) return null;
+
               // Start: right edge of circle, at vertical position of card
               const startX = cx + r * Math.cos(Math.atan2(y - cy, 500 - cx));
               const startY = cy + r * Math.sin(Math.atan2(y - cy, 500 - cx));
               // End: left side of number column
-              const endX = 475;
+              const endX = i === 1 ? 355 : 555;
               const endY = y;
               // Control point
               const cpX = cx + 140;
@@ -164,11 +139,11 @@ export function HowItWorksSection() {
             {/* ── "Closeté" label on circle ── */}
             <text
               x={cx}
-              y={cy + 7}
+              y={cy + 14}
               textAnchor="middle"
               fontFamily="Georgia, serif"
-              fontSize="22"
-              fontWeight="600"
+              fontSize="48"
+              fontWeight="400"
               fill="#1a0e02"
             >
               Closeté
@@ -179,10 +154,10 @@ export function HowItWorksSection() {
           <div
             className="absolute pointer-events-none"
             style={{
-              left: "0%",
+              left: "-160px",
               top: "50%",
               transform: "translateY(-50%)",
-              width: "350px",
+              width: "390px",
               height: "550px",
               zIndex: 1,
               mixBlendMode: "screen",
@@ -190,10 +165,10 @@ export function HowItWorksSection() {
             }}
           >
             <Image
-              src="/Group.png"
-              alt="Group rays"
+              src="/Frame 2087328317.png"
+              alt="Background stars and rays"
               fill
-              className="object-contain object-right"
+              className="object-cover object-right"
             />
           </div>
 
@@ -211,76 +186,41 @@ export function HowItWorksSection() {
               zIndex: 2,
             }}
           >
-            {steps.map((step, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 40 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="flex items-center gap-4 flex-1"
-              >
-                {/* Step number */}
-                <div
-                  className="shrink-0 font-serif leading-none select-none text-right"
-                  style={{
-                    width: "80px",
-                    fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
-                    background: "linear-gradient(135deg, #A87C36 0%, #D4AF37 40%, #F5D78D 65%, #C49A30 100%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                    opacity: 0.9,
-                    lineHeight: 1,
-                  }}
+            {steps.map((step, i) => {
+              const marginClass = i === 1 ? "ml-0 lg:ml-64" : "ml-0 lg:ml-20";
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.15 }}
+                  className={`relative flex items-center gap-4 lg:gap-8 group flex-1 ${marginClass}`}
                 >
-                  {step.number}.
-                </div>
+                  {/* Background Number */}
+                  <div 
+                    className="shrink-0 text-7xl lg:text-[110px] font-bold select-none pointer-events-none leading-none
+                               bg-gradient-to-b from-yellow-600/80 to-transparent bg-clip-text text-transparent opacity-70"
+                  >
+                    {step.number}.
+                  </div>
 
-                {/* Card */}
-                <div
-                  className="flex-1 flex items-center justify-between gap-4 rounded-2xl py-5 px-6"
-                  style={{
-                    background: "rgba(22, 20, 15, 0.85)",
-                    border: "1px solid rgba(180,140,30,0.2)",
-                    backdropFilter: "blur(12px)",
-                    boxShadow: "0 4px 40px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.04)",
-                  }}
-                >
-                  <div>
-                    <h3
-                      className="font-bold mb-2"
-                      style={{
-                        fontSize: "0.75rem",
-                        letterSpacing: "0.14em",
-                        color: "#e8e8e8",
-                      }}
-                    >
+                  {/* Content Card */}
+                  <div className={`relative z-10 w-full ${i === 1 ? 'max-w-3xl' : 'max-w-lg'} bg-[#1a1a1e]/80 backdrop-blur-md border border-white/5 p-8 lg:p-10 rounded-3xl 
+                                  shadow-2xl transition-all duration-500 group-hover:border-yellow-500/30
+                                  after:absolute after:inset-0 after:rounded-3xl after:shadow-[inset_-1px_-1px_2px_rgba(234,179,8,0.2)]`}>
+                    
+                    <h3 className="text-white text-xl font-bold tracking-wider mb-4 uppercase">
                       {step.title}
                     </h3>
-                    <p style={{ fontSize: "0.85rem", color: "rgba(242,242,242,0.5)", lineHeight: 1.6 }}>
+                    
+                    <p className="text-gray-400 text-sm lg:text-base leading-relaxed font-light">
                       {step.desc}
                     </p>
                   </div>
-
-                  {/* Arrow indicator */}
-                  <div
-                    className="shrink-0 flex items-center justify-center"
-                    style={{
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "50%",
-                      border: "1px solid rgba(180,140,30,0.4)",
-                      color: "rgba(212,175,55,0.8)",
-                      fontSize: "0.9rem",
-                      lineHeight: 1,
-                    }}
-                  >
-                    ›
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
