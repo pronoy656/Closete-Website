@@ -13,7 +13,7 @@ export function Footer() {
           
           {/* Column 1 */}
           <div className="col-span-1 sm:col-span-2 md:col-span-4">
-            <Link href="#home" className="text-3xl font-serif text-gradient-gold mb-6 block tracking-tight">
+            <Link href="#home" className="text-3xl font-serif text-gradient-gold mb-6 inline-block tracking-tight">
               Closeté
             </Link>
             <p className="text-[#f2f2f2]/60 text-[14px] max-w-[280px] leading-relaxed">

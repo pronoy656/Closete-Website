@@ -16,95 +16,56 @@ export function CtaBannerSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
         className="w-full max-w-[1250px] h-[480px] md:h-[500px] rounded-[30px] md:rounded-[40px] relative overflow-hidden shadow-2xl flex flex-col items-center justify-center text-[#111]"
-        style={{ background: 'radial-gradient(circle at center, #FDE694 0%, #D49D26 60%, #A67013 100%)' }}
+        style={{ background: 'linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)' }}
       >
         
-        {/* Left Phone Mockup (Cut off at edge) */}
-        <div className="absolute top-8 -left-20 md:-left-12 w-[260px] h-[550px] bg-[#111] rounded-[35px] border-[6px] border-[#222] shadow-[20px_0_40px_rgba(0,0,0,0.3)] flex-col overflow-hidden text-white hidden md:flex scale-90 md:scale-100 origin-top-left">
-            {/* Top of phone */}
-            <div className="relative h-44 w-full">
-               <Image src="/luxury-handbag-1.jpg" alt="Bag" fill className="object-cover" />
-               <div className="absolute top-4 left-4 bg-white text-black px-2 py-0.5 rounded text-[10px] font-bold">AED 3,200</div>
-            </div>
-            <div className="p-4 flex flex-col gap-2 bg-[#1a1a1a] flex-1">
-               <div className="flex items-center gap-2 mb-1">
-                 <div className="w-5 h-5 rounded-full bg-gray-500 overflow-hidden relative">
-                   <Image src="/luxury-watch.jpg" alt="user" fill className="object-cover" />
-                 </div>
-                 <span className="text-[10px] font-medium text-gray-300">Olivia Mendes <span className="text-blue-500">✔</span></span>
-               </div>
-               <h3 className="font-bold text-[13px]">Classic Flap Bag</h3>
-               <p className="text-[8px] text-gray-400">Excellent condition • Worn Twice • Medium - 25cm</p>
-               
-               <div className="mt-3 text-[8px] text-gray-500 leading-tight">
-                 <span className="font-bold text-gray-400 mb-1 block uppercase">Description</span>
-                 Black caviar leather with gold hardware. Comes with original dust bag and authenticity card.
-               </div>
-
-               <div className="flex justify-between items-center mt-3 pt-3 border-t border-white/5">
-                  <div className="flex flex-col items-center gap-1.5"><div className="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center"><div className="w-2 h-2 bg-gray-400 rounded-full"/></div><span className="text-[7px] text-gray-400">Authenticity</span></div>
-                  <div className="flex flex-col items-center gap-1.5"><div className="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center"><div className="w-2 h-2 bg-gray-400 rounded-full"/></div><span className="text-[7px] text-gray-400">Payment</span></div>
-                  <div className="flex flex-col items-center gap-1.5"><div className="w-4 h-4 bg-white/10 rounded-full flex items-center justify-center"><div className="w-2 h-2 bg-gray-400 rounded-full"/></div><span className="text-[7px] text-gray-400">Secure</span></div>
-               </div>
-               
-               <div className="w-full h-9 bg-gradient-to-r from-[#d4af37] to-[#A87C36] rounded-full mt-4 flex items-center justify-center text-black text-[11px] font-bold shadow-lg">
-                  Secure This Item →
-               </div>
-            </div>
+        {/* Left Phone Mockup (Raw Image) */}
+        <div className="absolute -top-16 -left-10 md:-left-4 lg:-left-2 xl:left-4 w-[200px] h-[430px] hidden md:block origin-top-left">
+            <Image src="/Product View.png" alt="Product View" fill className="object-contain" />
+            {/* Golden gradient overlay masked to the exact image shape */}
+            <div 
+              className="absolute inset-0 pointer-events-none" 
+              style={{ 
+                background: 'linear-gradient(to top, rgba(175,116,19, 0.85) 0%, rgba(226,183,68, 0.5) 50%, rgba(255,237,129, 0.25) 100%)',
+                WebkitMaskImage: 'url("/Product View.png")',
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'center'
+              }} 
+            />
         </div>
 
-        {/* Right Phone Mockup (Cut off at edge) */}
-        <div className="absolute -bottom-20 -right-20 md:-right-12 w-[260px] h-[550px] bg-[#1a1a1a] rounded-[35px] border-[6px] border-[#222] shadow-[-20px_0_40px_rgba(0,0,0,0.3)] flex-col overflow-hidden text-white hidden md:flex scale-90 md:scale-100 origin-bottom-right">
-            {/* Header */}
-            <div className="flex items-center justify-between p-4 mt-4">
-               <div className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center"><span className="text-gray-400 text-sm">{"<"}</span></div>
-               <span className="text-xs font-semibold">Item Detail</span>
-               <div className="w-7 h-7 rounded-full bg-white/5 flex items-center justify-center"><span className="text-gray-400 text-xs">🗑</span></div>
-            </div>
-            <div className="px-4 pb-4">
-                <div className="w-full h-48 rounded-2xl overflow-hidden relative shadow-inner">
-                   <Image src="/luxury-tote-bag.webp" alt="Tote" fill className="object-cover" />
-                   <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30">
-                        <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-white border-b-[5px] border-b-transparent ml-1" />
-                      </div>
-                   </div>
-                </div>
-                
-                <div className="flex justify-between items-end mt-4">
-                  <h3 className="font-bold text-[13px]">Classic Flap Bag</h3>
-                  <span className="text-[8px] bg-white/10 px-2 py-1 rounded text-gray-300">Not reserved yet</span>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-white/5">
-                   <span className="text-[9px] font-bold text-gray-500 uppercase tracking-wider mb-2 block">Item Details</span>
-                   <p className="text-[10px] text-gray-400 py-1.5 border-b border-white/5 flex justify-between">Brand <span className="text-white font-medium">Chanel</span></p>
-                   <p className="text-[10px] text-gray-400 py-1.5 border-b border-white/5 flex justify-between">Condition <span className="text-white font-medium">Excellent</span></p>
-                   <p className="text-[10px] text-gray-400 py-1.5 border-b border-white/5 flex justify-between">Color <span className="text-white font-medium">Beige</span></p>
-                </div>
-            </div>
+        {/* Right Phone Mockup (Raw Image) */}
+        <div className="absolute -bottom-20 -right-10 md:-right-4 lg:-right-2 xl:right-4 w-[200px] h-[430px] hidden md:block origin-bottom-right">
+            <Image src="/Whne item is not reserved.png" alt="Item Not Reserved" fill className="object-contain" />
+            {/* Golden gradient overlay masked to the exact image shape */}
+            <div 
+              className="absolute inset-0 pointer-events-none" 
+              style={{ 
+                background: 'linear-gradient(to top, rgba(175,116,19, 0.85) 0%, rgba(226,183,68, 0.5) 50%, rgba(255,237,129, 0.25) 100%)',
+                WebkitMaskImage: 'url("/Whne item is not reserved.png")',
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                WebkitMaskPosition: 'center'
+              }} 
+            />
         </div>
 
         {/* Center Content */}
         <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-3xl">
             {/* Icon */}
-            <div className="w-24 h-24 mb-6 rounded-full border-[1px] border-black/10 flex items-center justify-center relative">
+            <div className="w-28 h-28 mb-6 rounded-full border-[1px] border-black/10 flex items-center justify-center relative">
                <div className="absolute inset-1.5 rounded-full border-[1px] border-black/10" />
-               <div className="w-16 h-16 bg-[#111] rounded-full flex items-center justify-center shadow-xl relative z-10">
-                  <div className="w-[26px] h-[26px] bg-white rounded-[7px] flex items-center justify-center relative shadow-inner">
-                     <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" strokeWidth="1" className="w-[14px] h-[14px] text-[#111]">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
-                     </svg>
-                     <div className="absolute -bottom-1 -right-1.5 text-white text-[12px] drop-shadow-md">✨</div>
-                  </div>
+               <div className="w-20 h-20 rounded-full shadow-xl relative z-10 overflow-hidden">
+                  <Image src="/Group 1707483229.png" alt="CTA Icon" fill className="object-contain" />
                </div>
             </div>
 
-            <h2 className={`${playfair.className} text-4xl md:text-[54px] font-bold mb-4 tracking-tight leading-[1.1] text-[#0a0a0a]`}>
+            <h2 className={`${playfair.className} text-3xl md:text-[40px] lg:text-[48px] font-medium mb-4 tracking-tight leading-[1.1] text-[#0a0a0a] md:whitespace-nowrap`}>
                Start Buying & Selling with Confidence
             </h2>
             
-            <p className="text-[#0a0a0a]/80 text-[15px] md:text-[17px] font-medium mb-10 max-w-[600px] mx-auto leading-relaxed">
+            <p className="text-[#0a0a0a]/80 text-[15px] md:text-[17px] font-normal mb-10 max-w-[600px] mx-auto leading-relaxed">
                Join Closete and experience a more secure and refined way to trade luxury fashion – starting in Dubai.
             </p>
 

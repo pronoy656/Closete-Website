@@ -50,9 +50,9 @@ const TrustSection = () => {
   ];
 
   return (
-    <section id="why-choose-us" className={`bg-[#FFFFFF0A] py-24 px-6 text-white overflow-hidden ${dmSans.className}`}>
+    <section id="why-choose-us" className={`bg-[#FFFFFF0A] py-16 px-6 text-white overflow-hidden ${dmSans.className}`}>
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-24 space-y-4">
+      <div className="max-w-4xl mx-auto text-center mb-12 space-y-2">
         <h2 className={`${playfair.className} text-5xl md:text-6xl font-medium tracking-tight`}>
           Built on Trust
         </h2>
@@ -65,70 +65,71 @@ const TrustSection = () => {
       <div className="relative max-w-7xl mx-auto">
         
         {/* The horizontal "wire" line */}
-        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-screen h-[4px] bg-[#333] z-0"></div>
+        <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[2px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
 
         <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden gap-6 pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4">
           {features.map((item, index) => (
-            <div key={index} className="relative group pt-12 flex-none w-[280px] sm:w-[320px] md:w-auto">
+            <div key={index} className="relative group pt-12 flex-none w-[280px] sm:w-[320px] md:w-auto cursor-pointer">
               
               {/* Hanging "Hook" Image */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 -mt-[2px]">
-                <Image src="/Group 1707483204.png" alt="Card Hanger" fill className="object-contain" />
+              <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
+                {/* Default Hook */}
+                <Image src="/Group 1707483204.png" alt="Card Hanger" fill className="object-contain transition-opacity duration-500 group-hover:opacity-0" />
+                {/* Golden Gradient Hook on Hover */}
+                <div 
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: 'linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)',
+                    WebkitMaskImage: 'url("/Group 1707483204.png")',
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'center'
+                  }}
+                />
               </div>
 
               {/* The Card */}
               <div 
-                className={`
-                  relative h-full flex flex-col items-center text-center p-8 rounded-[2rem] transition-all duration-500
-                  ${item.active 
-                    ? 'text-black scale-105' 
-                    : 'bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm hover:border-white/20'
-                  }
-                `}
-                style={
-                  item.active 
-                    ? { background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)" } 
-                    : {}
-                }
+                className="relative h-full flex flex-col items-center text-center p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden"
               >
-                {/* Hover Gradient Border for inactive cards */}
-                {!item.active && (
-                  <div 
-                    className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
-                    style={{
-                      padding: "1px",
-                      background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)",
-                      WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                      WebkitMaskComposite: "xor",
-                      maskComposite: "exclude"
-                    }}
-                  />
-                )}
+                {/* Exact Linear Gradient Background on Hover */}
+                <div 
+                  className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
+                  style={{
+                    background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)"
+                  }}
+                />
                 
                 {/* Icon Circle Wrapper */}
-                <div className={`relative z-10 mb-8 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110`}>
+                <div className="relative z-10 mb-8 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
                   
                   {/* The icon */}
-                  <div className={`relative z-10 ${item.active ? 'text-black' : 'text-white'}`}>
+                  <div className="relative z-10 brightness-0 invert group-hover:invert-0 transition-all duration-500">
                     {item.icon}
                   </div>
 
                   {/* Ellipse Base Glow */}
-                  <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-[220px] h-[70px] pointer-events-none z-0">
+                  <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-[220px] h-[70px] pointer-events-none z-0 transition-opacity duration-500">
                     <Image 
-                      src={item.active ? "/Ellipse 4867 (1).png" : "/Ellipse 4867.png"} 
+                      src="/Ellipse 4867 (1).png"
                       alt="Base Glow" 
                       fill 
-                      className="object-contain opacity-100" 
+                      className="object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                    />
+                    <Image 
+                      src="/Ellipse 4867.png"
+                      alt="Base Glow" 
+                      fill 
+                      className="object-contain opacity-100 group-hover:opacity-0 transition-opacity duration-500" 
                     />
                   </div>
                 </div>
 
-                <h3 className={`text-base font-bold uppercase tracking-widest mb-4 leading-tight`}>
+                <h3 className="relative z-10 text-base font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">
                   {item.title}
                 </h3>
                 
-                <p className={`text-sm leading-relaxed font-medium ${item.active ? 'text-black/80' : 'text-gray-400'}`}>
+                <p className="relative z-10 text-sm leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">
                   {item.description}
                 </p>
               </div>
