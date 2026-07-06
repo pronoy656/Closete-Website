@@ -5,6 +5,9 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Play, Heart, ArrowRight, Star } from "lucide-react";
 import { GoldButton } from "@/components/ui/GoldButton";
+import { Playfair_Display } from "next/font/google";
+
+const playfair = Playfair_Display({ subsets: ["latin"] });
 
 // Stable star positions (avoids hydration mismatch from Math.random on server)
 const STAR_POSITIONS = [
@@ -280,14 +283,14 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65 }}
-          className="font-serif font-light leading-[1.1] tracking-normal text-center mb-4"
+          className={`${playfair.className} font-light leading-[1.1] tracking-normal text-center mb-4`}
         >
           <span className="block mb-2 text-[52px] sm:text-[60px] md:text-[72px] pb-2" style={{
             background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent"
           }}>
-            Buy &amp; Sell
+            Buy <span className="font-['Georgia'] font-normal">&amp;</span> Sell
           </span>
           <span className="block text-[40px] sm:text-[56px] md:text-[68px] pb-2" style={{
             background: "linear-gradient(89.94deg, #FFFFFF 52.51%, #999999 107.86%)",

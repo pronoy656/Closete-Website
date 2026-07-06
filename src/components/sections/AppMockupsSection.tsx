@@ -49,9 +49,9 @@ export function AppMockupsSection() {
   }, [handleNext]);
 
   return (
-    <section id="app-preview" className={`bg-[#0a0a0a] py-24 overflow-hidden text-white ${dmSans.className}`}>
+    <section id="app-preview" className={`bg-[#0a0a0a] pt-24 pb-12 overflow-hidden text-white ${dmSans.className}`}>
       {/* --- HEADER --- */}
-      <div className="max-w-5xl mx-auto text-center px-6 mb-16 space-y-6 relative z-50">
+      <div className="max-w-5xl mx-auto text-center px-6 mb-16 space-y-6 relative z-20">
         <h2 className={`${playfair.className} text-4xl md:text-6xl text-gray-100`}>
           Designed for a Seamless Experience
         </h2>

@@ -25,12 +25,10 @@ const TypingText = ({ text, className = "", highlight = true }: { text: string; 
 
 export function VisionSection() {
   return (
-    <section id="our-vision" className="relative min-h-screen w-full bg-[#0a0a0a] text-white flex flex-col items-center justify-center overflow-hidden px-6 py-24 font-sans">
+    <section id="our-vision" className="relative w-full bg-[#0a0a0a] text-white flex flex-col items-center justify-center overflow-hidden px-6 pt-16 md:pt-24 pb-24 font-sans">
       
       {/* Background Particle/Star Effect (Simplified with CSS) */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Subtle, rich golden radial glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,237,129,0.08)_0%,_transparent_100%)] opacity-80" />
         {/* Subtle tiny dots */}
         <div className="absolute inset-0 opacity-15" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '100px 100px' }}></div>
         
@@ -43,8 +41,15 @@ export function VisionSection() {
 
       {/* --- CONTENT LAYER --- */}
       <div className="relative z-10 max-w-5xl text-center space-y-12">
-        {/* Golden glow covering the entire text area from Our Vision to the bottom of the main text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[1600px] h-[140%] bg-[radial-gradient(ellipse_at_center,_rgba(255,237,129,0.15)_0%,_transparent_60%)] pointer-events-none -z-10" />
+        {/* Gradient glow matching the How It Works section */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[1600px] h-[100%] pointer-events-none -z-10"
+             style={{ 
+               background: "linear-gradient(to right, transparent 20%, rgba(201, 140, 40, 0.15) 50%, rgba(150, 150, 150, 0.1) 85%, transparent 100%)", 
+               filter: "blur(60px)",
+               WebkitMaskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+               maskImage: "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)"
+             }}
+        />
         
         {/* Header Text */}
         <div className="space-y-4 relative">
