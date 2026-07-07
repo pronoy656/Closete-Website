@@ -347,13 +347,13 @@ export function HeroSection() {
           transition={{ duration: 0.65, delay: 0.25 }}
           className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4 mb-20 w-full max-w-[280px] md:max-w-none"
         >
-          <GoldButton href="#ios" size="lg" className="flex items-center justify-center gap-2 w-full md:w-auto">
+          <GoldButton href="#ios" size="lg" className="flex items-center justify-center gap-2 w-full md:w-[280px] whitespace-nowrap">
             Download On IOS
-            <ArrowRight color="black" className="w-5 h-5" />
+            <ArrowRight color="black" className="w-5 h-5 flex-shrink-0" />
           </GoldButton>
-          <GoldButton href="#android" size="lg" className="flex items-center justify-center gap-2 w-full md:w-auto">
+          <GoldButton href="#android" size="lg" className="flex items-center justify-center gap-2 w-full md:w-[280px] whitespace-nowrap">
             Download On Android
-            <ArrowRight color="black" className="w-5 h-5" />
+            <ArrowRight color="black" className="w-5 h-5 flex-shrink-0" />
           </GoldButton>
         </motion.div>
       </div>
