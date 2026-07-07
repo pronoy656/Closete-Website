@@ -50,7 +50,7 @@ const TrustSection = () => {
   ];
 
   return (
-    <section id="why-choose-us" className={`bg-[#FFFFFF0A] py-16 px-6 text-white overflow-hidden ${dmSans.className}`}>
+    <section id="why-choose-us" className={`bg-[#FFFFFF0A] py-16 px-6 text-white overflow-hidden scroll-mt-28 ${dmSans.className}`}>
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-12 space-y-2">
         <h2 className={`${playfair.className} text-5xl md:text-6xl font-medium tracking-tight`}>

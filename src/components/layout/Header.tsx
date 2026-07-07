@@ -48,7 +48,7 @@ export function Header() {
             </button>
 
             {/* Logo */}
-            <Link href="#home" className="text-[22px] lg:text-3xl font-serif text-gradient-gold tracking-tight ml-2 lg:ml-0" onClick={() => setActiveLink("#home")}>
+            <Link href="#home" className="text-[30px] lg:text-[44px] font-serif text-gradient-gold tracking-tight ml-2 lg:ml-0" onClick={() => setActiveLink("#home")}>
               Closeté
             </Link>
           </div>
