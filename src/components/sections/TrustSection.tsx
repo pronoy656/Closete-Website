@@ -52,11 +52,11 @@ const TrustSection = () => {
   return (
     <section id="why-choose-us" className={`bg-[#FFFFFF0A] pt-30 pb-16 px-6 text-white overflow-hidden ${dmSans.className}`}>
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-12 space-y-2">
+      <div className="max-w-4xl mx-auto text-center mb-12 space-y-5">
         <h2 className={`${playfair.className} text-5xl md:text-6xl font-medium tracking-tight`}>
           Built on Trust
         </h2>
-        <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed opacity-80">
+        <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }} className="max-w-xl mx-auto leading-relaxed">
           From verification to payment protection, every step is designed to keep buyers and sellers confident.
         </p>
       </div>

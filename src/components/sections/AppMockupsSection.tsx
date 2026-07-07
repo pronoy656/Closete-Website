@@ -51,11 +51,11 @@ export function AppMockupsSection() {
   return (
     <section id="app-preview" className={`bg-[#0a0a0a] pt-30 pb-12 overflow-hidden text-white ${dmSans.className}`}>
       {/* --- HEADER --- */}
-      <div className="max-w-5xl mx-auto text-center px-6 mb-16 space-y-6 relative z-20">
+      <div className="max-w-5xl mx-auto text-center px-6 mb-8 space-y-6 relative z-20">
         <h2 className={`${playfair.className} text-4xl md:text-6xl text-gray-100`}>
           Designed for a Seamless Experience
         </h2>
-        <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+        <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }} className="max-w-2xl mx-auto leading-relaxed">
           Closete is designed to make buying and selling luxury effortless 
           — from discovery to delivery.
         </p>

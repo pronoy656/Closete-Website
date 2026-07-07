@@ -45,10 +45,10 @@ export function HowItWorksSection() {
           viewport={{ once: true }}
           className="mb-16 text-center lg:text-left"
         >
-          <h2 className="font-serif text-white mb-3" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
+          <h2 className="font-serif text-white mb-2" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
             How Closete works
           </h2>
-          <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px", letterSpacing: "0.5px" }}>
+          <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }}>
             Discover, verify, and receive luxury pieces with complete confidence.
           </p>
         </motion.div>

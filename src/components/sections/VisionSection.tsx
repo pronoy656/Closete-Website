@@ -59,7 +59,8 @@ export function VisionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-gray-400 max-w-lg mx-auto text-sm md:text-base leading-relaxed"
+            style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }}
+            className="max-w-xl mx-auto leading-relaxed"
           >
             Closete was created to bring trust, transparency, and simplicity to the luxury resale market.
           </motion.p>
