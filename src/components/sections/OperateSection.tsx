@@ -31,10 +31,8 @@ export function OperateSection() {
         </div>
 
         {/* Bottom Text */}
-        <p className="text-[#8e8e93] max-w-2xl text-[11px] lg:text-xs leading-[1.8] uppercase tracking-[0.08em] mb-4">
-          We are building towards <strong className="text-[#f2f2f2] font-semibold">a global marketplace</strong> for <br className="hidden md:block" />
-          <strong className="text-[#f2f2f2] font-semibold">luxury resale</strong> – starting with a highly controlled, <br className="hidden md:block" />
-          trusted local experience.
+        <p className="text-[#a1a1aa] max-w-5xl text-base lg:text-2xl leading-[1.8] uppercase tracking-[0.08em] mb-4">
+          We are building towards a global marketplace for luxury resale – starting with a highly controlled, trusted local experience.
         </p>
       </div>
     </section>

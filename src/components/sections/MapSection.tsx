@@ -85,10 +85,9 @@ export function MapSection() {
         </div>
 
         {/* Bottom Text */}
-        <p className="text-[#8e8e93] max-w-2xl text-[11px] lg:text-xs leading-[1.8] uppercase tracking-[0.08em] mb-4">
-          We are building towards <strong className="text-[#f2f2f2] font-semibold">a global marketplace</strong> for <br className="hidden md:block" />
-          <strong className="text-[#f2f2f2] font-semibold">luxury resale</strong> &ndash; starting with a highly controlled, <br className="hidden md:block" />
-          trusted local experience.
+        <p className="bg-gradient-to-r from-white to-[#8e8e93] bg-clip-text text-transparent max-w-[574px] mx-auto leading-[1.8] uppercase tracking-[0.08em] mb-4">
+          We are building towards a global marketplace for <br />
+          luxury resale &ndash; starting with a highly controlled, trusted local experience.
         </p>
       </div>
     </section>
