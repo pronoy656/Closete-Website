@@ -18,7 +18,7 @@ const TrustSection = () => {
       active: false
     },
     {
-      title: "Secure Payments",
+      title: <>Secure <br /> Payments</>,
       description: "Funds are held securely and only released once the buyer confirms the item meets expectations.",
       icon: (
         <div className="relative w-12 h-12">
@@ -38,7 +38,7 @@ const TrustSection = () => {
       active: true // The highlighted gold card
     },
     {
-      title: "Buyer Protection",
+      title: <>Buyer <br /> Protection</>,
       description: "If an item does not meet expectations, it can be rejected at delivery with no payment released.",
       icon: (
         <div className="relative w-12 h-12">
@@ -62,14 +62,14 @@ const TrustSection = () => {
       </div>
 
       {/* Cards Container with the Horizontal Line */}
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-6xl mx-auto">
         
         {/* The horizontal "wire" line */}
         <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[2px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
 
-        <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden gap-6 pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4">
+        <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden gap-4 pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-4 justify-items-center">
           {features.map((item, index) => (
-            <div key={index} className="relative group pt-12 flex-none w-[280px] sm:w-[320px] md:w-auto cursor-pointer">
+            <div key={index} className="relative group pt-12 flex-none w-[250px] mx-auto cursor-pointer">
               
               {/* Hanging "Hook" Image */}
               <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
