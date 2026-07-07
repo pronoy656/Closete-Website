@@ -28,9 +28,9 @@ const steps = [
 ];
 
 const desktopCards = [
-  { ...steps[0], x: 540, y: 10, w: 800, h: 150 },
-  { ...steps[1], x: 720, y: 220, w: 800, h: 150 },
-  { ...steps[2], x: 540, y: 430, w: 800, h: 150 },
+  { ...steps[0], x: 540, y: 10, w: 800, h: 180 },
+  { ...steps[1], x: 720, y: 220, w: 800, h: 180 },
+  { ...steps[2], x: 540, y: 430, w: 800, h: 180 },
 ];
 
 export function HowItWorksSection() {
@@ -48,7 +48,7 @@ export function HowItWorksSection() {
           <h2 className="font-serif text-white mb-3" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
             How Closete works
           </h2>
-          <p style={{ color: "rgba(242,242,242,0.5)", fontSize: "0.9rem" }}>
+          <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px", letterSpacing: "0.5px" }}>
             Discover, verify, and receive luxury pieces with complete confidence.
           </p>
         </motion.div>
@@ -228,7 +228,7 @@ export function HowItWorksSection() {
                   <h3 className="text-white text-sm xl:text-base font-bold tracking-[0.08em] mb-2 xl:mb-2.5 uppercase">
                     {step.title}
                   </h3>
-                  <p className="text-gray-300 text-sm xl:text-[15px] leading-relaxed pr-2 xl:pr-6">
+                  <p className="bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent text-[18px] leading-relaxed pr-2 xl:pr-6">
                     {step.desc}
                   </p>
                 </div>
@@ -312,7 +312,7 @@ export function HowItWorksSection() {
                     <h3 className="text-white text-sm sm:text-base font-bold tracking-[0.08em] mb-2 uppercase">
                       {step.title}
                     </h3>
-                    <p className="text-gray-300 text-[13px] sm:text-[14px] leading-relaxed pr-2">
+                    <p className="bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent text-[18px] leading-relaxed pr-2">
                       {step.desc}
                     </p>
                   </div>
