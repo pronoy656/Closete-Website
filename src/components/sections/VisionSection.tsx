@@ -25,7 +25,7 @@ const TypingText = ({ text, className = "", highlight = true }: { text: string; 
 
 export function VisionSection() {
   return (
-    <section id="our-vision" className="relative w-full bg-[#0a0a0a] text-white flex flex-col items-center justify-center overflow-hidden px-6 pt-16 md:pt-30 pb-24 font-sans">
+    <section id="our-vision" className="relative w-full bg-[#0a0a0a] text-white flex flex-col items-center justify-center overflow-hidden px-6 pt-16 md:pt-30 pb-24 font-sans border">
       
       {/* Background Particle/Star Effect (Simplified with CSS) */}
       <div className="absolute inset-0 pointer-events-none">

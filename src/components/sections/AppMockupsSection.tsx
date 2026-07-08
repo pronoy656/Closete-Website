@@ -50,6 +50,19 @@ export function AppMockupsSection() {
 
   return (
     <section id="app-preview" className={`bg-[#0a0a0a] pt-30 pb-12 overflow-hidden text-white ${dmSans.className}`}>
+      <style>{`
+        .notch-main-clip {
+          clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 48px) 0%, calc(50% + 48px) 30px, calc(50% - 48px) 30px, calc(50% - 48px) 0%);
+        }
+        @media (min-width: 768px) {
+          .notch-main-clip {
+            clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 63px) 0%, calc(50% + 63px) 30px, calc(50% - 63px) 30px, calc(50% - 63px) 0%);
+          }
+        }
+        .notch-border-clip {
+          clip-path: inset(2px 0 0 0);
+        }
+      `}</style>
       {/* --- HEADER --- */}
       <div className="max-w-5xl mx-auto text-center px-6 mb-8 space-y-6 relative z-20">
         <h2 className={`${playfair.className} text-4xl md:text-6xl text-gray-100`}>
@@ -85,22 +98,48 @@ export function AppMockupsSection() {
               style={{
                 top: "50%",
                 left: "50%",
-                border: pos.isCenter ? "1px solid rgba(255,255,255,0.1)" : "1px solid transparent",
-                borderTop: pos.isCenter ? "1px solid rgba(255,255,255,0.3)" : "1px solid transparent",
                 boxShadow: pos.isCenter 
                   ? "0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.15)"
                   : "0 10px 30px rgba(0,0,0,0.8)",
-                willChange: "transform, z-index, box-shadow, border",
+                willChange: "transform, z-index, box-shadow",
               }}
             >
-              <Image src={src} alt={`App Mockup ${index}`} fill className="object-contain" priority />
+              {pos.isCenter && (
+                <>
+                  <div 
+                    className="absolute inset-0 rounded-[inherit] pointer-events-none z-10 notch-main-clip"
+                    style={{
+                      padding: "2px",
+                      background: "linear-gradient(to bottom, #FFF4B0 0%, #C98C28 25%, #6A4000 100%)",
+                      WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                      WebkitMaskComposite: "xor",
+                      maskComposite: "exclude"
+                    }}
+                  />
+                  {/* The iPhone Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] md:w-[130px] h-[24px] md:h-[28px] bg-transparent z-20 rounded-b-[16px] md:rounded-b-[18px] flex items-center justify-center pointer-events-none">
+                    {/* Notch Gradient Border */}
+                    <div 
+                      className="absolute inset-0 rounded-[inherit] pointer-events-none z-10 notch-border-clip"
+                      style={{
+                        padding: "2px",
+                        background: "linear-gradient(to bottom, #FFF4B0, #F2D27A)",
+                        WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                        WebkitMaskComposite: "xor",
+                        maskComposite: "exclude"
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+              <Image src={src} alt={`App Mockup ${index}`} fill className="object-contain z-0" priority />
             </motion.div>
           );
         })}
       </div>
 
       {/* --- CONTROLS --- */}
-      <div className="flex items-center justify-center gap-6 md:gap-8 mt-8 md:mt-12 relative z-50">
+      <div className="flex items-center justify-center gap-6 md:gap-8 mt-8 md:mt-12 relative z-40">
         <button 
           onClick={handlePrev}
           className="w-14 h-14 rounded-full bg-[#1a1a1a] flex items-center justify-center hover:bg-[#333] transition-colors"
