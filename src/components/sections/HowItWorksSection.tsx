@@ -54,7 +54,7 @@ export function HowItWorksSection() {
         </motion.div>
 
         {/* ── Desktop View (>= lg) ── */}
-        <div className="hidden lg:block relative w-full max-w-[1400px] mx-auto aspect-[1400/640] -ml-8 lg:-ml-12 xl:-ml-20">
+        <div className="hidden lg:block relative w-full max-w-[1400px] mx-auto aspect-[1400/640]">
           
           <style>
             {`
@@ -94,13 +94,16 @@ export function HowItWorksSection() {
           <div
             className="absolute pointer-events-none z-0"
             style={{
-              left: "-340px",
+              left: "-640px",
               top: "50%",
               transform: "translateY(-50%)",
-              width: "1000px",
-              height: "600px",
-              background: "linear-gradient(to right, transparent 20%, rgba(201, 140, 40, 0.15) 50%, rgba(150, 150, 150, 0.1) 85%, transparent 100%)",
-              filter: "blur(60px)",
+              width: "1600px",
+              height: "800px",
+              background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
+              opacity: 0.08,
+              filter: "blur(140px)",
+              maskImage: "radial-gradient(ellipse 50% 50% at center, black 0%, transparent 100%)",
+              WebkitMaskImage: "radial-gradient(ellipse 50% 50% at center, black 0%, transparent 100%)"
             }}
           />
 
@@ -123,10 +126,12 @@ export function HowItWorksSection() {
               <path id="path4" d="M 540 530 L 460 530 Q 440 530, 440 510 L 440 380 Q 440 360, 420 360 L 262 360" />
             </defs>
 
+            {/* Background Ring Image behind the SVG circle */}
+            <image href="/Ellipse 4864 (1).png" x="39" y="199" width="242" height="242" opacity="0.8" />
+
             {/* Circle */}
             <circle cx="160" cy="320" r="110" fill="url(#circleGrad)" />
-            <circle cx="160" cy="320" r="110" fill="none" stroke="rgba(255,220,80,0.7)" strokeWidth="2" />
-            <text x="160" y="332" textAnchor="middle" fontFamily="Georgia, serif" fontSize="42" fontWeight="400" fill="#1a0e02">
+            <text x="160" y="334" textAnchor="middle" fontFamily="'Schnyder L', serif" fontSize="44" fontWeight="300" letterSpacing="0" fill="#1a0e02">
               Closeté
             </text>
 
@@ -261,16 +266,29 @@ export function HowItWorksSection() {
             />
           </div>
 
-          {/* Circle at Top */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative w-[150px] h-[150px] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(201,156,65,0.25)] border-[2px] border-[rgba(255,220,80,0.6)] z-10" 
-            style={{ background: 'linear-gradient(90deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)' }}
-          >
-            <span className="font-serif text-3xl text-[#1a0e02]">Closeté</span>
-          </motion.div>
+          {/* Background Ring Image for Mobile wrapped around the Golden Circle */}
+          <div className="relative flex items-center justify-center w-[172px] h-[172px] z-10 bg-cover bg-center" style={{ backgroundImage: 'url("/Ellipse 4864 (1).png")' }}>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative w-[150px] h-[150px] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(201,156,65,0.25)]" 
+              style={{ background: 'linear-gradient(90deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)' }}
+            >
+              <span 
+                className="font-serif text-[#1a0e02] text-center"
+                style={{ 
+                  fontFamily: "'Schnyder L', serif",
+                  fontSize: '44px', 
+                  fontWeight: 300, 
+                  letterSpacing: '0%', 
+                  lineHeight: '100%' 
+                }}
+              >
+                Closeté
+              </span>
+            </motion.div>
+          </div>
 
           {/* Stacked Cards */}
           <div className="flex flex-col w-full max-w-sm relative mt-4 z-0">

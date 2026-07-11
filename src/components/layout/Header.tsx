@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { GoldButton } from "@/components/ui/GoldButton";
@@ -10,6 +11,24 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#home");
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setActiveLink(href);
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", href);
+      } else if (targetId === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.pushState(null, "", href);
+      }
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +44,10 @@ export function Header() {
     { name: "Why choose us?", href: "#why-choose-us" },
     { name: "App Preview", href: "#app-preview" },
     { name: "Our Vision", href: "#our-vision" },
-  ];
+  ].map(link => ({
+    ...link,
+    href: isHomePage ? link.href : `/${link.href}`
+  }));
 
   return (
     <header
@@ -48,7 +70,11 @@ export function Header() {
             </button>
 
             {/* Logo */}
-            <Link href="#home" className="text-[30px] lg:text-[44px] font-serif text-gradient-gold tracking-tight ml-2 lg:ml-0" onClick={() => setActiveLink("#home")}>
+            <Link 
+              href={isHomePage ? "#home" : "/"} 
+              className="text-[30px] lg:text-[44px] font-serif text-gradient-gold tracking-tight ml-2 lg:ml-0" 
+              onClick={(e) => handleNavClick(e, isHomePage ? "#home" : "/")}
+            >
               Closeté
             </Link>
           </div>
@@ -68,7 +94,7 @@ export function Header() {
               <Link
                 key={link.name}
                 href={link.href}
-                onClick={() => setActiveLink(link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`relative text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none ${
                   activeLink === link.href
                     ? "text-white"
@@ -87,7 +113,7 @@ export function Header() {
 
           {/* Right Group (Contact Button) */}
           <div className="flex items-center">
-            <GoldButton href="#contact" size="sm" className="flex items-center gap-1 h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[13px] lg:text-sm font-medium whitespace-nowrap">
+            <GoldButton href="mailto:support@closete.app" size="sm" className="flex items-center gap-1 h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[13px] lg:text-sm font-medium whitespace-nowrap">
               Contact Us
               <ArrowRight color="black" className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
             </GoldButton>
@@ -108,8 +134,8 @@ export function Header() {
               key={link.name}
               href={link.href}
               className={`text-lg font-medium focus:outline-none outline-none ${activeLink === link.href ? "text-gold-400" : "text-[#f2f2f2]/70 hover:text-[#f2f2f2]"}`}
-              onClick={() => {
-                setActiveLink(link.href);
+              onClick={(e) => {
+                handleNavClick(e, link.href);
                 setIsMobileMenuOpen(false);
               }}
             >
@@ -117,7 +143,7 @@ export function Header() {
             </Link>
           ))}
           <GoldButton
-            href="#contact"
+            href="mailto:support@closete.app"
             size="md"
             className="flex items-center gap-2 h-auto py-3"
             onClick={() => setIsMobileMenuOpen(false)}

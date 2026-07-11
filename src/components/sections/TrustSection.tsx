@@ -65,7 +65,7 @@ const TrustSection = () => {
       <div className="relative max-w-6xl mx-auto">
         
         {/* The horizontal "wire" line */}
-        <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[2px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
+        <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[4px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
 
         <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden gap-4 pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-4 justify-items-center">
           {features.map((item, index) => (

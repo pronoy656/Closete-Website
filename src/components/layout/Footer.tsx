@@ -1,7 +1,25 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Mail, MapPin } from "lucide-react";
 
 export function Footer() {
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
+
+  const handleHomeClick = (e: React.MouseEvent) => {
+    if (isHomePage) {
+      e.preventDefault();
+      const el = document.getElementById("home");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+        window.history.pushState(null, "", "/#home");
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+  };
   return (
     <footer className="bg-[#121212] pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between">
       {/* Golden bottom glow */}
@@ -13,7 +31,11 @@ export function Footer() {
           
           {/* Column 1 */}
           <div className="col-span-1 sm:col-span-2 md:col-span-4">
-            <Link href="#home" className="text-3xl font-serif text-gradient-gold mb-6 inline-block tracking-tight">
+            <Link 
+              href={isHomePage ? "#home" : "/"} 
+              onClick={handleHomeClick}
+              className="text-3xl font-serif text-gradient-gold mb-6 inline-block tracking-tight"
+            >
               Closeté
             </Link>
             <p className="text-[#f2f2f2]/60 text-[14px] max-w-[280px] leading-relaxed">
@@ -27,9 +49,9 @@ export function Footer() {
               NAVIGATION
             </h4>
             <ul className="space-y-3 mt-5">
-              <li><Link href="#" className="text-white text-[14px] hover:text-gold-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="#" className="text-white text-[14px] hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
-              <li><Link href="#" className="text-white text-[14px] hover:text-gold-400 transition-colors">Returns & Delivery Policy</Link></li>
+              <li><Link href="/privacy" className="text-white text-[14px] hover:text-gold-400 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-white text-[14px] hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/delivery" className="text-white text-[14px] hover:text-gold-400 transition-colors">Returns & Delivery Policy</Link></li>
             </ul>
           </div>
 
@@ -43,8 +65,8 @@ export function Footer() {
                 <Mail size={15} strokeWidth={1.5} />
                 <span>Email</span>
               </div>
-              <a href="mailto:demo@gmail.com" className="text-white text-[14px] hover:text-gold-400 transition-colors">
-                demo@gmail.com
+              <a href="mailto:support@closete.app" className="text-[#FFAF2C] hover:opacity-80 transition-colors">
+                support@closete.app
               </a>
             </div>
           </div>

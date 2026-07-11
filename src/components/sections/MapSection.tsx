@@ -9,6 +9,15 @@ export function MapSection() {
         className="max-w-7xl w-full p-4 lg:p-8 flex flex-col items-center text-center relative overflow-hidden rounded-[2.5rem]"
         style={{ background: "linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%)" }}
       >
+        <style>{`
+          @keyframes premium-ping {
+            0% { transform: scale(1); opacity: 0.6; }
+            80%, 100% { transform: scale(2.5); opacity: 0; }
+          }
+          .animate-premium-ping {
+            animation: premium-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+          }
+        `}</style>
         {/* Headings */}
         <h2 className="text-4xl lg:text-[2.75rem] font-serif text-[#f2f2f2] tracking-tight mb-2 mt-2">
           Where we Operate
@@ -18,7 +27,7 @@ export function MapSection() {
         </p>
 
         {/* Map Graphic */}
-        <div className="relative w-full h-[250px] sm:h-[350px] md:h-[450px] overflow-hidden mb-4 rounded-2xl flex items-center justify-center">
+        <div className="relative w-full aspect-[2/1] md:aspect-[2.8/1] overflow-hidden mb-4 rounded-2xl flex items-center justify-center">
           <Image
             src="/map-1.png"
             alt="World Map showing UAE"
@@ -33,8 +42,11 @@ export function MapSection() {
             <div className="relative left-[12%] sm:left-[9%] top-[-9%] flex flex-col items-center">
               
               {/* Dubai Tooltip */}
-              <div className="absolute -top-[70px] bg-[#F6AD31] text-black font-bold px-4 py-2 rounded-xl text-lg flex items-center gap-2 shadow-xl whitespace-nowrap z-20">
-                <div className="w-2.5 h-2.5 bg-black rounded-full" />
+              <div className="absolute -top-[70px] bg-[#F6AD31] text-black font-bold px-4 py-2 rounded-xl text-lg flex items-center gap-2.5 shadow-xl whitespace-nowrap z-20">
+                <div className="relative flex items-center justify-center w-2.5 h-2.5">
+                  <div className="absolute w-full h-full bg-black/40 rounded-full animate-premium-ping" />
+                  <div className="relative w-2.5 h-2.5 bg-black rounded-full" />
+                </div>
                 Dubai
                 <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-4 h-4 bg-[#F6AD31] rotate-45 rounded-sm" />
               </div>
@@ -68,10 +80,17 @@ export function MapSection() {
                     d="M 300 20 Q 150 -30 0 60" 
                     fill="none" 
                     stroke="white" 
-                    strokeWidth="2.5" 
-                    strokeDasharray="8 8" 
+                    strokeWidth="1.25" 
+                    strokeDasharray="6 6" 
                     className="opacity-90"
                   />
+                  
+                  {/* Animated Arrow following the path */}
+                  <path d="M -6 -4 L 4 0 L -6 4 L -3 0 Z" fill="#F6AD31">
+                    <animateMotion dur="2.5s" repeatCount="indefinite" path="M 300 20 Q 150 -30 0 60" rotate="auto" />
+                    <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="2.5s" repeatCount="indefinite" />
+                  </path>
+                  
                   <circle cx="0" cy="60" r="4" fill="white" />
                 </svg>
                 {/* Launching Soon Label */}

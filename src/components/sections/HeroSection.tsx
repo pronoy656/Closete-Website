@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Play, Heart, ArrowRight, Star } from "lucide-react";
+import { Play, Heart, ArrowRight } from "lucide-react";
 import { GoldButton } from "@/components/ui/GoldButton";
 import { Playfair_Display } from "next/font/google";
 
@@ -82,7 +82,7 @@ const FALLING_PARTICLES = [
   { left: "95%", delay: 0.9, dur: 5.3 }
 ];
 
-const Stars = () => (
+export const Stars = ({ animated = true }: { animated?: boolean }) => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     {STAR_POSITIONS.map((s, i) => (
       <div
@@ -91,12 +91,12 @@ const Stars = () => (
         style={{
           top: s.top,
           left: s.left,
-          opacity: 0.45,
-          animation: `pulse ${s.dur} ${s.delay} infinite`,
+          opacity: animated ? 0.45 : 0.2,
+          animation: animated ? `pulse ${s.dur} ${s.delay} infinite` : 'none',
         }}
       />
     ))}
-    {FALLING_PARTICLES.map((p, i) => (
+    {animated && FALLING_PARTICLES.map((p, i) => (
       <motion.div
         key={`particle-${i}`}
         className="absolute w-[2px] h-[2px] bg-white rounded-full"
@@ -119,53 +119,53 @@ const Stars = () => (
 
 const CAROUSEL_POSITIONS = [
   // 0: Center
-  { xPx: 0, xVw: 0, scale: 1, opacity: 1, zIndex: 40, isCenter: true },
+  { xPx: 0, xVw: 0, scale: 1, opacity: 1, zIndex: 40, isCenter: true, overlayOpacity: 0 },
   
   // 1: Right-1
-  { xPx: 40, xVw: 8, scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
+  { xPx: 40, xVw: 12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
   
   // 2: Right-2
-  { xPx: 60, xVw: 18, scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
+  { xPx: 75, xVw: 21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
   
   // 3: Right-3
-  { xPx: 80, xVw: 27, scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
+  { xPx: 105, xVw: 28, scale: 0.4, opacity: 0.8, zIndex: 20, isCenter: false, overlayOpacity: 0.7 },
   
   // 4: Right-4 (Far Edge)
-  { xPx: 100, xVw: 35, scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
+  { xPx: 130, xVw: 33, scale: 0.3, opacity: 0.5, zIndex: 10, isCenter: false, overlayOpacity: 0.85 },
   
   // 5, 6: Hidden on the far RIGHT off-screen
-  { xPx: 200, xVw: 70, scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
-  { xPx: 200, xVw: 70, scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  { xPx: 200, xVw: 60, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
+  { xPx: 200, xVw: 60, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
   
   // 7: Hidden on the far LEFT off-screen
-  { xPx: -200, xVw: -70, scale: 0.15, opacity: 0, zIndex: 0, isCenter: false },
+  { xPx: -200, xVw: -60, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
   
   // 8: Left-4 (Far Edge)
-  { xPx: -100, xVw: -35, scale: 0.2, opacity: 0.1, zIndex: 10, isCenter: false },
+  { xPx: -130, xVw: -33, scale: 0.3, opacity: 0.5, zIndex: 10, isCenter: false, overlayOpacity: 0.85 },
   
   // 9: Left-3
-  { xPx: -80, xVw: -27, scale: 0.33, opacity: 0.4, zIndex: 20, isCenter: false },
+  { xPx: -105, xVw: -28, scale: 0.4, opacity: 0.8, zIndex: 20, isCenter: false, overlayOpacity: 0.7 },
   
   // 10: Left-2
-  { xPx: -60, xVw: -18, scale: 0.5, opacity: 0.6, zIndex: 25, isCenter: false },
+  { xPx: -75, xVw: -21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
   
   // 11: Left-1
-  { xPx: -40, xVw: -8, scale: 0.73, opacity: 0.8, zIndex: 30, isCenter: false },
+  { xPx: -40, xVw: -12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
 ];
 
 const CAROUSEL_DATA = [
-  { image: "/luxury-handbag-2.jpg", name: "Maren B.", likes: "2.4K", avatar: "linear-gradient(135deg, #d4af37, #9b6c26)" },
-  { image: "/louis-vuitton-watch.jpg", name: "David S.", likes: "8.9K", avatar: "linear-gradient(135deg, #f6d365, #fda085)" },
-  { image: "/gucci-bag.webp", name: "Sarah K.", likes: "3.1K", avatar: "linear-gradient(135deg, #ff9a9e, #fecfef)" },
-  { image: "/brown-leather-bag.webp", name: "Emma W.", likes: "2.1K", avatar: "linear-gradient(135deg, #fdfbfb, #ebedee)" },
-  { image: "/black-designer-bag.webp", name: "Elena G.", likes: "4.2K", avatar: "linear-gradient(135deg, #84fab0, #8fd3f4)" },
-  { image: "/luxury-tote-bag.webp", name: "Oliver P.", likes: "3.7K", avatar: "linear-gradient(135deg, #ffecd2, #fcb69f)" },
-  { image: "/luxury-handbag-1.jpg", name: "Chloe M.", likes: "5.5K", avatar: "linear-gradient(135deg, #e0c3fc, #8ec5fc)" },
-  { image: "/luxury-watch.jpg", name: "Liam H.", likes: "6.4K", avatar: "linear-gradient(135deg, #cfd9df, #e2ebf0)" },
-  { image: "/luxury-shoes.jpg", name: "Mia L.", likes: "1.2K", avatar: "linear-gradient(135deg, #fccb90, #d57eeb)" },
-  { image: "/luxury-accessory.jpg", name: "Sophia D.", likes: "4.8K", avatar: "linear-gradient(135deg, #a8edea, #fed6e3)" },
-  { image: "/luxury-dress.jpg", name: "Jessica T.", likes: "950", avatar: "linear-gradient(135deg, #a18cd1, #fbc2eb)" },
-  { image: "/luxury-watch-2.jpg", name: "Alex R.", likes: "1.8K", avatar: "linear-gradient(135deg, #e5e5e5, #a3a3a3)" },
+  { image: "/lux-bag-red.png", name: "Maren B.", likes: "2.4K", avatar: "linear-gradient(135deg, #d4af37, #9b6c26)" },
+  { image: "/user-dior.jpg", name: "David S.", likes: "8.9K", avatar: "linear-gradient(135deg, #f6d365, #fda085)" },
+  { image: "/lux-bag-lv.png", name: "Sarah K.", likes: "3.1K", avatar: "linear-gradient(135deg, #ff9a9e, #fecfef)" },
+  { image: "/user-bag1.jpg", name: "Emma W.", likes: "2.1K", avatar: "linear-gradient(135deg, #fdfbfb, #ebedee)" },
+  { image: "/user-heels.jpg", name: "Elena G.", likes: "4.2K", avatar: "linear-gradient(135deg, #84fab0, #8fd3f4)" },
+  { image: "/user-gucci.jpg", name: "Oliver P.", likes: "3.7K", avatar: "linear-gradient(135deg, #ffecd2, #fcb69f)" },
+  { image: "/user-ladies-bag.jpg", name: "Chloe M.", likes: "5.5K", avatar: "linear-gradient(135deg, #e0c3fc, #8ec5fc)" },
+  { image: "/user-bag2.jpg", name: "Liam H.", likes: "6.4K", avatar: "linear-gradient(135deg, #cfd9df, #e2ebf0)" },
+  { image: "/lux-bag-red.png", name: "Mia L.", likes: "1.2K", avatar: "linear-gradient(135deg, #fccb90, #d57eeb)" },
+  { image: "/user-dior.jpg", name: "Sophia D.", likes: "4.8K", avatar: "linear-gradient(135deg, #a8edea, #fed6e3)" },
+  { image: "/user-heels.jpg", name: "Jessica T.", likes: "950", avatar: "linear-gradient(135deg, #a18cd1, #fbc2eb)" },
+  { image: "/user-bag1.jpg", name: "Alex R.", likes: "1.8K", avatar: "linear-gradient(135deg, #e5e5e5, #a3a3a3)" },
 ];
 
 export function HeroSection() {
@@ -306,7 +306,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.1 }}
-          className="leading-relaxed mb-8 font-['DM_Sans'] text-white/85 text-sm md:text-[18px] font-light max-w-[850px] tracking-wide"
+          className="leading-relaxed mb-8 font-['DM_Sans'] text-white/70 text-sm md:text-[18px] font-light max-w-[850px] tracking-wide"
         >
           Closete is a curated marketplace for luxury fashion, combining authentication, secure payments, <br className="hidden md:block" />
           and controlled delivery – so you can buy and sell with complete confidence.
@@ -317,26 +317,28 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.18 }}
-          className="flex items-center gap-2.5 px-4 md:px-5 py-2 md:py-2.5 rounded-[100px] mb-10 max-w-[260px] md:max-w-none text-center mx-auto"
+          className="inline-flex items-center justify-center gap-2.5 px-2 py-1.5 md:py-2 rounded-full mb-10 w-fit max-w-[95vw] mx-auto"
           style={{ 
-            background: "rgba(255,255,255,0.05)", 
-            backdropFilter: "blur(90px)",
-            WebkitBackdropFilter: "blur(90px)",
-            boxShadow: "0px 8px 10.9px 0px rgba(0, 3, 18, 0.12), 0px 1px 1px 0px rgba(0, 3, 18, 0.3)",
+            background: "rgba(255, 255, 255, 0.08)", // Lighter premium glass
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
+            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.2)",
             border: "1px solid rgba(255,255,255,0.1)",
-            borderTop: "1px solid rgba(255,255,255,0.3)",
+            borderTop: "1px solid rgba(255,255,255,0.25)",
           }}
         >
-          <span className="text-[#f2f2f2]/80 font-['DM_Sans'] text-[11px] md:text-sm leading-snug">
+          <span className="text-[#f2f2f2]/90 font-['DM_Sans'] text-[15px] leading-snug flex-1">
             Now live in <strong className="text-white font-['DM_Sans']">Dubai</strong>. Expanding across{" "}
-            <span className="text-gradient-gold font-semibold font-['DM_Sans']">the UAE soon.</span>
+            <span className="text-gradient-gold font-semibold font-['DM_Sans'] whitespace-nowrap">the UAE soon.</span>
           </span>
-          {/* Star circle button */}
+          {/* Pill-shaped Sparkle button matching the design */}
           <div
-            className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0"
-            style={{ background: "rgba(255,255,255,0.92)" }}
+            className="w-[42px] h-[28px] md:w-[48px] md:h-[32px] rounded-full flex items-center justify-center flex-shrink-0 ml-1"
+            style={{ background: "#ffffff" }}
           >
-            <Star size={12} className="text-black" fill="currentColor" strokeWidth={0} />
+            <svg className="w-[24px] h-[24px] md:w-[28px] md:h-[28px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C12.5 8 16 11.5 24 12C16 12.5 12.5 16 12 24C11.5 16 8 12.5 0 12C8 11.5 11.5 8 12 0Z" fill="black"/>
+            </svg>
           </div>
         </motion.div>
 
@@ -345,10 +347,10 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.25 }}
-          className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4 mb-20 w-full max-w-[280px] md:max-w-none"
+          className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4 mb-[74px] w-full max-w-[280px] md:max-w-none"
         >
           <GoldButton href="#ios" size="lg" className="flex items-center justify-center gap-2 w-full md:w-[280px] whitespace-nowrap">
-            Download On IOS
+            Download On iOS
             <ArrowRight color="black" className="w-5 h-5 flex-shrink-0" />
           </GoldButton>
           <GoldButton href="#android" size="lg" className="flex items-center justify-center gap-2 w-full md:w-[280px] whitespace-nowrap">
@@ -390,9 +392,11 @@ export function HeroSection() {
                 style={{
                   top: "50%",
                   left: "50%",
-                  borderRadius: "20px",
-                  border: "2px solid transparent",
-                  background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box",
+                  borderRadius: "16px",
+                  border: pos.isCenter ? "2px solid transparent" : "none",
+                  background: pos.isCenter 
+                    ? "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box"
+                    : "none",
                   willChange: "transform, opacity, z-index, box-shadow", // Force hardware acceleration
                 }}
               >
@@ -405,12 +409,13 @@ export function HeroSection() {
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
 
-                {/* User info bar for ALL cards */}
+                {/* User info bar - visible only on center card */}
                 <div
-                  className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-3"
+                  className="absolute bottom-0 left-0 right-0 z-10 flex items-center justify-between px-4 py-3 pointer-events-none"
                   style={{
                     background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 60%, transparent 100%)",
                     transition: "opacity 0.8s ease",
+                    opacity: pos.isCenter ? 1 : 0,
                   }}
                 >
                   <div className="flex items-center gap-2">
@@ -432,21 +437,26 @@ export function HeroSection() {
                 </div>
 
                 {/* Play Button Overlay for Center Card */}
-                {pos.isCenter && (
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
-                    <div className="w-16 h-16 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center text-white/90 shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-110 cursor-pointer pointer-events-auto border border-white/10">
-                      <Play size={24} className="ml-1" fill="currentColor" />
-                    </div>
+                <div 
+                  className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
+                  style={{
+                    transition: "opacity 0.8s ease",
+                    opacity: pos.isCenter ? 1 : 0,
+                  }}
+                >
+                  <div className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-110 cursor-pointer pointer-events-auto">
+                    <Play size={24} className="ml-1" fill="currentColor" />
                   </div>
-                )}
+                </div>
 
-                {/* Dark overlay for non-center cards */}
-                {!pos.isCenter && (
-                  <div
-                    className="absolute inset-0"
-                    style={{ background: "rgba(0,0,0,0.15)" }}
-                  />
-                )}
+                {/* Dark overlay for all cards, transitioning based on distance from center */}
+                <div
+                  className="absolute inset-0 pointer-events-none z-30 bg-black"
+                  style={{ 
+                    transition: "opacity 0.8s ease",
+                    opacity: pos.overlayOpacity 
+                  }}
+                />
               </motion.div>
             );
           })}

@@ -11,23 +11,23 @@ const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600'] });
 
 const POSITIONS = [
   // 0: Center
-  { xPx: 0, xVw: 0, scale: 1.05, zIndex: 40, isCenter: true },
+  { xPx: 0, xVw: 0, scale: 1, opacity: 1, zIndex: 40, isCenter: true, overlayOpacity: 0 },
   // 1: Right-1
-  { xPx: 100, xVw: 12, scale: 0.9, zIndex: 30, isCenter: false },
-  // 2: Far Right
-  { xPx: 250, xVw: 20, scale: 0.75, zIndex: 20, isCenter: false },
-  // 3: Far Left
-  { xPx: -250, xVw: -20, scale: 0.75, zIndex: 20, isCenter: false },
+  { xPx: 40, xVw: 12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
+  // 2: Right-2 (Far Right)
+  { xPx: 75, xVw: 21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
+  // 3: Left-2 (Far Left)
+  { xPx: -75, xVw: -21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
   // 4: Left-1
-  { xPx: -105, xVw: -12, scale: 0.9, zIndex: 30, isCenter: false },
+  { xPx: -40, xVw: -12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
 ];
 
 const MOCKUP_IMAGES = [
-  "/Subtract.png", // Initially Center
-  "/Subtract (3).png", // Initially Right-1
-  "/Subtract (4).png", // Initially Far Right
-  "/Subtract (1).png", // Initially Far Left
-  "/Subtract (2).png", // Initially Left-1
+  "/Home.png", // Initially Center
+  "/Product View.png", // Initially Right-1
+  "/Payment.png", // Initially Far Right
+  "/Review Listing.png", // Initially Far Left
+  "/Order Confirmation.png", // Initially Left-1
 ];
 
 export function AppMockupsSection() {
@@ -44,7 +44,7 @@ export function AppMockupsSection() {
   useEffect(() => {
     const interval = setInterval(() => {
       handleNext();
-    }, 3000); // Rotate every 3 seconds
+    }, 1500); // Rotate every 1.5 seconds (matching HeroSection)
     return () => clearInterval(interval);
   }, [handleNext]);
 
@@ -52,15 +52,12 @@ export function AppMockupsSection() {
     <section id="app-preview" className={`bg-[#0a0a0a] pt-30 pb-12 overflow-hidden text-white ${dmSans.className}`}>
       <style>{`
         .notch-main-clip {
-          clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 48px) 0%, calc(50% + 48px) 30px, calc(50% - 48px) 30px, calc(50% - 48px) 0%);
+          clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 60px) 0%, calc(50% + 60px) 30px, calc(50% - 60px) 30px, calc(50% - 60px) 0%);
         }
         @media (min-width: 768px) {
           .notch-main-clip {
-            clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 63px) 0%, calc(50% + 63px) 30px, calc(50% - 63px) 30px, calc(50% - 63px) 0%);
+            clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 75px) 0%, calc(50% + 75px) 35px, calc(50% - 75px) 35px, calc(50% - 75px) 0%);
           }
-        }
-        .notch-border-clip {
-          clip-path: inset(2px 0 0 0);
         }
       `}</style>
       {/* --- HEADER --- */}
@@ -86,10 +83,14 @@ export function AppMockupsSection() {
               className="absolute overflow-hidden rounded-[30px] md:rounded-[40px] bg-[#0a0a0a] w-[220px] h-[480px] md:w-[280px] md:h-[600px]"
               initial={false}
               animate={{
-                x: `calc(-50% + ${pos.xPx * 0.8}px + ${pos.xVw}vw)`,
+                x: `calc(-50% + ${pos.xPx}px + ${pos.xVw}vw)`,
                 y: "-50%",
                 scale: pos.scale,
+                opacity: pos.opacity,
                 zIndex: pos.zIndex,
+                boxShadow: pos.isCenter 
+                  ? "0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.15)"
+                  : "0 10px 30px rgba(0,0,0,0.8)",
               }}
               transition={{
                 duration: 0.8,
@@ -98,41 +99,68 @@ export function AppMockupsSection() {
               style={{
                 top: "50%",
                 left: "50%",
-                boxShadow: pos.isCenter 
-                  ? "0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.15)"
-                  : "0 10px 30px rgba(0,0,0,0.8)",
-                willChange: "transform, z-index, box-shadow",
+                willChange: "transform, opacity, z-index, box-shadow",
               }}
             >
-              {pos.isCenter && (
-                <>
-                  <div 
-                    className="absolute inset-0 rounded-[inherit] pointer-events-none z-10 notch-main-clip"
-                    style={{
-                      padding: "2px",
-                      background: "linear-gradient(to bottom, #FFF4B0 0%, #C98C28 25%, #6A4000 100%)",
-                      WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                      WebkitMaskComposite: "xor",
-                      maskComposite: "exclude"
-                    }}
-                  />
-                  {/* The iPhone Notch */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] md:w-[130px] h-[24px] md:h-[28px] bg-transparent z-20 rounded-b-[16px] md:rounded-b-[18px] flex items-center justify-center pointer-events-none">
-                    {/* Notch Gradient Border */}
-                    <div 
-                      className="absolute inset-0 rounded-[inherit] pointer-events-none z-10 notch-border-clip"
-                      style={{
-                        padding: "2px",
-                        background: "linear-gradient(to bottom, #FFF4B0, #F2D27A)",
-                        WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
-                        WebkitMaskComposite: "xor",
-                        maskComposite: "exclude"
-                      }}
-                    />
-                  </div>
-                </>
-              )}
-              <Image src={src} alt={`App Mockup ${index}`} fill className="object-contain z-0" priority />
+              {/* The Border */}
+              <motion.div 
+                className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 notch-main-clip"
+                initial={false}
+                animate={{ opacity: pos.isCenter ? 1 : 0 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  padding: "2px",
+                  background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
+                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude"
+                }}
+              />
+              
+              {/* Notch Border (Desktop) - uses identical background to guarantee seamless gradient match */}
+              <motion.div 
+                className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 hidden md:block"
+                initial={false}
+                animate={{ opacity: pos.isCenter ? 1 : 0 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
+                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='280' height='600' viewBox='0 0 280 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 64 1 L 80 1 C 85 1, 87 2, 89 6 L 92 15 C 94 18, 96 20, 100 20 L 180 20 C 184 20, 186 18, 188 15 L 191 6 C 193 2, 195 1, 200 1 L 216 1' stroke='black' stroke-width='2' fill='none'/%3E%3C/svg%3E")`,
+                }}
+              />
+              {/* Notch Border (Mobile) */}
+              <motion.div 
+                className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 block md:hidden"
+                initial={false}
+                animate={{ opacity: pos.isCenter ? 1 : 0 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
+                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='220' height='480' viewBox='0 0 220 480' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 49 1 L 55 1 C 60 1, 62 2, 64 5 L 67 12 C 68 15, 69 16, 73 16 L 147 16 C 151 16, 152 15, 153 12 L 156 5 C 158 2, 160 1, 165 1 L 171 1' stroke='black' stroke-width='2' fill='none'/%3E%3C/svg%3E")`,
+                }}
+              />
+
+              {/* Notch Fill (Desktop) */}
+              <svg width="150" height="24" viewBox="0 0 150 24" fill="none" overflow="visible" className="absolute top-0 left-1/2 -translate-x-1/2 hidden md:block z-20 pointer-events-none">
+                <path d="M -1 1 L 15 1 C 20 1, 22 2, 24 6 L 27 15 C 29 18, 31 20, 35 20 L 115 20 C 119 20, 121 18, 123 15 L 126 6 C 128 2, 130 1, 135 1 L 151 1 L 151 -10 L -1 -10 Z" fill="#0a0a0a" />
+              </svg>
+              
+              {/* Notch Fill (Mobile) */}
+              <svg width="120" height="20" viewBox="0 0 120 20" fill="none" overflow="visible" className="absolute top-0 left-1/2 -translate-x-1/2 block md:hidden z-20 pointer-events-none">
+                <path d="M -1 1 L 5 1 C 10 1, 12 2, 14 5 L 17 12 C 18 15, 19 16, 23 16 L 97 16 C 101 16, 102 15, 103 12 L 106 5 C 108 2, 110 1, 115 1 L 121 1 L 121 -10 L -1 -10 Z" fill="#0a0a0a" />
+              </svg>
+
+              <Image src={src} alt={`App Mockup ${index}`} fill className="object-cover z-0" priority />
+              
+              {/* Gradient Overlay for unfocused mockups */}
+              <motion.div 
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%)"
+                }}
+                animate={{ opacity: pos.overlayOpacity }}
+                transition={{ duration: 0.8 }}
+              />
             </motion.div>
           );
         })}
@@ -142,7 +170,7 @@ export function AppMockupsSection() {
       <div className="flex items-center justify-center gap-6 md:gap-8 mt-8 md:mt-12 relative z-40">
         <button 
           onClick={handlePrev}
-          className="w-14 h-14 rounded-full bg-[#1a1a1a] flex items-center justify-center hover:bg-[#333] transition-colors"
+          className="w-14 h-14 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors"
           aria-label="Previous mockup"
         >
           <ArrowLeft size={24} className="text-white" />
@@ -165,7 +193,7 @@ export function AppMockupsSection() {
 
         <button 
           onClick={handleNext}
-          className="w-14 h-14 rounded-full bg-[#1a1a1a] flex items-center justify-center hover:bg-[#333] transition-colors"
+          className="w-14 h-14 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors"
           aria-label="Next mockup"
         >
           <ArrowRight size={24} className="text-white" />
