@@ -24,7 +24,7 @@ const POSITIONS = [
 
 const MOCKUP_IMAGES = [
   "/Home.png", // Initially Center
-  "/Product View.png", // Initially Right-1
+  "/Product Vie.png", // Initially Right-1
   "/Payment.png", // Initially Far Right
   "/Review Listing.png", // Initially Far Left
   "/Order Confirmation.png", // Initially Left-1

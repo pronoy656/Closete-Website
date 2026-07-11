@@ -64,6 +64,8 @@ export function HowItWorksSection() {
               }
               .animate-flow {
                 animation: dash-flow 1.5s linear infinite;
+                will-change: stroke-dashoffset;
+                transform: translateZ(0);
               }
             `}
           </style>
@@ -129,31 +131,27 @@ export function HowItWorksSection() {
             {/* Background Ring Image behind the SVG circle */}
             <image href="/Ellipse 4864 (1).png" x="39" y="199" width="242" height="242" opacity="0.8" />
 
-            {/* Circle */}
-            <circle cx="160" cy="320" r="110" fill="url(#circleGrad)" />
-            <text x="160" y="334" textAnchor="middle" fontFamily="'Schnyder L', serif" fontSize="44" fontWeight="300" letterSpacing="0" fill="#1a0e02">
-              Closeté
-            </text>
-
-            {/* Draw the dashed paths */}
+            {/* Draw the dashed paths behind the circle */}
             <use href="#path1" className="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" strokeWidth="1.5" strokeDasharray="6 7" strokeLinecap="round" />
             <use href="#path2" className="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" strokeWidth="1.5" strokeDasharray="6 7" strokeLinecap="round" />
             <use href="#path3" className="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" strokeWidth="1.5" strokeDasharray="6 7" strokeLinecap="round" />
             <use href="#path4" className="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" strokeWidth="1.5" strokeDasharray="6 7" strokeLinecap="round" />
 
-            {/* Moving Arrows */}
+            {/* Moving Arrows behind the circle with opacity fades for smooth looping */}
             {/* Path 1 Arrows */}
             <g fill="rgba(255,220,80,0.9)">
               <polygon points="-8,-6 4,0 -8,6" />
               <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path1" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" />
             </g>
             <g fill="rgba(255,220,80,0.9)">
               <polygon points="-8,-6 4,0 -8,6" />
               <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path1" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" begin="1.5s" repeatCount="indefinite" />
             </g>
 
             {/* Path 2 Arrows */}
@@ -162,12 +160,14 @@ export function HowItWorksSection() {
               <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path2" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
             </g>
             <g fill="rgba(255,220,80,0.9)">
               <polygon points="-8,-6 4,0 -8,6" />
               <animateMotion dur="4s" begin="2s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path2" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" begin="2s" repeatCount="indefinite" />
             </g>
 
             {/* Path 3 Arrows */}
@@ -176,12 +176,14 @@ export function HowItWorksSection() {
               <animateMotion dur="4s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path3" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
             </g>
             <g fill="rgba(255,220,80,0.9)">
               <polygon points="-8,-6 4,0 -8,6" />
               <animateMotion dur="4s" begin="2s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path3" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" begin="2s" repeatCount="indefinite" />
             </g>
 
             {/* Path 4 Arrows */}
@@ -190,13 +192,21 @@ export function HowItWorksSection() {
               <animateMotion dur="3s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path4" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" />
             </g>
             <g fill="rgba(255,220,80,0.9)">
               <polygon points="-8,-6 4,0 -8,6" />
               <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path4" />
               </animateMotion>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" begin="1.5s" repeatCount="indefinite" />
             </g>
+
+            {/* Circle (rendered last so it stays on top of the paths and arrows) */}
+            <circle cx="160" cy="320" r="110" fill="url(#circleGrad)" />
+            <text x="160" y="334" textAnchor="middle" fontFamily="'Schnyder L', serif" fontSize="44" fontWeight="300" letterSpacing="0" fill="#1a0e02">
+              Closeté
+            </text>
           </svg>
 
           {/* Cards */}
