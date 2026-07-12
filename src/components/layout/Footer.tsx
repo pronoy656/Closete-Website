@@ -62,8 +62,8 @@ export function Footer() {
                 <Mail size={16} strokeWidth={1.5} />
                 <span>Email</span>
               </div>
-              <a href="mailto:support@gmail.com" className="text-white text-[14px] hover:opacity-80 transition-colors">
-                support@gmail.com
+              <a href="mailto:support@closete.app" className="text-white text-[14px] hover:opacity-80 transition-colors">
+                support@closete.app
               </a>
             </div>
           </div>
