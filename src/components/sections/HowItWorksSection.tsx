@@ -35,8 +35,8 @@ const desktopCards = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="relative py-20 overflow-hidden bg-transparent">
-      <div className="container mx-auto px-4 sm:px-8 lg:px-16 relative z-10 max-w-7xl pt-6">
+    <section id="how-it-works" className="relative pt-[70px] lg:pt-20 pb-0 lg:pb-20 overflow-hidden bg-transparent">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-16 relative z-10 max-w-7xl pt-0 lg:pt-6">
         
         {/* Header */}
         <motion.div
@@ -48,7 +48,7 @@ export function HowItWorksSection() {
           <h2 className="font-serif text-white mb-2" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
             How Closete works
           </h2>
-          <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }}>
+          <p className="text-[14px] lg:text-[18px]" style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }}>
             Discover, verify, and receive luxury pieces with complete confidence.
           </p>
         </motion.div>
@@ -253,31 +253,31 @@ export function HowItWorksSection() {
         </div>
 
         {/* ── Mobile & Tablet View (< lg) ── */}
-        <div className="lg:hidden flex flex-col items-center relative w-full pt-4 pb-12">
+        <div className="lg:hidden flex flex-col items-center relative w-full pt-4 pb-0 lg:pb-12">
           
-          {/* Background Glow Image for Mobile */}
-          <div
-            className="absolute pointer-events-none z-0"
-            style={{
-              left: "50%",
-              top: "-310px",
-              marginLeft: "-375px",
-              width: "390px",
-              height: "550px",
-              mixBlendMode: "screen",
-              opacity: 1,
-            }}
-          >
-            <Image
-              src="/Frame 2087328317.png"
-              alt="Background stars and rays"
-              fill
-              className="object-cover object-right"
-            />
-          </div>
+          {/* Removed old Background Glow Image for Mobile */}
 
           {/* Background Ring Image for Mobile wrapped around the Golden Circle */}
           <div className="relative flex items-center justify-center w-[172px] h-[172px] z-10 bg-cover bg-center" style={{ backgroundImage: 'url("/Ellipse 4864 (1).png")' }}>
+            
+            {/* Soft Golden Linear Gradient Glow */}
+            <div className="absolute pointer-events-none z-[-2]" style={{
+              width: "300px",
+              height: "300px",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              background: "linear-gradient(90deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
+              opacity: 0.15,
+              filter: "blur(60px)",
+              borderRadius: "50%"
+            }} />
+
+            {/* Sunburst Glow behind the circle */}
+            <div className="absolute pointer-events-none z-[-1]" style={{ width: "600px", height: "600px", top: "50%", left: "50%", transform: "translate(-50%, -65%)", mixBlendMode: "screen", opacity: 0.9 }}>
+              <Image src="/Group (1).png" alt="Sunburst glow" fill className="object-contain" />
+            </div>
+
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -301,9 +301,9 @@ export function HowItWorksSection() {
           </div>
 
           {/* Stacked Cards */}
-          <div className="flex flex-col w-full max-w-sm relative mt-4 z-0">
+          <div className="flex flex-col w-full max-w-sm relative mt-[25px] z-0">
             {/* Connecting vertical dashed line */}
-            <div className="absolute left-1/2 top-0 bottom-10 w-px border-l border-dashed border-[rgba(180,140,30,0.5)] -translate-x-1/2 z-0" />
+            <div className="absolute left-1/2 top-[-20px] bottom-10 w-px border-l border-dashed border-[#C99C41]/30 -translate-x-1/2 z-0" />
 
             {steps.map((step, i) => (
               <motion.div 
@@ -312,18 +312,18 @@ export function HowItWorksSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="w-full relative flex flex-col mb-10 z-10"
+                className={`w-full relative flex flex-col ${i === steps.length - 1 ? 'mb-12' : 'mb-0'} z-10`}
               >
                 {/* Arrow */}
-                <div className="w-full flex justify-center mb-4 z-10 pt-2">
+                <div className={`w-full flex justify-center ${i === 0 ? 'mb-6' : 'my-[8px]'} z-10`}>
                   <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
-                    <path d="M1 1L7 7L13 1" stroke="rgba(201,140,40,0.8)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1 1L7 7L13 1" stroke="rgba(201,140,40,0.6)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
 
                 {/* Number */}
-                <div className={`w-full flex ${i === 1 ? 'justify-end' : 'justify-start'} px-6 mb-[-2px] z-20 relative`}>
-                  <div className={`text-[60px] font-bold leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent ${bebasNeue.className}`}>
+                <div className={`w-full flex ${i === 1 ? 'justify-end' : 'justify-start'} px-2 sm:px-6 mb-[10px] z-20 relative`}>
+                  <div className={`text-[65px] font-bold leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent ${bebasNeue.className}`}>
                     {step.number}.
                   </div>
                 </div>
@@ -334,13 +334,13 @@ export function HowItWorksSection() {
                   style={{ background: 'linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)' }}
                 >
                   <div 
-                    className="relative w-full h-full backdrop-blur-md p-6 rounded-[1.1rem] flex flex-col justify-center"
+                    className="relative w-full h-full backdrop-blur-md p-6 sm:p-7 rounded-[1.1rem] flex flex-col justify-center"
                     style={{ background: "linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%)" }}
                   >
-                    <h3 className="text-white text-sm sm:text-base font-bold tracking-[0.08em] mb-2 uppercase">
+                    <h3 className="text-white text-[15px] sm:text-base font-bold tracking-[0.05em] mb-2 sm:mb-3">
                       {step.title}
                     </h3>
-                    <p className="bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent text-[18px] leading-relaxed pr-2">
+                    <p className="text-[#a1a1aa] text-[14px] leading-[1.6]">
                       {step.desc}
                     </p>
                   </div>

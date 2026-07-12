@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function CtaBannerSection() {
   return (
-    <section className="py-12 md:py-24 relative flex justify-center px-4 md:px-8 overflow-hidden">
+    <section className="pt-[70px] pb-12 md:py-24 relative flex justify-center px-4 md:px-8 overflow-hidden">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

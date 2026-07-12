@@ -27,7 +27,7 @@ export function VisionSection() {
   return (
     <section 
       id="our-vision" 
-      className="relative w-full min-h-[600px] md:min-h-[850px] bg-[#0a0a0a] text-white flex flex-col items-center justify-start overflow-hidden px-6 pt-16 md:pt-20 pb-40 md:pb-52 font-sans scroll-mt-16"
+      className="relative w-full min-h-[600px] md:min-h-[850px] bg-[#0a0a0a] text-white flex flex-col items-center justify-start overflow-hidden px-6 pt-[70px] md:pt-20 pb-0 md:pb-52 font-sans scroll-mt-16"
     >
       
       {/* Background Particle/Star Effect (Simplified with CSS) */}
@@ -44,7 +44,7 @@ export function VisionSection() {
         ></div>
         
         {/* Golden glow gradient behind text */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[100vw] max-w-[1400px] h-[220%] opacity-15"
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1400px] h-[220%] opacity-15"
              style={{ 
                background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)", 
                filter: "blur(120px)",
@@ -70,21 +70,35 @@ export function VisionSection() {
       <div className="relative z-10 max-w-5xl text-center space-y-12">
         {/* Header Text */}
         <div className="space-y-4 relative">
-          <h2 className="text-5xl md:text-6xl font-serif tracking-tight">Our Vision</h2>
+          <h2 className="text-[32px] md:text-6xl font-serif tracking-tight">Our Vision</h2>
           <motion.p 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }}
-            className="max-w-xl mx-auto leading-relaxed"
+            style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }}
+            className="text-[14px] md:text-[18px] max-w-xl mx-auto leading-relaxed"
           >
             Closete was created to bring trust, transparency, and simplicity to the luxury resale market.
           </motion.p>
         </div>
 
+        {/* Mobile: Top Floating Elements in flow */}
+        <div className="md:hidden flex justify-between items-center w-full px-0 mt-2">
+          <div className="relative w-[115px] h-[115px]">
+            <Image src="/Group 1707483227.png" alt="Shield Icon" fill className="object-contain" />
+          </div>
+          <div className="relative w-[120px] rotate-[2deg]">
+            <Image src="/Rectangle 34626008.png" alt="Watch Frame Background" width={340} height={260} className="w-full h-auto object-contain drop-shadow-2xl" />
+            <div className="absolute inset-1.5 rounded-[8px] overflow-hidden">
+              <Image src="/Rectangle 34626007 (1).png" alt="Luxury Watch" fill className="object-cover" />
+            </div>
+          </div>
+        </div>
+
         {/* Hero Text */}
-        <div className="mt-32 md:mt-48 relative">
+        <div className="mt-4 md:mt-48 relative">
+          {/* Desktop Version */}
           <motion.h1 
             initial="hidden"
             whileInView="visible"
@@ -97,21 +111,62 @@ export function VisionSection() {
                 }
               }
             }}
-            className="text-[20px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full max-w-6xl relative z-10 font-sans"
+            className="hidden md:block text-[20px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full max-w-6xl relative z-10 font-sans"
           >
             <TypingText text="WE BELIEVE BUYING AND SELLING HIGH-VALUE " highlight={true} />
-            <br className="hidden md:block" />
+            <br />
             <TypingText text="ITEMS SHOULD FEEL SEAMLESS, SECURE, AND " highlight={true} />
-            <br className="hidden md:block" />
+            <br />
             <TypingText text="PREMIUM AT EVERY STEP." highlight={true} />
           </motion.h1>
+
+          {/* Mobile Version */}
+          <motion.h1 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.03,
+                  delayChildren: 0.2,
+                }
+              }
+            }}
+            className="md:hidden text-[20px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full relative z-10 font-sans"
+          >
+            <TypingText text="WE BELIEVE BUYING " highlight={true} />
+            <br />
+            <TypingText text="AND SELLING HIGH-" highlight={true} />
+            <br />
+            <TypingText text="VALUE ITEMS SHOULD " highlight={true} />
+            <br />
+            <TypingText text="FEEL SEAMLESS, " highlight={true} />
+            <br />
+            <TypingText text="SECURE, AND PREMIUM " highlight={true} />
+            <br />
+            <TypingText text="AT EVERY STEP." highlight={true} />
+          </motion.h1>
+        </div>
+
+        {/* Mobile: Bottom Floating Elements in flow */}
+        <div className="md:hidden flex justify-between items-center w-full px-0 mt-2 mb-0 relative z-10">
+          <div className="relative w-[140px] -rotate-[2deg]">
+            <Image src="/Rectangle 34626008 (1).png" alt="Bag Frame Background" width={340} height={260} className="w-full h-auto object-contain drop-shadow-2xl" />
+            <div className="absolute inset-1.5 rounded-[10px] overflow-hidden">
+              <Image src="/Rectangle 34626007 (2).png" alt="Luxury Handbag" fill className="object-cover" />
+            </div>
+          </div>
+          <div className="relative w-[115px] h-[115px]">
+            <Image src="/Group 1707483228.png" alt="Crown Icon" fill className="object-contain" />
+          </div>
         </div>
       </div>
 
-      {/* --- FLOATING DECORATIONS --- */}
-      <div className="absolute inset-0 w-full max-w-[1920px] mx-auto pointer-events-none">
+      {/* --- FLOATING DECORATIONS (Desktop Only) --- */}
+      <div className="absolute inset-0 w-full max-w-[1920px] mx-auto pointer-events-none hidden md:block">
         {/* Top Left: Shield/Lock Icon */}
-        <div className="absolute top-[30%] left-[14%] hidden md:block transition-transform hover:scale-105 pointer-events-auto">
+        <div className="absolute top-[30%] left-[14%] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative w-[180px] h-[180px]">
             <Image 
               src="/Group 1707483227.png" 
@@ -123,7 +178,7 @@ export function VisionSection() {
         </div>
 
         {/* Top Right: Watch Image */}
-        <div className="absolute top-[27%] right-[10%] rotate-[12deg] transition-transform hover:scale-105 hidden md:block pointer-events-auto">
+        <div className="absolute top-[27%] right-[10%] rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative inline-flex items-center justify-center shadow-2xl">
             {/* Background Image / Frame */}
             <Image 
@@ -131,10 +186,10 @@ export function VisionSection() {
               alt="Watch Frame Background"
               width={340}
               height={260}
-              className="w-[200px] md:w-[240px] h-auto object-contain drop-shadow-2xl"
+              className="w-[240px] h-auto object-contain drop-shadow-2xl"
             />
             {/* Foreground Watch Image */}
-            <div className="absolute inset-2 md:inset-2.5 rounded-xl md:rounded-[18px] overflow-hidden">
+            <div className="absolute inset-2.5 rounded-[18px] overflow-hidden">
               <Image 
                 src="/Rectangle 34626007 (1).png"
                 alt="Luxury Watch"
@@ -146,7 +201,7 @@ export function VisionSection() {
         </div>
 
         {/* Bottom Left: Bag Image */}
-        <div className="absolute bottom-[2%] left-[14%] -rotate-[12deg] transition-transform hover:scale-105 hidden md:block pointer-events-auto">
+        <div className="absolute bottom-[2%] left-[14%] -rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative inline-flex items-center justify-center shadow-2xl">
             {/* Background Image / Frame */}
             <Image 
@@ -154,10 +209,10 @@ export function VisionSection() {
               alt="Bag Frame Background"
               width={340}
               height={260}
-              className="w-[200px] md:w-[240px] h-auto object-contain drop-shadow-2xl"
+              className="w-[240px] h-auto object-contain drop-shadow-2xl"
             />
             {/* Foreground Bag Image */}
-            <div className="absolute inset-2 md:inset-2.5 rounded-xl md:rounded-[18px] overflow-hidden">
+            <div className="absolute inset-2.5 rounded-[18px] overflow-hidden">
               <Image 
                 src="/Rectangle 34626007 (2).png"
                 alt="Luxury Handbag"
@@ -169,7 +224,7 @@ export function VisionSection() {
         </div>
 
         {/* Bottom Right: Crown Icon */}
-        <div className="absolute bottom-[2%] right-[15%] hidden md:block transition-transform hover:scale-105 pointer-events-auto">
+        <div className="absolute bottom-[2%] right-[15%] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative w-[180px] h-[180px]">
             <Image 
               src="/Group 1707483228.png" 

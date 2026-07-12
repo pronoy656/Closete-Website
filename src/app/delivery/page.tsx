@@ -256,7 +256,7 @@ export default function DeliveryPage() {
 
         {/* Content Section */}
         <div className={`container mx-auto px-4 max-w-7xl mt-24 md:mt-32 mb-20 ${dmSans.className}`}>
-          <div className="bg-[#141517] border border-white/5 p-4 md:p-6 lg:p-8 rounded-[20px] md:rounded-[28px] space-y-4">
+          <div className="bg-[#141517] border border-white/5 p-[20px] md:p-6 lg:p-8 rounded-[20px] md:rounded-[28px] space-y-4">
             {DELIVERY_SECTIONS.map((section, index) => (
               <div 
                 key={index} 
@@ -269,7 +269,7 @@ export default function DeliveryPage() {
                 <h2 className="text-white font-bold text-[18px] md:text-[20px] tracking-wider mb-4">
                   {section.title}
                 </h2>
-                <div className="text-[16px] md:text-[17px] leading-normal text-gray-400 font-light">
+                <div className="text-[14px] md:text-[17px] leading-normal text-gray-400 font-light">
                   {section.content}
                 </div>
               </div>

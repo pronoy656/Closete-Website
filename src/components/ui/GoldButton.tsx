@@ -23,7 +23,7 @@ export function GoldButton({
   ...props
 }: GoldButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer whitespace-nowrap select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/60 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-50";
+    "inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer whitespace-nowrap select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/60 disabled:pointer-events-none disabled:opacity-50";
 
   const sizeStyles: Record<string, string> = {
     sm: "h-8 px-4 text-xs rounded-full gap-1.5",
@@ -33,9 +33,9 @@ export function GoldButton({
 
   const variantStyles: Record<string, string> = {
     filled:
-      "border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] hover:-translate-y-0.5",
+      "border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)]",
     outline:
-      "border border-[#C98C28]/60 text-[#E2B744] bg-[#AF7413]/5 hover:bg-[#AF7413]/15 hover:border-[#E2B744] hover:text-[#FFED81] hover:-translate-y-0.5",
+      "border border-[#C98C28]/60 text-[#E2B744] bg-[#AF7413]/5 hover:bg-[#AF7413]/15 hover:border-[#E2B744] hover:text-[#FFED81]",
   };
 
   const combinedClassName = [

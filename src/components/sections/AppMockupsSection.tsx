@@ -42,14 +42,29 @@ export function AppMockupsSection() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const getIntervalTime = () => window.innerWidth < 768 ? 3500 : 1500;
+    
+    let interval = setInterval(() => {
       handleNext();
-    }, 1500); // Rotate every 1.5 seconds (matching HeroSection)
-    return () => clearInterval(interval);
+    }, getIntervalTime()); 
+
+    const handleResize = () => {
+      clearInterval(interval);
+      interval = setInterval(() => {
+        handleNext();
+      }, getIntervalTime());
+    };
+
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', handleResize);
+    };
   }, [handleNext]);
 
   return (
-    <section id="app-preview" className={`bg-[#0a0a0a] pt-30 pb-12 overflow-hidden text-white ${dmSans.className}`}>
+    <section id="app-preview" className={`bg-[#0a0a0a] pt-[70px] lg:pt-30 pb-0 lg:pb-12 overflow-hidden text-white ${dmSans.className}`}>
       <style>{`
         .notch-main-clip {
           clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 60px) 0%, calc(50% + 60px) 30px, calc(50% - 60px) 30px, calc(50% - 60px) 0%);
@@ -61,11 +76,11 @@ export function AppMockupsSection() {
         }
       `}</style>
       {/* --- HEADER --- */}
-      <div className="max-w-5xl mx-auto text-center px-6 mb-8 space-y-6 relative z-20">
-        <h2 className={`${playfair.className} text-4xl md:text-6xl text-gray-100`}>
+      <div className="max-w-5xl mx-auto text-center px-6 mb-8 space-y-2 md:space-y-6 relative z-20">
+        <h2 className={`${playfair.className} text-[32px] md:text-6xl text-gray-100`}>
           Designed for a Seamless Experience
         </h2>
-        <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }} className="max-w-2xl mx-auto leading-relaxed">
+        <p style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }} className="text-[14px] md:text-[18px] max-w-2xl mx-auto leading-relaxed">
           Closete is designed to make buying and selling luxury effortless 
           — from discovery to delivery.
         </p>
@@ -174,13 +189,13 @@ export function AppMockupsSection() {
       </div>
 
       {/* --- CONTROLS --- */}
-      <div className="flex items-center justify-center gap-6 md:gap-8 mt-8 md:mt-12 relative z-40">
+      <div className="flex items-center justify-center gap-6 md:gap-8 mt-[20px] md:mt-12 relative z-40">
         <button 
           onClick={handlePrev}
-          className="w-14 h-14 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors"
+          className="w-11 h-11 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors"
           aria-label="Previous mockup"
         >
-          <ArrowLeft size={24} className="text-white" />
+          <ArrowLeft size={20} className="text-white" />
         </button>
 
         <div className="flex items-center gap-3">
@@ -200,10 +215,10 @@ export function AppMockupsSection() {
 
         <button 
           onClick={handleNext}
-          className="w-14 h-14 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors"
+          className="w-11 h-11 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors"
           aria-label="Next mockup"
         >
-          <ArrowRight size={24} className="text-white" />
+          <ArrowRight size={20} className="text-white" />
         </button>
       </div>
     </section>

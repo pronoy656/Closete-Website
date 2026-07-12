@@ -276,7 +276,7 @@ export function HeroSection() {
 
       <Stars />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center pt-40 pb-0">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center pt-[125px] md:pt-40 pb-0">
 
         {/* Heading */}
         <motion.h1
@@ -285,14 +285,14 @@ export function HeroSection() {
           transition={{ duration: 0.65 }}
           className={`${playfair.className} font-light leading-[1.1] tracking-normal text-center mb-4`}
         >
-          <span className="block mb-2 text-[52px] sm:text-[60px] md:text-[72px] pb-2" style={{
+          <span className="block mb-2 text-[36px] md:text-[72px] pb-1 md:pb-2" style={{
             background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent"
           }}>
             Buy <span className="font-['Georgia'] font-normal">&amp;</span> Sell
           </span>
-          <span className="block text-[40px] sm:text-[56px] md:text-[68px] pb-2" style={{
+          <span className="block text-[36px] md:text-[68px] pb-2" style={{
             background: "linear-gradient(89.94deg, #FFFFFF 52.51%, #999999 107.86%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent"
@@ -306,7 +306,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.1 }}
-          className="leading-relaxed mb-8 font-['DM_Sans'] text-white/70 text-sm md:text-[18px] font-light max-w-[850px] tracking-wide"
+          className="leading-relaxed mb-8 font-['DM_Sans'] text-[14px] md:text-[18px] text-white/90 font-light max-w-[850px] tracking-wide"
         >
           Closete is a curated marketplace for luxury fashion, combining authentication, secure payments, <br className="hidden md:block" />
           and controlled delivery – so you can buy and sell with complete confidence.
@@ -317,7 +317,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.55, delay: 0.18 }}
-          className="inline-flex items-center justify-center gap-2.5 px-2 py-1.5 md:py-2 rounded-full mb-10 w-fit max-w-[95vw] mx-auto"
+          className="inline-flex items-center justify-center gap-2.5 px-3 py-[10px] md:py-2.5 rounded-[32px] mb-10 w-fit max-w-[95vw] mx-auto"
           style={{ 
             background: "rgba(255, 255, 255, 0.08)", // Lighter premium glass
             backdropFilter: "blur(24px)",
@@ -327,17 +327,17 @@ export function HeroSection() {
             borderTop: "1px solid rgba(255,255,255,0.25)",
           }}
         >
-          <span className="text-[#f2f2f2]/90 font-['DM_Sans'] text-[15px] leading-snug flex-1">
-            Now live in <strong className="text-white font-['DM_Sans']">Dubai</strong>. Expanding across{" "}
-            <span className="text-gradient-gold font-semibold font-['DM_Sans'] whitespace-nowrap">the UAE soon.</span>
+          <span className="text-[#f2f2f2]/90 font-['DM_Sans'] text-[12px] sm:text-[13px] md:text-[15px] leading-snug flex-1 text-center md:text-left">
+            Now live in <strong className="text-white font-['DM_Sans']">Dubai</strong>. Expanding <br className="block md:hidden" />
+            across <span className="text-gradient-gold font-semibold font-['DM_Sans'] whitespace-nowrap">the UAE soon.</span>
           </span>
           {/* Pill-shaped Sparkle button matching the design */}
           <div
-            className="w-[42px] h-[28px] md:w-[48px] md:h-[32px] rounded-full flex items-center justify-center flex-shrink-0 ml-1"
+            className="w-[24px] h-[24px] md:w-[48px] md:h-[32px] rounded-full flex items-center justify-center flex-shrink-0 ml-1.5"
             style={{ background: "#ffffff" }}
           >
-            <svg className="w-[24px] h-[24px] md:w-[28px] md:h-[28px]" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 0C12.5 8 16 11.5 24 12C16 12.5 12.5 16 12 24C11.5 16 8 12.5 0 12C8 11.5 11.5 8 12 0Z" fill="black"/>
+            <svg className="w-[16px] h-[16px] md:w-[28px] md:h-[28px] block" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C12.5 8 16 11.5 24 12C16 12.5 12.5 16 12 24C11.5 16 8 12.5 0 12C8 11.5 11.5 8 12 0Z" fill="black" stroke="black" strokeWidth="0.75" strokeLinejoin="round" />
             </svg>
           </div>
         </motion.div>
@@ -347,7 +347,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.25 }}
-          className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4 mb-[74px] w-full max-w-[280px] md:max-w-none"
+          className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 mb-[30px] md:mb-[74px] w-full max-w-[340px] md:max-w-none"
         >
           <GoldButton href="#ios" size="lg" className="flex items-center justify-center gap-2 w-full md:w-[280px] whitespace-nowrap">
             Download On iOS

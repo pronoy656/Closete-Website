@@ -21,6 +21,14 @@
 }
 
 @layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
   .glass {
     @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)];
   }
@@ -30,7 +38,7 @@
   }
   
   .text-gradient-gold {
-    background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);
+    background: linear-gradient(to right, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -38,7 +46,7 @@
   }
   
   .bg-gradient-gold {
-    background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);
+    background: linear-gradient(to right, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%);
     border: 1px solid rgba(244, 211, 129, 0.35);
     box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.2), 0 4px 15px rgba(155, 108, 38, 0.2);
   }

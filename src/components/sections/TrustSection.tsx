@@ -50,13 +50,13 @@ const TrustSection = () => {
   ];
 
   return (
-    <section id="why-choose-us" className={`bg-[#FFFFFF0A] pt-30 pb-16 px-6 text-white overflow-hidden ${dmSans.className}`}>
+    <section id="why-choose-us" className={`bg-[#FFFFFF0A] pt-[30px] lg:pt-[100px] pb-4 md:pb-16 px-6 text-white overflow-hidden ${dmSans.className}`}>
       {/* Header */}
-      <div className="max-w-4xl mx-auto text-center mb-12 space-y-5">
-        <h2 className={`${playfair.className} text-5xl md:text-6xl font-medium tracking-tight`}>
+      <div className="max-w-4xl mx-auto text-center mb-12 space-y-2">
+        <h2 className={`${playfair.className} text-[32px] md:text-5xl lg:text-7xl font-medium tracking-tight`}>
           Built on Trust
         </h2>
-        <p style={{ color: "rgba(242,242,242,0.75)", fontSize: "18px", wordSpacing: "1px" }} className="max-w-xl mx-auto leading-relaxed">
+        <p style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }} className="text-[14px] md:text-[18px] max-w-xl mx-auto leading-relaxed">
           From verification to payment protection, every step is designed to keep buyers and sellers confident.
         </p>
       </div>
@@ -67,9 +67,9 @@ const TrustSection = () => {
         {/* The horizontal "wire" line */}
         <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[4px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
 
-        <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden gap-4 pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-4 justify-items-center">
+        <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden scrollbar-hide gap-4 pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-4 justify-items-center">
           {features.map((item, index) => (
-            <div key={index} className="relative group pt-12 flex-none w-[250px] mx-auto cursor-pointer">
+            <div key={index} className="relative group pt-12 flex-none w-[199px] md:w-[250px] mx-auto cursor-pointer">
               
               {/* Hanging "Hook" Image */}
               <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
@@ -90,7 +90,7 @@ const TrustSection = () => {
 
               {/* The Card */}
               <div 
-                className="relative h-full flex flex-col items-center text-center p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden"
+                className="relative h-[250px] md:h-full flex flex-col items-center justify-center text-center p-4 md:p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden"
               >
                 {/* Exact Linear Gradient Background on Hover */}
                 <div 

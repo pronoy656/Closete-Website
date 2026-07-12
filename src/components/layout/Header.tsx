@@ -52,12 +52,14 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-        isScrolled ? "bg-black/40 backdrop-blur-md py-4 shadow-lg" : "py-6 bg-transparent"
+        isScrolled ? "lg:bg-black/40 lg:backdrop-blur-md py-4 shadow-none lg:shadow-lg" : "py-4 lg:py-6 bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 lg:px-12">
-        {/* Navbar Inner Wrapper (Pill on Mobile, Transparent on Desktop) */}
-        <div className="w-full flex items-center justify-between bg-[#1f2125]/95 lg:bg-transparent rounded-full border border-white/10 lg:border-none p-1.5 lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none backdrop-blur-xl lg:backdrop-blur-none">
+        {/* Navbar Gradient Border Wrapper (Mobile only) */}
+        <div className="w-full rounded-full p-[1px] lg:p-0 bg-gradient-to-r from-white from-10% via-gray-400/80 via-70% to-transparent lg:bg-none">
+          {/* Navbar Inner Wrapper (Pill on Mobile, Transparent on Desktop) */}
+          <div className="w-full flex items-center justify-between bg-gradient-to-r from-[#1F2125] to-[#101113] lg:bg-none lg:bg-transparent rounded-full lg:border-none px-2 h-[58px] lg:h-auto lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none backdrop-blur-xl lg:backdrop-blur-none">
           
           {/* Left Group (Hamburger + Logo) */}
           <div className="flex items-center gap-2 lg:gap-0">
@@ -66,13 +68,13 @@ export function Header() {
               className="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348]"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              {isMobileMenuOpen ? <X size={20} strokeWidth={2.5} color="#ffffff" /> : <Menu size={20} strokeWidth={2.5} color="#ffffff" />}
             </button>
 
             {/* Logo */}
             <Link 
               href={isHomePage ? "#home" : "/"} 
-              className="text-[30px] lg:text-[44px] font-serif text-gradient-gold tracking-tight ml-2 lg:ml-0" 
+              className="text-[30px] lg:text-[44px] font-serif font-medium antialiased text-gradient-gold tracking-tight ml-2 lg:ml-0 drop-shadow-sm" 
               onClick={(e) => handleNavClick(e, isHomePage ? "#home" : "/")}
             >
               Closeté
@@ -111,14 +113,14 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Right Group (Contact Button) */}
           <div className="flex items-center">
-            <GoldButton href="mailto:support@closete.app" size="sm" className="flex items-center gap-1 h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[13px] lg:text-sm font-medium whitespace-nowrap">
+            <GoldButton href="mailto:support@closete.app" size="sm" className="flex items-center justify-center gap-1 h-[46px] lg:h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[15px] lg:text-base font-normal whitespace-nowrap">
               Contact Us
               <ArrowRight color="black" className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
             </GoldButton>
           </div>
 
+        </div>
         </div>
       </div>
 
