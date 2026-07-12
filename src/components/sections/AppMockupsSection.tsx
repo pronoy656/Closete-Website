@@ -76,6 +76,13 @@ export function AppMockupsSection() {
         {MOCKUP_IMAGES.map((src, index) => {
           const posIndex = (index - activeIndex + 5) % 5;
           const pos = POSITIONS[posIndex];
+          
+          const getClamp = (vw: number) => {
+            const maxPx = vw * 12.5; // based on 1250px container
+            const minBound = Math.min(0, maxPx);
+            const maxBound = Math.max(0, maxPx);
+            return `clamp(${minBound}px, ${vw}vw, ${maxBound}px)`;
+          };
 
           return (
             <motion.div
@@ -83,7 +90,7 @@ export function AppMockupsSection() {
               className="absolute overflow-hidden rounded-[30px] md:rounded-[40px] bg-[#0a0a0a] w-[220px] h-[480px] md:w-[280px] md:h-[600px]"
               initial={false}
               animate={{
-                x: `calc(-50% + ${pos.xPx}px + ${pos.xVw}vw)`,
+                x: `calc(-50% + ${pos.xPx}px + ${getClamp(pos.xVw)})`,
                 y: "-50%",
                 scale: pos.scale,
                 opacity: pos.opacity,

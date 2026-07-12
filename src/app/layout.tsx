@@ -14,8 +14,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Closeté | Authentic Luxury, Safely",
-  description: "Buy & Sell Authentic Luxury, Safely with Closeté.",
+  title: "Closeté | Authentic Luxury",
+  description: "Buy & Sell Authentic Luxury with Closeté.",
   keywords: ["luxury", "authentic", "buy", "sell", "premium", "closete"],
   icons: {
     icon: "/1024.png",

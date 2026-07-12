@@ -21,11 +21,11 @@ export function Footer() {
     }
   };
   return (
-    <footer className="bg-[#121212] pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between">
+    <footer className="bg-[#121212] pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between px-4 md:px-8">
       {/* Golden bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[250px] bg-gradient-to-t from-[#C98C28]/10 to-transparent blur-[80px] pointer-events-none z-0" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="w-full max-w-[1250px] mx-auto relative z-10">
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-10 relative z-10">
           
@@ -34,11 +34,11 @@ export function Footer() {
             <Link 
               href={isHomePage ? "#home" : "/"} 
               onClick={handleHomeClick}
-              className="text-3xl font-serif text-gradient-gold mb-6 inline-block tracking-tight"
+              className="text-4xl font-serif text-gradient-gold mb-6 inline-block tracking-tight"
             >
               Closeté
             </Link>
-            <p className="text-[#f2f2f2]/60 text-[14px] max-w-[280px] leading-relaxed">
+            <p className="text-[#f2f2f2]/60 text-[16px] max-w-[290px] leading-relaxed">
               Luxury Resale Secured. Authenticated, insured, and curated for the archival fashion collector.
             </p>
           </div>
@@ -49,9 +49,9 @@ export function Footer() {
               NAVIGATION
             </h4>
             <ul className="space-y-3 mt-5">
-              <li><Link href="/privacy" className="text-white text-[14px] hover:text-gold-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-white text-[14px] hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
-              <li><Link href="/delivery" className="text-white text-[14px] hover:text-gold-400 transition-colors">Returns & Delivery Policy</Link></li>
+              <li><Link href="/privacy" className="text-white text-[16px] hover:text-gold-400 transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="text-white text-[16px] hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
+              <li><Link href="/delivery" className="text-white text-[16px] hover:text-gold-400 transition-colors">Returns & Delivery Policy</Link></li>
             </ul>
           </div>
 
@@ -61,11 +61,11 @@ export function Footer() {
               CONTACT US
             </h4>
             <div className="mt-5 flex flex-col gap-1.5">
-              <div className="flex items-center gap-2 text-[#f2f2f2]/50 text-[13px] mb-1">
-                <Mail size={15} strokeWidth={1.5} />
+              <div className="flex items-center gap-2 text-[#f2f2f2]/50 text-[16px] mb-1">
+                <Mail size={16} strokeWidth={1.5} />
                 <span>Email</span>
               </div>
-              <a href="mailto:support@closete.app" className="text-[#FFAF2C] hover:opacity-80 transition-colors">
+              <a href="mailto:support@closete.app" className="text-[#FFAF2C] text-[16px] hover:opacity-80 transition-colors">
                 support@closete.app
               </a>
             </div>
@@ -77,29 +77,28 @@ export function Footer() {
               LOCATION
             </h4>
             <div className="mt-5 flex flex-col gap-1.5">
-              <div className="flex items-center gap-2 text-[#f2f2f2]/50 text-[13px] mb-1">
-                <MapPin size={15} strokeWidth={1.5} />
+              <div className="flex items-center gap-2 text-[#f2f2f2]/50 text-[16px] mb-1">
+                <MapPin size={16} strokeWidth={1.5} />
                 <span>Country</span>
               </div>
-              <span className="text-white text-[14px]">
+              <span className="text-white text-[16px]">
                 Dubai, UAE
               </span>
             </div>
           </div>
 
         </div>
+      </div>
         
-        {/* Giant Watermark Logo */}
-        <div className="w-full flex justify-center items-end mt-4 mb-4 pointer-events-none select-none relative z-0 overflow-hidden">
-          <h1 className="text-[22vw] sm:text-[20vw] font-serif text-white/[0.04] leading-[0.8] m-0 p-0 tracking-[-0.04em] translate-y-[-2%]">
-            Closeté
-          </h1>
-        </div>
-        
-        <div className="border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10">
-          <p>© 2026 Closete. All rights reserved.</p>
-        </div>
-
+      {/* Giant Watermark Logo */}
+      <div className="w-full flex justify-center items-end mt-4 mb-4 pointer-events-none select-none relative z-0 overflow-hidden">
+        <h1 className="text-[22vw] sm:text-[20vw] font-serif text-white/[0.04] leading-[0.8] m-0 p-0 tracking-[-0.04em] translate-y-[-2%]">
+          Closeté
+        </h1>
+      </div>
+      
+      <div className="w-full max-w-[1250px] mx-auto border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10">
+        <p>© 2026 Closete. All rights reserved.</p>
       </div>
     </footer>
   );

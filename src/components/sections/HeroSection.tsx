@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Play, Heart, ArrowRight } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 import { GoldButton } from "@/components/ui/GoldButton";
 import { Playfair_Display } from "next/font/google";
 
@@ -369,6 +369,13 @@ export function HeroSection() {
           {CAROUSEL_DATA.map((item, index) => {
             const posIndex = (index - activeIndex + 12) % 12;
             const pos = CAROUSEL_POSITIONS[posIndex];
+            
+            const getClamp = (vw: number) => {
+              const maxPx = vw * 12.5; // based on 1250px container
+              const minBound = Math.min(0, maxPx);
+              const maxBound = Math.max(0, maxPx);
+              return `clamp(${minBound}px, ${vw}vw, ${maxBound}px)`;
+            };
 
             return (
               <motion.div
@@ -376,7 +383,7 @@ export function HeroSection() {
                 className="absolute overflow-hidden w-[240px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[360px] md:h-[480px]"
                 initial={false}
                 animate={{
-                  x: `calc(-50% + ${pos.xPx}px + ${pos.xVw}vw)`,
+                  x: `calc(-50% + ${pos.xPx}px + ${getClamp(pos.xVw)})`,
                   y: "-50%",
                   scale: pos.scale,
                   opacity: pos.opacity,
@@ -436,18 +443,7 @@ export function HeroSection() {
                   </div>
                 </div>
 
-                {/* Play Button Overlay for Center Card */}
-                <div 
-                  className="absolute inset-0 flex items-center justify-center pointer-events-none z-20"
-                  style={{
-                    transition: "opacity 0.8s ease",
-                    opacity: pos.isCenter ? 1 : 0,
-                  }}
-                >
-                  <div className="w-16 h-16 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-white shadow-[0_8px_32px_rgba(0,0,0,0.3)] transition-transform duration-300 hover:scale-110 cursor-pointer pointer-events-auto">
-                    <Play size={24} className="ml-1" fill="currentColor" />
-                  </div>
-                </div>
+
 
                 {/* Dark overlay for all cards, transitioning based on distance from center */}
                 <div
