@@ -28,6 +28,20 @@ export function OperateSection() {
             className="object-contain"
             priority
           />
+          
+          {/* Dubai Map Pin */}
+          <div 
+            className="absolute z-10 w-3 h-3 md:w-4 md:h-4 bg-[#C99C41] rounded-full shadow-[0_0_20px_rgba(201,156,65,1)]"
+            style={{ top: "51.5%", left: "788%" }}
+          >
+            {/* Pulsing effect */}
+            <div className="absolute inset-0 bg-[#C99C41] rounded-full animate-ping opacity-60"></div>
+            
+            {/* Label */}
+            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 md:mt-3 text-[#C99C41] text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase bg-[#1c1c1f]/80 px-3 py-1.5 rounded-md backdrop-blur-md border border-[#C99C41]/20">
+              Dubai
+            </div>
+          </div>
         </div>
 
         {/* Bottom Text */}

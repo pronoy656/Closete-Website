@@ -122,35 +122,35 @@ const CAROUSEL_POSITIONS = [
   { xPx: 0, xVw: 0, scale: 1, opacity: 1, zIndex: 40, isCenter: true, overlayOpacity: 0 },
   
   // 1: Right-1
-  { xPx: 40, xVw: 12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
+  { xPx: 50, xVw: 15, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
   
   // 2: Right-2
-  { xPx: 75, xVw: 21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
+  { xPx: 95, xVw: 27, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
   
   // 3: Right-3
-  { xPx: 105, xVw: 28, scale: 0.4, opacity: 0.8, zIndex: 20, isCenter: false, overlayOpacity: 0.7 },
+  { xPx: 135, xVw: 37, scale: 0.4, opacity: 0.8, zIndex: 20, isCenter: false, overlayOpacity: 0.7 },
   
   // 4: Right-4 (Far Edge)
-  { xPx: 130, xVw: 33, scale: 0.3, opacity: 0.5, zIndex: 10, isCenter: false, overlayOpacity: 0.85 },
+  { xPx: 165, xVw: 45, scale: 0.3, opacity: 0.5, zIndex: 10, isCenter: false, overlayOpacity: 0.85 },
   
   // 5, 6: Hidden on the far RIGHT off-screen
-  { xPx: 200, xVw: 60, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
-  { xPx: 200, xVw: 60, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
+  { xPx: 250, xVw: 65, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
+  { xPx: 250, xVw: 65, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
   
   // 7: Hidden on the far LEFT off-screen
-  { xPx: -200, xVw: -60, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
+  { xPx: -250, xVw: -65, scale: 0.2, opacity: 0, zIndex: 0, isCenter: false, overlayOpacity: 1 },
   
   // 8: Left-4 (Far Edge)
-  { xPx: -130, xVw: -33, scale: 0.3, opacity: 0.5, zIndex: 10, isCenter: false, overlayOpacity: 0.85 },
+  { xPx: -165, xVw: -45, scale: 0.3, opacity: 0.5, zIndex: 10, isCenter: false, overlayOpacity: 0.85 },
   
   // 9: Left-3
-  { xPx: -105, xVw: -28, scale: 0.4, opacity: 0.8, zIndex: 20, isCenter: false, overlayOpacity: 0.7 },
+  { xPx: -135, xVw: -37, scale: 0.4, opacity: 0.8, zIndex: 20, isCenter: false, overlayOpacity: 0.7 },
   
   // 10: Left-2
-  { xPx: -75, xVw: -21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
+  { xPx: -95, xVw: -27, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
   
   // 11: Left-1
-  { xPx: -40, xVw: -12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
+  { xPx: -50, xVw: -15, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
 ];
 
 const CAROUSEL_DATA = [
@@ -182,7 +182,7 @@ export function HeroSection() {
     <section
       id="home"
       className="relative flex flex-col items-center"
-      style={{ minHeight: "100vh", overflow: "hidden" }}
+      style={{ overflow: "hidden" }}
     >
       {/* ── Layer 1: Wide outer glow ─────────────────────── */}
       <div

@@ -13,13 +13,13 @@ const POSITIONS = [
   // 0: Center
   { xPx: 0, xVw: 0, scale: 1, opacity: 1, zIndex: 40, isCenter: true, overlayOpacity: 0 },
   // 1: Right-1
-  { xPx: 40, xVw: 12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
+  { xPx: 20, xVw: 22.5, scale: 0.8, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
   // 2: Right-2 (Far Right)
-  { xPx: 75, xVw: 21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
+  { xPx: 40, xVw: 41.2, scale: 0.65, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
   // 3: Left-2 (Far Left)
-  { xPx: -75, xVw: -21, scale: 0.55, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
+  { xPx: -40, xVw: -41.2, scale: 0.65, opacity: 1, zIndex: 25, isCenter: false, overlayOpacity: 0.5 },
   // 4: Left-1
-  { xPx: -40, xVw: -12, scale: 0.75, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
+  { xPx: -20, xVw: -22.5, scale: 0.8, opacity: 1, zIndex: 30, isCenter: false, overlayOpacity: 0.2 },
 ];
 
 const MOCKUP_IMAGES = [
@@ -75,9 +75,10 @@ export function AppMockupsSection() {
           }
         }
       `}</style>
-      {/* --- HEADER --- */}
-      <div className="max-w-5xl mx-auto text-center px-6 mb-8 space-y-2 md:space-y-6 relative z-20">
-        <h2 className={`${playfair.className} text-[32px] md:text-6xl text-gray-100`}>
+      <div className="container mx-auto px-4 lg:px-12">
+        {/* --- HEADER --- */}
+        <div className="max-w-5xl mx-auto text-center mb-8 space-y-2 md:space-y-6 relative z-20">
+          <h2 className={`${playfair.className} text-[32px] md:text-6xl text-gray-100`}>
           Designed for a Seamless Experience
         </h2>
         <p style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }} className="text-[14px] md:text-[18px] max-w-2xl mx-auto leading-relaxed">
@@ -110,9 +111,7 @@ export function AppMockupsSection() {
                 scale: pos.scale,
                 opacity: pos.opacity,
                 zIndex: pos.zIndex,
-                boxShadow: pos.isCenter 
-                  ? "0 20px 50px rgba(0,0,0,0.8), 0 0 40px rgba(212,175,55,0.15)"
-                  : "0 10px 30px rgba(0,0,0,0.8)",
+                boxShadow: pos.isCenter ? "none" : "0 10px 30px rgba(0,0,0,0.8)",
               }}
               transition={{
                 duration: 0.8,
@@ -124,14 +123,14 @@ export function AppMockupsSection() {
                 willChange: "transform, opacity, z-index, box-shadow",
               }}
             >
-              {/* The Border */}
+              {/* --- GOLDEN BORDER (Active Center) --- */}
               <motion.div 
                 className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 notch-main-clip"
                 initial={false}
                 animate={{ opacity: pos.isCenter ? 1 : 0 }}
                 transition={{ duration: 0.8 }}
                 style={{
-                  padding: "2px",
+                  padding: "3px",
                   background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
                   WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
                   WebkitMaskComposite: "xor",
@@ -139,7 +138,7 @@ export function AppMockupsSection() {
                 }}
               />
               
-              {/* Notch Border (Desktop) - uses identical background to guarantee seamless gradient match */}
+              {/* Notch Border (Desktop) */}
               <motion.div 
                 className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 hidden md:block"
                 initial={false}
@@ -147,7 +146,7 @@ export function AppMockupsSection() {
                 transition={{ duration: 0.8 }}
                 style={{
                   background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
-                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='280' height='600' viewBox='0 0 280 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 64 1 L 80 1 C 85 1, 87 2, 89 6 L 92 15 C 94 18, 96 20, 100 20 L 180 20 C 184 20, 186 18, 188 15 L 191 6 C 193 2, 195 1, 200 1 L 216 1' stroke='black' stroke-width='2' fill='none'/%3E%3C/svg%3E")`,
+                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='280' height='600' viewBox='0 0 280 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 64 1.5 L 80 1.5 C 85 1.5, 87 2.5, 89 6.5 L 92 15.5 C 94 18.5, 96 20.5, 100 20.5 L 180 20.5 C 184 20.5, 186 18.5, 188 15.5 L 191 6.5 C 193 2.5, 195 1.5, 200 1.5 L 216 1.5' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E")`,
                 }}
               />
               {/* Notch Border (Mobile) */}
@@ -158,18 +157,55 @@ export function AppMockupsSection() {
                 transition={{ duration: 0.8 }}
                 style={{
                   background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
-                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='220' height='480' viewBox='0 0 220 480' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 49 1 L 55 1 C 60 1, 62 2, 64 5 L 67 12 C 68 15, 69 16, 73 16 L 147 16 C 151 16, 152 15, 153 12 L 156 5 C 158 2, 160 1, 165 1 L 171 1' stroke='black' stroke-width='2' fill='none'/%3E%3C/svg%3E")`,
+                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='220' height='480' viewBox='0 0 220 480' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 49 1.5 L 55 1.5 C 60 1.5, 62 2.5, 64 5.5 L 67 12.5 C 68 15.5, 69 16.5, 73 16.5 L 147 16.5 C 151 16.5, 152 15.5, 153 12.5 L 156 5.5 C 158 2.5, 160 1.5, 165 1.5 L 171 1.5' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E")`,
+                }}
+              />
+
+              {/* --- GREY BORDER 1PX (Inactive Sides) --- */}
+              <motion.div 
+                className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 notch-main-clip"
+                initial={false}
+                animate={{ opacity: pos.isCenter ? 0 : 1 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  padding: "1px",
+                  background: "rgba(255,255,255,0.2)",
+                  WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+                  WebkitMaskComposite: "xor",
+                  maskComposite: "exclude"
+                }}
+              />
+              {/* Grey Notch Border (Desktop) */}
+              <motion.div 
+                className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 hidden md:block"
+                initial={false}
+                animate={{ opacity: pos.isCenter ? 0 : 1 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  background: "rgba(255,255,255,0.2)",
+                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='280' height='600' viewBox='0 0 280 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 64 0.5 L 80 0.5 C 85 0.5, 87 1.5, 89 5.5 L 92 14.5 C 94 17.5, 96 19.5, 100 19.5 L 180 19.5 C 184 19.5, 186 17.5, 188 14.5 L 191 5.5 C 193 1.5, 195 0.5, 200 0.5 L 216 0.5' stroke='black' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
+                }}
+              />
+              {/* Grey Notch Border (Mobile) */}
+              <motion.div 
+                className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 block md:hidden"
+                initial={false}
+                animate={{ opacity: pos.isCenter ? 0 : 1 }}
+                transition={{ duration: 0.8 }}
+                style={{
+                  background: "rgba(255,255,255,0.2)",
+                  WebkitMask: `url("data:image/svg+xml,%3Csvg width='220' height='480' viewBox='0 0 220 480' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 49 0.5 L 55 0.5 C 60 0.5, 62 1.5, 64 4.5 L 67 11.5 C 68 14.5, 69 15.5, 73 15.5 L 147 15.5 C 151 15.5, 152 14.5, 153 11.5 L 156 4.5 C 158 1.5, 160 0.5, 165 0.5 L 171 0.5' stroke='black' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
                 }}
               />
 
               {/* Notch Fill (Desktop) */}
               <svg width="150" height="24" viewBox="0 0 150 24" fill="none" overflow="visible" className="absolute top-0 left-1/2 -translate-x-1/2 hidden md:block z-20 pointer-events-none">
-                <path d="M -1 1 L 15 1 C 20 1, 22 2, 24 6 L 27 15 C 29 18, 31 20, 35 20 L 115 20 C 119 20, 121 18, 123 15 L 126 6 C 128 2, 130 1, 135 1 L 151 1 L 151 -10 L -1 -10 Z" fill="#0a0a0a" />
+                <path d="M -1 1.5 L 15 1.5 C 20 1.5, 22 2.5, 24 6.5 L 27 15.5 C 29 18.5, 31 20.5, 35 20.5 L 115 20.5 C 119 20.5, 121 18.5, 123 15.5 L 126 6.5 C 128 2.5, 130 1.5, 135 1.5 L 151 1.5 L 151 -10 L -1 -10 Z" fill="#0a0a0a" />
               </svg>
               
               {/* Notch Fill (Mobile) */}
               <svg width="120" height="20" viewBox="0 0 120 20" fill="none" overflow="visible" className="absolute top-0 left-1/2 -translate-x-1/2 block md:hidden z-20 pointer-events-none">
-                <path d="M -1 1 L 5 1 C 10 1, 12 2, 14 5 L 17 12 C 18 15, 19 16, 23 16 L 97 16 C 101 16, 102 15, 103 12 L 106 5 C 108 2, 110 1, 115 1 L 121 1 L 121 -10 L -1 -10 Z" fill="#0a0a0a" />
+                <path d="M -1 1.5 L 5 1.5 C 10 1.5, 12 2.5, 14 5.5 L 17 12.5 C 18 15.5, 19 16.5, 23 16.5 L 97 16.5 C 101 16.5, 102 15.5, 103 12.5 L 106 5.5 C 108 2.5, 110 1.5, 115 1.5 L 121 1.5 L 121 -10 L -1 -10 Z" fill="#0a0a0a" />
               </svg>
 
               <Image src={src} alt={`App Mockup ${index}`} fill className="object-cover z-0" priority />
@@ -220,6 +256,7 @@ export function AppMockupsSection() {
         >
           <ArrowRight size={20} className="text-white" />
         </button>
+      </div>
       </div>
     </section>
   );

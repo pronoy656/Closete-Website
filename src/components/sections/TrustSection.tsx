@@ -62,14 +62,14 @@ const TrustSection = () => {
       </div>
 
       {/* Cards Container with the Horizontal Line */}
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative container mx-auto px-4 lg:px-12">
         
         {/* The horizontal "wire" line */}
         <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[4px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
 
-        <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden scrollbar-hide gap-4 pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-6 lg:gap-4 justify-items-center">
+        <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden scrollbar-hide gap-[40px] pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 justify-items-center">
           {features.map((item, index) => (
-            <div key={index} className="relative group pt-12 flex-none w-[199px] md:w-[250px] mx-auto cursor-pointer">
+            <div key={index} className="relative group pt-12 flex-none w-[260px] md:w-[320px] lg:w-[240px] xl:w-[280px] 2xl:w-[300px] mx-auto cursor-pointer">
               
               {/* Hanging "Hook" Image */}
               <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
@@ -129,7 +129,7 @@ const TrustSection = () => {
                   {item.title}
                 </h3>
                 
-                <p className="relative z-10 text-sm leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">
+                <p className="relative z-10 text-[14px] md:text-[18px] leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">
                   {item.description}
                 </p>
               </div>

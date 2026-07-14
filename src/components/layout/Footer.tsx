@@ -21,10 +21,10 @@ export function Footer() {
     }
   };
   return (
-    <footer className="bg-[#121212] pt-[41px] md:pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between px-4 md:px-8">
-      <div className="w-full max-w-[1250px] mx-auto relative z-10">
+    <footer className="bg-[#121212] pt-[41px] md:pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between">
+      <div className="container mx-auto px-4 lg:px-12 relative z-10">
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-10 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-12 md:mb-20 lg:mb-28 relative z-10">
           
           {/* Column 1 */}
           <div className="col-span-1 sm:col-span-2 md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
@@ -88,15 +88,13 @@ export function Footer() {
       </div>
         
       {/* Giant Watermark Logo */}
-      <div className="w-full flex justify-center items-end mt-4 mb-4 pointer-events-none select-none relative z-0 overflow-hidden">
-        <h1 className="text-[22vw] sm:text-[20vw] font-serif text-white/[0.08] leading-[0.8] m-0 p-0 tracking-[-0.04em] translate-y-[-2%]">
+      <div className="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 mb-8 md:mb-16 pointer-events-none select-none relative z-0">
+        <h1 className="text-[25vw] md:text-[22vw] xl:text-[22vw] 2xl:text-[340px] font-serif text-white/[0.08] leading-[0.8] m-0 p-0 tracking-[-0.04em] whitespace-nowrap">
           Closeté
         </h1>
       </div>
       
-      <div className="w-full max-w-[1250px] mx-auto border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10 flex justify-center items-center">
-        {/* Golden half-moon glow */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[600px] h-[80px] md:h-[120px] bg-[#C98C28]/30 blur-[40px] rounded-t-full pointer-events-none z-0" />
+      <div className="container mx-auto px-4 lg:px-12 border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10 flex justify-center items-center">
         <p className="relative z-10">© 2026 Closete. All rights reserved.</p>
       </div>
     </footer>
