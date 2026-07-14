@@ -10,11 +10,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.5, // slightly slower for that premium, heavy feel
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard ease-out
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
+      lerp: 0.1, // A good default for smooth scrolling
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });

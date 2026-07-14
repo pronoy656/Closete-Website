@@ -25,7 +25,6 @@ export function MapSection() {
             alt="World Map showing UAE"
             fill
             className="object-cover object-center scale-[1.15]"
-            priority
           />
           
           {/* Overlays */}

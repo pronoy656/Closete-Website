@@ -26,7 +26,6 @@ export function OperateSection() {
             alt="World Map showing UAE"
             fill
             className="object-contain"
-            priority
           />
           
           {/* Dubai Map Pin */}

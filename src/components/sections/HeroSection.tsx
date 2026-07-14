@@ -360,13 +360,18 @@ export function HeroSection() {
         </motion.div>
       </div>
 
-      <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.4 }}
-          className="relative w-full z-10 h-[380px] sm:h-[440px] md:h-[500px]"
-        >
-          {CAROUSEL_DATA.map((item, index) => {
+      <div className="container mx-auto px-4 lg:px-12 w-full relative z-10">
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.4 }}
+            className="relative w-full h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden"
+            style={{
+              maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)",
+              WebkitMaskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)"
+            }}
+          >
+            {CAROUSEL_DATA.map((item, index) => {
             const posIndex = (index - activeIndex + 12) % 12;
             const pos = CAROUSEL_POSITIONS[posIndex];
             
@@ -414,6 +419,7 @@ export function HeroSection() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 25vw"
+                  priority={pos.isCenter || pos.zIndex >= 20}
                 />
 
                 {/* User info bar - visible only on center card */}
@@ -457,6 +463,7 @@ export function HeroSection() {
             );
           })}
         </motion.div>
+      </div>
     </section>
   );
 }
