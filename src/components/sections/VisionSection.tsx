@@ -69,7 +69,7 @@ export function VisionSection() {
       {/* --- CONTENT LAYER --- */}
       <div className="relative z-10 max-w-5xl text-center space-y-12">
         {/* Header Text */}
-        <div className="space-y-4 relative">
+        <div className="space-y-4 relative top-[20px] md:top-[30px]">
           <h2 className="text-[32px] md:text-6xl font-serif tracking-tight">Our Vision</h2>
           <motion.p 
             initial={{ opacity: 0, y: 15 }}
@@ -166,7 +166,7 @@ export function VisionSection() {
       {/* --- FLOATING DECORATIONS (Desktop Only) --- */}
       <div className="absolute inset-0 w-full max-w-[1920px] mx-auto pointer-events-none hidden md:block">
         {/* Top Left: Shield/Lock Icon */}
-        <div className="absolute top-[30%] left-[14%] transition-transform hover:scale-105 pointer-events-auto">
+        <div className="absolute top-[20%] left-[18%] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative w-[180px] h-[180px]">
             <Image 
               src="/Group 1707483227.png" 
@@ -178,7 +178,7 @@ export function VisionSection() {
         </div>
 
         {/* Top Right: Watch Image */}
-        <div className="absolute top-[27%] right-[10%] rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
+        <div className="absolute top-[27%] right-[18%] rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative inline-flex items-center justify-center shadow-2xl">
             {/* Background Image / Frame */}
             <Image 
@@ -186,7 +186,7 @@ export function VisionSection() {
               alt="Watch Frame Background"
               width={340}
               height={260}
-              className="w-[240px] h-auto object-contain drop-shadow-2xl"
+              className="w-[180px] h-auto object-contain drop-shadow-2xl"
             />
             {/* Foreground Watch Image */}
             <div className="absolute inset-2.5 rounded-[18px] overflow-hidden">
@@ -201,7 +201,7 @@ export function VisionSection() {
         </div>
 
         {/* Bottom Left: Bag Image */}
-        <div className="absolute bottom-[2%] left-[14%] -rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
+        <div className="absolute bottom-[10%] left-[20%] -rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative inline-flex items-center justify-center shadow-2xl">
             {/* Background Image / Frame */}
             <Image 
@@ -209,7 +209,7 @@ export function VisionSection() {
               alt="Bag Frame Background"
               width={340}
               height={260}
-              className="w-[240px] h-auto object-contain drop-shadow-2xl"
+              className="w-[180px] h-auto object-contain drop-shadow-2xl"
             />
             {/* Foreground Bag Image */}
             <div className="absolute inset-2.5 rounded-[18px] overflow-hidden">
@@ -224,7 +224,7 @@ export function VisionSection() {
         </div>
 
         {/* Bottom Right: Crown Icon */}
-        <div className="absolute bottom-[2%] right-[15%] transition-transform hover:scale-105 pointer-events-auto">
+        <div className="absolute bottom-[12%] right-[24%] transition-transform hover:scale-105 pointer-events-auto">
           <div className="relative w-[180px] h-[180px]">
             <Image 
               src="/Group 1707483228.png" 

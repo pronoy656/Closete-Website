@@ -4,17 +4,18 @@ import Image from "next/image";
 
 export function MapSection() {
   return (
-    <section className="pt-[70px] lg:pt-40 pb-0 lg:pb-10 px-6 lg:px-12 bg-transparent relative z-10 w-full flex justify-center">
-      <div 
-        className="max-w-7xl w-full p-4 lg:p-8 flex flex-col items-center text-center relative overflow-hidden rounded-[2.5rem]"
-        style={{ background: "linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%)" }}
-      >
+    <section className="pt-[70px] lg:pt-40 pb-0 lg:pb-10 bg-transparent relative z-10 w-full">
+      <div className="container mx-auto px-4 lg:px-12">
+        <div 
+          className="w-full p-4 lg:p-8 flex flex-col items-center text-center relative overflow-hidden rounded-[2.5rem]"
+          style={{ background: "linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%)" }}
+        >
 
         {/* Headings */}
-        <h2 className="text-[26px] lg:text-[2.75rem] font-serif text-[#f2f2f2] tracking-tight mb-2 mt-2">
+        <h2 className="font-serif text-white mb-2 mt-2" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
           Where we Operate
         </h2>
-        <p className="text-[#a1a1aa] max-w-2xl text-[14px] lg:text-[15px] leading-relaxed mb-6">
+        <p className="max-w-2xl text-[14px] lg:text-[18px] leading-relaxed mb-6 mx-auto" style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }}>
           Closete is currently operating in Dubai, with expansion across the UAE<br className="hidden md:block" /> planned in the coming months.
         </p>
 
@@ -30,7 +31,7 @@ export function MapSection() {
           {/* Overlays */}
           <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
             {/* Positioning wrapper: shifts center roughly to UAE on a standard world map */}
-            <div className="relative left-[12%] sm:left-[9%] top-[-9%] flex flex-col items-center">
+            <div className="relative left-[12%] sm:left-[9%] top-[-9%] flex flex-col items-center md:translate-x-[50px] md:translate-y-[2px]">
               
               {/* Dubai Tooltip */}
               <div className="absolute -top-[40px] md:-top-[70px] bg-[#F6AD31] text-black font-bold px-2.5 py-1 md:px-4 md:py-2 rounded-lg md:rounded-xl text-[13px] md:text-lg flex items-center gap-2 md:gap-2.5 shadow-xl whitespace-nowrap z-20 leading-tight">
@@ -107,6 +108,7 @@ export function MapSection() {
             luxury resale &ndash; starting with a highly controlled, trusted local experience.
           </span>
         </p>
+      </div>
       </div>
     </section>
   );

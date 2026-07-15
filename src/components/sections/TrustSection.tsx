@@ -125,7 +125,7 @@ const TrustSection = () => {
                   </div>
                 </div>
 
-                <h3 className="relative z-10 text-base font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">
+                <h3 className="relative z-10 text-[20px] font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">
                   {item.title}
                 </h3>
                 

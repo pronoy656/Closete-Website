@@ -31,8 +31,9 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${dmSans.variable} ${playfair.variable} h-full antialiased scroll-smooth`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-[#0f0f0f] text-[#f2f2f2] font-sans selection:bg-[#d4af37]/30">
+      <body className="min-h-full flex flex-col bg-[#0f0f0f] text-[#f2f2f2] font-sans selection:bg-[#d4af37]/30" suppressHydrationWarning>
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>

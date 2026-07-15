@@ -82,35 +82,39 @@ const FALLING_PARTICLES = [
   { left: "95%", delay: 0.9, dur: 5.3 }
 ];
 
+const LuxuryStar = ({ className, style }: { className?: string, style?: React.CSSProperties }) => (
+  <svg className={className} style={style} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 0C12 6.62742 17.3726 12 24 12C17.3726 12 12 17.3726 12 24C12 17.3726 6.62742 12 0 12C6.62742 12 12 6.62742 12 0Z" fill="currentColor"/>
+  </svg>
+);
+
 export const Stars = ({ animated = true }: { animated?: boolean }) => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     {STAR_POSITIONS.map((s, i) => (
-      <div
-        key={i}
-        className="absolute w-[3px] h-[3px] bg-white rounded-full"
+      <LuxuryStar
+        key={`static-${i}`}
+        className="absolute text-[#F4D381]"
         style={{
+          width: i % 3 === 0 ? '14px' : '8px',
+          height: i % 3 === 0 ? '14px' : '8px',
           top: s.top,
           left: s.left,
-          opacity: animated ? 0.45 : 0.2,
+          opacity: animated ? 0.6 : 0.3,
           animation: animated ? `pulse ${s.dur} ${s.delay} infinite` : 'none',
         }}
       />
     ))}
     {animated && FALLING_PARTICLES.map((p, i) => (
-      <motion.div
+      <LuxuryStar
         key={`particle-${i}`}
-        className="absolute w-[2px] h-[2px] bg-white rounded-full"
-        style={{ left: p.left }}
-        initial={{ top: "-15%", opacity: 0 }}
-        animate={{ 
-          top: "100%", 
-          opacity: [0, 0.8, 0.8, 0],
-        }}
-        transition={{
-          duration: p.dur,
-          repeat: Infinity,
-          ease: "linear",
-          delay: p.delay,
+        className="absolute text-[#E1C24E]"
+        style={{ 
+          width: i % 2 === 0 ? '10px' : '6px',
+          height: i % 2 === 0 ? '10px' : '6px',
+          left: p.left,
+          top: 0,
+          opacity: 0,
+          animation: `particle-fall ${p.dur}s linear ${p.delay}s infinite`
         }}
       />
     ))}
@@ -170,13 +174,57 @@ const CAROUSEL_DATA = [
 
 export function HeroSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  // Swipe and interaction states
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    // Pause auto-play when user is interacting via touch or hover
+    if (isHovered || touchStart !== null) return;
+    
     const interval = setInterval(() => {
       setActiveIndex((current) => (current + 1) % 12);
-    }, 1500); // Rotate every 1.5 seconds
+    }, 2500); // 2.5 seconds for better swipe UX
     return () => clearInterval(interval);
-  }, []);
+  }, [isHovered, touchStart]);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) {
+      setTouchStart(null);
+      return;
+    }
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 40;
+    const isRightSwipe = distance < -40;
+
+    if (isLeftSwipe) {
+      setActiveIndex((prev) => (prev + 1) % 12);
+    } else if (isRightSwipe) {
+      setActiveIndex((prev) => (prev - 1 + 12) % 12);
+    }
+    
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   return (
     <section
@@ -279,11 +327,8 @@ export function HeroSection() {
       <div className="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center pt-[125px] md:pt-40 pb-0">
 
         {/* Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65 }}
-          className={`${playfair.className} font-light leading-[1.1] tracking-normal text-center mb-4`}
+        <h1
+          className={`${playfair.className} font-light leading-[1.1] tracking-normal text-center mb-4 animate-fade-in-up`}
         >
           <span className="block mb-2 text-[36px] md:text-[72px] pb-1 md:pb-2" style={{
             background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)",
@@ -299,26 +344,22 @@ export function HeroSection() {
           }}>
             Authentic Luxury, Safely
           </span>
-        </motion.h1>
+        </h1>
 
         {/* Subtext */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.1 }}
-          className="leading-relaxed mb-8 font-['DM_Sans'] text-[14px] md:text-[18px] text-white/90 font-light max-w-[850px] tracking-wide"
+        <p
+          className="leading-relaxed mb-8 font-['DM_Sans'] text-[14px] md:text-[18px] text-white/90 font-light max-w-[850px] tracking-wide animate-fade-in-up"
+          style={{ animationDelay: '0.1s' }}
         >
           Closete is a curated marketplace for luxury fashion, combining authentication, secure payments, <br className="hidden md:block" />
           and controlled delivery – so you can buy and sell with complete confidence.
-        </motion.p>
+        </p>
 
         {/* Dubai Pill */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.55, delay: 0.18 }}
-          className="inline-flex items-center justify-center gap-2.5 px-3 py-[10px] md:py-2.5 rounded-[32px] mb-10 w-fit max-w-[95vw] mx-auto"
+        <div
+          className="inline-flex items-center justify-center gap-2.5 px-3 py-[10px] md:py-2.5 rounded-[32px] mb-10 w-fit max-w-[95vw] mx-auto animate-fade-in-up"
           style={{ 
+            animationDelay: '0.18s',
             background: "rgba(255, 255, 255, 0.08)", // Lighter premium glass
             backdropFilter: "blur(24px)",
             WebkitBackdropFilter: "blur(24px)",
@@ -340,14 +381,12 @@ export function HeroSection() {
               <path d="M12 0C12.5 8 16 11.5 24 12C16 12.5 12.5 16 12 24C11.5 16 8 12.5 0 12C8 11.5 11.5 8 12 0Z" fill="black" stroke="black" strokeWidth="0.75" strokeLinejoin="round" />
             </svg>
           </div>
-        </motion.div>
+        </div>
 
         {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.25 }}
-          className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 mb-[30px] md:mb-[74px] w-full max-w-[340px] md:max-w-none"
+        <div
+          className="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 mb-[30px] md:mb-[74px] w-full max-w-[340px] md:max-w-none animate-fade-in-up"
+          style={{ animationDelay: '0.25s' }}
         >
           <GoldButton href="#ios" size="lg" className="flex items-center justify-center gap-2 w-full md:w-[280px] whitespace-nowrap">
             Download On iOS
@@ -357,44 +396,54 @@ export function HeroSection() {
             Download On Android
             <ArrowRight color="black" className="w-5 h-5 flex-shrink-0" />
           </GoldButton>
-        </motion.div>
+        </div>
       </div>
 
       <div className="container mx-auto px-4 lg:px-12 w-full relative z-10">
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.4 }}
-            className="relative w-full h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden"
+        <div
+            className="relative w-full h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden animate-fade-in-up"
             style={{
+              animationDelay: '0.4s',
               maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)",
               WebkitMaskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)"
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
           >
             {CAROUSEL_DATA.map((item, index) => {
             const posIndex = (index - activeIndex + 12) % 12;
             const pos = CAROUSEL_POSITIONS[posIndex];
             
-            const getClamp = (vw: number) => {
-              const maxPx = vw * 12.5; // based on 1250px container
+            const getTranslateX = (vw: number, px: number) => {
+              if (windowWidth === 0) {
+                // Return just px on SSR, will update on client hydration
+                return px;
+              }
+              const vwInPx = (vw / 100) * windowWidth;
+              const maxPx = vw * 12.5;
               const minBound = Math.min(0, maxPx);
               const maxBound = Math.max(0, maxPx);
-              return `clamp(${minBound}px, ${vw}vw, ${maxBound}px)`;
+              const clampedVw = Math.max(minBound, Math.min(vwInPx, maxBound));
+              // Return raw number for perfect framer-motion interpolation
+              return px + clampedVw;
             };
 
             return (
               <motion.div
                 key={index}
-                className="absolute overflow-hidden w-[240px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[360px] md:h-[480px]"
+                className="absolute overflow-hidden left-1/2 -ml-[120px] sm:-ml-[150px] md:-ml-[180px] w-[240px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[360px] md:h-[480px]"
                 initial={false}
                 animate={{
-                  x: `calc(-50% + ${pos.xPx}px + ${getClamp(pos.xVw)})`,
+                  x: getTranslateX(pos.xVw, pos.xPx),
                   y: "-50%",
                   scale: pos.scale,
                   opacity: pos.opacity,
                   zIndex: pos.zIndex,
                   boxShadow: pos.isCenter
-                    ? "0 0 50px rgba(212,175,55,0.22), 0 24px 48px rgba(0,0,0,0.6)"
+                    ? "0 24px 48px rgba(0,0,0,0.6)"
                     : "0 8px 32px rgba(0,0,0,0.4)",
                 }}
                 transition={{
@@ -403,13 +452,11 @@ export function HeroSection() {
                 }}
                 style={{
                   top: "50%",
-                  left: "50%",
                   borderRadius: "16px",
-                  border: pos.isCenter ? "2px solid transparent" : "none",
+                  border: pos.isCenter ? "3px solid transparent" : "none",
                   background: pos.isCenter 
-                    ? "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box"
+                    ? "linear-gradient(#0f0f0f, #0f0f0f) padding-box, linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box"
                     : "none",
-                  willChange: "transform, opacity, z-index, box-shadow", // Force hardware acceleration
                 }}
               >
                 {/* Card image */}
@@ -462,7 +509,7 @@ export function HeroSection() {
               </motion.div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
