@@ -21,10 +21,22 @@ export function Header() {
       const targetId = href.substring(1);
       const el = document.getElementById(targetId);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        // @ts-ignore
+        if (window.lenis) {
+          // @ts-ignore
+          window.lenis.scrollTo(el);
+        } else {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
         window.history.pushState(null, "", href);
       } else if (targetId === "home") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // @ts-ignore
+        if (window.lenis) {
+          // @ts-ignore
+          window.lenis.scrollTo(0);
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
         window.history.pushState(null, "", href);
       }
     }
@@ -97,16 +109,16 @@ export function Header() {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`relative text-sm font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none ${
+                className={`relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none ${
                   activeLink === link.href
                     ? "text-white"
                     : "text-white/80 hover:text-white hover:bg-white/5"
                 }`}
-                style={activeLink === link.href ? {
-                  background: "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)",
-                  boxShadow: "inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.1)",
-                  border: "1px solid rgba(255,255,255,0.1)"
-                } : {}}
+                style={{
+                  background: activeLink === link.href ? "linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%)" : "transparent",
+                  boxShadow: activeLink === link.href ? "inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.1)" : "none",
+                  border: activeLink === link.href ? "1px solid rgba(255,255,255,0.1)" : "1px solid transparent"
+                }}
               >
                 {link.name}
               </Link>

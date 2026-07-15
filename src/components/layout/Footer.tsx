@@ -89,9 +89,18 @@ export function Footer() {
         
       {/* Giant Watermark Logo */}
       <div className="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 mb-8 md:mb-16 pointer-events-none select-none relative z-0">
-        <h1 className="text-[25vw] md:text-[22vw] xl:text-[22vw] 2xl:text-[340px] font-serif text-white/[0.08] leading-[0.8] m-0 p-0 tracking-[-0.04em] whitespace-nowrap">
-          Closeté
-        </h1>
+        <svg viewBox="0 0 660 220" overflow="visible" className="w-full h-auto text-white/[0.08]">
+          <text 
+            x="50%" 
+            y="75%" 
+            textAnchor="middle"
+            fill="currentColor" 
+            className="font-serif" 
+            style={{ fontSize: '200px', letterSpacing: '-0.02em' }}
+          >
+            Closeté
+          </text>
+        </svg>
       </div>
       
       <div className="container mx-auto px-4 lg:px-12 border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10 flex justify-center items-center">

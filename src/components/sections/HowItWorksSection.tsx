@@ -36,7 +36,7 @@ const desktopCards = [
 export function HowItWorksSection() {
   return (
     <section id="how-it-works" className="relative pt-[70px] lg:pt-20 pb-0 lg:pb-20 overflow-hidden bg-transparent">
-      <div className="container mx-auto px-4 sm:px-8 lg:px-16 relative z-10 max-w-7xl pt-0 lg:pt-6">
+      <div className="container mx-auto px-4 lg:px-12 relative z-10 pt-0 lg:pt-6">
         
         {/* Header */}
         <motion.div
@@ -53,8 +53,9 @@ export function HowItWorksSection() {
           </p>
         </motion.div>
 
-        {/* ── Desktop View (>= lg) ── */}
-        <div className="hidden lg:block relative w-full max-w-[1400px] mx-auto aspect-[1400/640]">
+        <div className="max-w-7xl mx-auto w-full lg:px-4">
+          {/* ── Desktop View (>= lg) ── */}
+          <div className="hidden lg:block relative w-full max-w-[1400px] mx-auto aspect-[1400/640]">
           
           <style>
             {`
@@ -350,6 +351,7 @@ export function HowItWorksSection() {
           </div>
         </div>
 
+        </div>
       </div>
     </section>
   );

@@ -16,6 +16,8 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     });
     
     lenisRef.current = lenis;
+    // @ts-ignore
+    window.lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
