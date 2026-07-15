@@ -255,7 +255,7 @@ export default function DeliveryPage() {
         </div>
 
         {/* Content Section */}
-        <div className={`container mx-auto px-4 max-w-7xl mt-24 md:mt-32 mb-20 ${dmSans.className}`}>
+        <div className={`container mx-auto px-4 max-w-7xl mt-8 md:mt-12 mb-20 ${dmSans.className}`}>
           <div className="bg-[#141517] border border-white/5 p-[20px] md:p-6 lg:p-8 rounded-[20px] md:rounded-[28px] space-y-4">
             {DELIVERY_SECTIONS.map((section, index) => (
               <div 

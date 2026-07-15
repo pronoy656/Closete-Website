@@ -160,7 +160,7 @@ const PRIVACY_SECTIONS = [
           <li>Withdraw consent</li>
         </ul>
         <p>To do so, contact us at:</p>
-        <a href="mailto:support@closete.app" className="text-[#E1B744] hover:underline transition-all inline-block">
+        <a href="mailto:support@closete.app" className="text-[#FFAF2C] hover:underline transition-all inline-block">
           support@closete.app
         </a>
       </div>
@@ -336,7 +336,7 @@ export default function PrivacyPage() {
         </div>
 
         {/* Content Section */}
-        <div className={`container mx-auto px-4 max-w-7xl mt-[70px] md:mt-32 mb-20 ${dmSans.className}`}>
+        <div className={`container mx-auto px-4 max-w-7xl mt-8 md:mt-12 mb-20 ${dmSans.className}`}>
           <div className="bg-[#141517] p-[20px] md:p-6 lg:p-8 rounded-[20px] md:rounded-[28px] space-y-4">
             {PRIVACY_SECTIONS.map((section, index) => (
               <div 
