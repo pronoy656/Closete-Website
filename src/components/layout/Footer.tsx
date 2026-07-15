@@ -88,7 +88,7 @@ export function Footer() {
       </div>
         
       {/* Giant Watermark Logo */}
-      <div className="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 mb-8 md:mb-16 pointer-events-none select-none relative z-0">
+      <div className="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 -mb-2 md:-mb-6 pointer-events-none select-none relative z-0">
         <svg viewBox="0 0 660 220" overflow="visible" className="w-full h-auto text-white/[0.08]">
           <text 
             x="50%" 
