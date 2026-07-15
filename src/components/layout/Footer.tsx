@@ -24,7 +24,7 @@ export function Footer() {
     <footer className="bg-[#121212] pt-[41px] md:pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between">
       <div className="container mx-auto px-4 lg:px-12 relative z-10">
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-12 md:mb-20 lg:mb-28 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-6 md:mb-8 lg:mb-10 relative z-10">
           
           {/* Column 1 */}
           <div className="col-span-1 sm:col-span-2 md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
@@ -88,7 +88,7 @@ export function Footer() {
       </div>
         
       {/* Giant Watermark Logo */}
-      <div className="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 -mb-2 md:-mb-6 pointer-events-none select-none relative z-0">
+      <div className="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 mb-[-18px] md:mb-[-48px] pointer-events-none select-none relative z-0">
         <svg viewBox="0 0 660 220" overflow="visible" className="w-full h-auto text-white/[0.08]">
           <text 
             x="50%" 
