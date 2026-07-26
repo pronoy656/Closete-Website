@@ -12,7 +12,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
             transition={{ duration: 0.6 }}
           >
             <div className="relative rounded-3xl overflow-hidden glass p-2 border border-white/10 shadow-2xl">
@@ -37,7 +37,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6">

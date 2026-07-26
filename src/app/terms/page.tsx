@@ -248,7 +248,7 @@ export default function TermsPage() {
   return (
     <>
       <Header />
-      <main className="flex-grow bg-transparent min-h-screen pb-24 text-white">
+      <main className="flex-grow bg-transparent min-h-[100dvh] pb-24 text-white">
         
         {/* Hero Section */}
         <div className="relative w-full overflow-hidden flex flex-col items-center justify-center pt-32 pb-8" style={{ minHeight: "350px" }}>

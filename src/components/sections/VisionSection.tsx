@@ -27,7 +27,7 @@ export function VisionSection() {
   return (
     <section 
       id="our-vision" 
-      className="relative w-full min-h-[600px] md:min-h-[850px] bg-[#0a0a0a] text-white flex flex-col items-center justify-start overflow-hidden px-6 pt-[70px] md:pt-20 pb-0 md:pb-52 font-sans scroll-mt-16"
+      className="relative w-full min-h-[600px] md:min-h-[850px] bg-[#0a0a0a] text-white flex flex-col items-center justify-start overflow-hidden px-6 pt-[70px] md:pt-20 pb-0 md:pb-52 font-sans scroll-mt-[86px] lg:scroll-mt-[60px]"
     >
       
       {/* Background Particle/Star Effect (Simplified with CSS) */}
@@ -74,7 +74,7 @@ export function VisionSection() {
           <motion.p 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
             style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }}
             className="text-[14px] md:text-[18px] max-w-xl mx-auto leading-relaxed"
@@ -102,7 +102,7 @@ export function VisionSection() {
           <motion.h1 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
             variants={{
               visible: {
                 transition: {
@@ -124,7 +124,7 @@ export function VisionSection() {
           <motion.h1 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
             variants={{
               visible: {
                 transition: {

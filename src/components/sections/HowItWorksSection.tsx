@@ -35,14 +35,14 @@ const desktopCards = [
 
 export function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="relative pt-[70px] lg:pt-20 pb-0 lg:pb-20 overflow-hidden bg-transparent">
+    <section id="how-it-works" className="relative scroll-mt-[86px] lg:scroll-mt-[60px] pt-[70px] lg:pt-20 pb-0 lg:pb-20 overflow-hidden bg-transparent">
       <div className="container mx-auto px-4 lg:px-12 relative z-10 pt-0 lg:pt-6">
         
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 300px 0px" }}
           className="mb-16 text-center lg:text-left"
         >
           <h2 className="font-serif text-white mb-2" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
@@ -216,7 +216,7 @@ export function HowItWorksSection() {
               key={i}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px 0px 300px 0px" }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
               style={{
                 position: "absolute",
@@ -282,7 +282,7 @@ export function HowItWorksSection() {
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px 0px 300px 0px" }}
               className="relative w-[150px] h-[150px] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(201,156,65,0.25)]" 
               style={{ background: 'linear-gradient(90deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)' }}
             >
@@ -311,7 +311,7 @@ export function HowItWorksSection() {
                 key={i} 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px 0px 300px 0px" }}
                 transition={{ delay: i * 0.1 }}
                 className={`w-full relative flex flex-col ${i === steps.length - 1 ? 'mb-12' : 'mb-0'} z-10`}
               >

@@ -31,10 +31,12 @@
   
   .glass {
     @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)];
+    -webkit-backdrop-filter: blur(12px);
   }
   
   .glass-dark {
     @apply bg-[#151515]/80 backdrop-blur-xl border border-white/10 shadow-2xl;
+    -webkit-backdrop-filter: blur(24px);
   }
   
   .text-gradient-gold {

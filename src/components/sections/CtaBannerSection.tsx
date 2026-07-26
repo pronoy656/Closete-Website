@@ -9,7 +9,7 @@ export function CtaBannerSection() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "0px 0px 300px 0px" }}
           transition={{ duration: 0.8 }}
           className="w-full relative rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl flex items-center justify-center bg-[#0a0a0a]"
         >

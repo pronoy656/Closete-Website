@@ -77,7 +77,7 @@ export function Header() {
           <div className="flex items-center gap-2 lg:gap-0">
             {/* Mobile Menu Toggle */}
             <button
-              className="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348]"
+              className="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348] cursor-pointer touch-manipulation"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={20} strokeWidth={2.5} color="#ffffff" /> : <Menu size={20} strokeWidth={2.5} color="#ffffff" />}
@@ -147,7 +147,7 @@ export function Header() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-lg font-medium focus:outline-none outline-none ${activeLink === link.href ? "text-gold-400" : "text-[#f2f2f2]/70 hover:text-[#f2f2f2]"}`}
+              className={`text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 ${activeLink === link.href ? "text-gold-400" : "text-[#f2f2f2]/70 hover:text-[#f2f2f2]"}`}
               onClick={(e) => {
                 handleNavClick(e, link.href);
                 setIsMobileMenuOpen(false);
@@ -159,7 +159,7 @@ export function Header() {
           <GoldButton
             href="mailto:support@closete.app"
             size="md"
-            className="flex items-center gap-2 h-auto py-3"
+            className="flex items-center justify-center gap-2 h-auto py-3 cursor-pointer touch-manipulation"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Contact Us

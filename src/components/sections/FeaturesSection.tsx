@@ -46,7 +46,7 @@ export function FeaturesSection() {
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
             className="text-3xl md:text-5xl font-bold mb-6"
           >
             Powerful <span className="text-gradient">Features</span>
@@ -54,7 +54,7 @@ export function FeaturesSection() {
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
             transition={{ delay: 0.1 }}
             className="text-slate-400 text-lg"
           >
@@ -68,7 +68,7 @@ export function FeaturesSection() {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px 0px 300px 0px" }}
               transition={{ delay: index * 0.1 }}
               className="glass p-8 rounded-2xl hover:glass-dark transition-all duration-300 group cursor-pointer"
             >

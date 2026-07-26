@@ -439,6 +439,7 @@ export function HeroSection() {
                 animate={{
                   x: getTranslateX(pos.xVw, pos.xPx),
                   y: "-50%",
+                  z: 0,
                   scale: pos.scale,
                   opacity: pos.opacity,
                   zIndex: pos.zIndex,

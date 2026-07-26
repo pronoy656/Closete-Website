@@ -19,7 +19,7 @@ export function ContactSection() {
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px 0px 300px 0px" }}
                 className="text-3xl md:text-5xl font-bold mb-6"
               >
                 Let's work <br /> <span className="text-gradient">Together</span>
@@ -27,7 +27,7 @@ export function ContactSection() {
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "0px 0px 300px 0px" }}
                 transition={{ delay: 0.1 }}
                 className="text-slate-400 text-lg mb-8"
               >
@@ -49,7 +49,7 @@ export function ContactSection() {
             <motion.form 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "0px 0px 300px 0px" }}
               transition={{ delay: 0.2 }}
               className="space-y-4"
               onSubmit={(e) => e.preventDefault()}

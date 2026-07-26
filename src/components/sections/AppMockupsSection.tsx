@@ -64,7 +64,7 @@ export function AppMockupsSection() {
   }, [handleNext]);
 
   return (
-    <section id="app-preview" className={`bg-[#0a0a0a] pt-[70px] lg:pt-30 pb-0 lg:pb-12 overflow-hidden text-white ${dmSans.className}`}>
+    <section id="app-preview" className={`scroll-mt-[86px] lg:scroll-mt-[60px] bg-[#0a0a0a] pt-[70px] lg:pt-30 pb-0 lg:pb-12 overflow-hidden text-white ${dmSans.className}`}>
       <style>{`
         .notch-main-clip {
           clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 60px) 0%, calc(50% + 60px) 30px, calc(50% - 60px) 30px, calc(50% - 60px) 0%);
