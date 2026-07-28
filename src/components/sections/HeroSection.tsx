@@ -5,9 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Heart, ArrowRight } from "lucide-react";
 import { GoldButton } from "@/components/ui/GoldButton";
-import { Playfair_Display } from "next/font/google";
-
-const playfair = Playfair_Display({ subsets: ["latin"] });
 
 // Stable star positions (avoids hydration mismatch from Math.random on server)
 const STAR_POSITIONS = [
@@ -277,48 +274,18 @@ export function HeroSection() {
         }}
       />
 
-      {/* ── Torchlight 1: Narrow Beam ──────────────────────── */}
+      {/* ── Torchlight: Unified Beam ──────────────────────── */}
       <div
         className="absolute pointer-events-none"
         style={{
           top: "0%",
           left: "50%",
           transform: "translateX(-50%)",
-          width: "500px",
-          height: "550px",
-          background: "linear-gradient(to bottom, transparent 0%, rgba(255,215,60,0.15) 5%, rgba(230,170,30,0.05) 40%, transparent 100%)",
-          clipPath: "polygon(35% 0, 65% 0, 100% 100%, 0 100%)",
-          filter: "blur(140px)",
-        }}
-      />
-
-      {/* ── Torchlight 2: Medium Beam ──────────────────────── */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: "0%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "900px",
+          width: "1200px",
           height: "600px",
-          background: "linear-gradient(to bottom, transparent 0%, rgba(210,140,10,0.12) 8%, rgba(180,110,10,0.03) 45%, transparent 100%)",
-          clipPath: "polygon(42% 0, 58% 0, 100% 100%, 0 100%)",
-          filter: "blur(180px)",
-        }}
-      />
-
-      {/* ── Torchlight 3: Wide Beam ────────────────────────── */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: "0%",
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: "1400px",
-          height: "650px",
-          background: "linear-gradient(to bottom, transparent 0%, rgba(175,100,5,0.08) 12%, rgba(120,60,0,0.02) 50%, transparent 100%)",
-          clipPath: "polygon(46% 0, 54% 0, 100% 100%, 0 100%)",
-          filter: "blur(220px)",
+          background: "linear-gradient(to bottom, transparent 0%, rgba(210,140,10,0.15) 10%, rgba(120,60,0,0.05) 50%, transparent 100%)",
+          clipPath: "polygon(40% 0, 60% 0, 100% 100%, 0 100%)",
+          filter: "blur(60px)",
         }}
       />
 
@@ -328,7 +295,8 @@ export function HeroSection() {
 
         {/* Heading */}
         <h1
-          className={`${playfair.className} font-light leading-[1.1] tracking-normal text-center mb-4 animate-fade-in-up`}
+          className="font-light leading-[1.1] tracking-normal text-center mb-4 animate-fade-in-up"
+          style={{ fontFamily: "var(--font-playfair)" }}
         >
           <span className="block mb-2 text-[36px] md:text-[72px] pb-1 md:pb-2" style={{
             background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)",
@@ -467,7 +435,7 @@ export function HeroSection() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 25vw"
-                  priority={pos.isCenter || pos.zIndex >= 20}
+                  priority={index === 0}
                 />
 
                 {/* User info bar - visible only on center card */}

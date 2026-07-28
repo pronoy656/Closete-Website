@@ -13,14 +13,12 @@ export function CtaBannerSection() {
           transition={{ duration: 0.8 }}
           className="w-full relative rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl flex items-center justify-center bg-[#0a0a0a]"
         >
-        {/* Desktop Image */}
         <Image 
           src="/Group 1707483234 (1).png" 
           alt="Call to Action Desktop" 
           width={1250}
           height={500}
           className="hidden md:block w-full h-auto object-cover" 
-          priority
         />
         {/* Mobile/Responsive Image */}
         <Image 
@@ -29,7 +27,6 @@ export function CtaBannerSection() {
           width={800}
           height={800}
           className="block md:hidden w-full h-auto object-cover" 
-          priority
         />
         </motion.div>
       </div>

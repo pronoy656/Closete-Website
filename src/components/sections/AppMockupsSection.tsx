@@ -2,12 +2,8 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { Playfair_Display, DM_Sans } from 'next/font/google';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-
-const playfair = Playfair_Display({ subsets: ['latin'] });
-const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600'] });
 
 const POSITIONS = [
   // 0: Center
@@ -64,7 +60,7 @@ export function AppMockupsSection() {
   }, [handleNext]);
 
   return (
-    <section id="app-preview" className={`scroll-mt-[86px] lg:scroll-mt-[60px] bg-[#0a0a0a] pt-[70px] lg:pt-30 pb-0 lg:pb-12 overflow-hidden text-white ${dmSans.className}`}>
+    <section id="app-preview" className={`scroll-mt-[86px] lg:scroll-mt-[60px] bg-[#0a0a0a] pt-[70px] lg:pt-30 pb-0 lg:pb-12 overflow-hidden text-white`}>
       <style>{`
         .notch-main-clip {
           clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 60px) 0%, calc(50% + 60px) 30px, calc(50% - 60px) 30px, calc(50% - 60px) 0%);
@@ -78,7 +74,7 @@ export function AppMockupsSection() {
       <div className="container mx-auto px-4 lg:px-12">
         {/* --- HEADER --- */}
         <div className="max-w-5xl mx-auto text-center mb-8 space-y-2 md:space-y-6 relative z-20">
-          <h2 className={`${playfair.className} text-[32px] md:text-6xl text-gray-100`}>
+          <h2 className="text-[32px] md:text-6xl text-gray-100" style={{ fontFamily: "var(--font-playfair)" }}>
           Designed for a Seamless Experience
         </h2>
         <p style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }} className="text-[14px] md:text-[18px] max-w-2xl mx-auto leading-relaxed">
@@ -208,7 +204,7 @@ export function AppMockupsSection() {
                 <path d="M -1 1.5 L 5 1.5 C 10 1.5, 12 2.5, 14 5.5 L 17 12.5 C 18 15.5, 19 16.5, 23 16.5 L 97 16.5 C 101 16.5, 102 15.5, 103 12.5 L 106 5.5 C 108 2.5, 110 1.5, 115 1.5 L 121 1.5 L 121 -10 L -1 -10 Z" fill="#0a0a0a" />
               </svg>
 
-              <Image src={src} alt={`App Mockup ${index}`} fill className="object-cover z-0" priority />
+              <Image src={src} alt={`App Mockup ${index}`} fill className="object-cover z-0" priority={index === 0} />
               
               {/* Gradient Overlay for unfocused mockups */}
               <motion.div 
