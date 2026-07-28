@@ -19,11 +19,11 @@ const POSITIONS = [
 ];
 
 const MOCKUP_IMAGES = [
-  "/Home.png", // Initially Center
-  "/Product Vie.png", // Initially Right-1
-  "/Payment.png", // Initially Far Right
-  "/Review Listing.png", // Initially Far Left
-  "/Order Confirmation.png", // Initially Left-1
+  "/Home.webp", // Initially Center
+  "/Product Vie.webp", // Initially Right-1
+  "/Payment.webp", // Initially Far Right
+  "/Review Listing.webp", // Initially Far Left
+  "/Order Confirmation.webp", // Initially Left-1
 ];
 
 export function AppMockupsSection() {
@@ -37,18 +37,30 @@ export function AppMockupsSection() {
     setActiveIndex((current) => (current - 1 + 5) % 5);
   }, []);
 
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
   useEffect(() => {
-    const getIntervalTime = () => window.innerWidth < 768 ? 3500 : 1500;
+    setWindowWidth(window.innerWidth);
     
-    let interval = setInterval(() => {
-      handleNext();
-    }, getIntervalTime()); 
+    let interval: NodeJS.Timeout | undefined;
+    
+    const startInterval = () => {
+      // Only auto-play on desktop (>= 768px)
+      if (window.innerWidth >= 768) {
+        interval = setInterval(() => {
+          handleNext();
+        }, 3000);
+      }
+    };
+
+    startInterval();
 
     const handleResize = () => {
+      setWindowWidth(window.innerWidth);
       clearInterval(interval);
-      interval = setInterval(() => {
-        handleNext();
-      }, getIntervalTime());
+      startInterval();
     };
 
     window.addEventListener('resize', handleResize);
@@ -58,6 +70,34 @@ export function AppMockupsSection() {
       window.removeEventListener('resize', handleResize);
     };
   }, [handleNext]);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) {
+      setTouchStart(null);
+      return;
+    }
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 40;
+    const isRightSwipe = distance < -40;
+
+    if (isLeftSwipe) {
+      handleNext();
+    } else if (isRightSwipe) {
+      handlePrev();
+    }
+    
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
 
   return (
     <section id="app-preview" className={`scroll-mt-[86px] lg:scroll-mt-[60px] bg-[#0a0a0a] pt-[70px] lg:pt-30 pb-0 lg:pb-12 overflow-hidden text-white`}>
@@ -84,26 +124,34 @@ export function AppMockupsSection() {
       </div>
 
       {/* --- PHONE DISPLAY AREA (CAROUSEL) --- */}
-      <div className="relative flex items-center justify-center h-[500px] md:h-[650px] w-full">
+      <div 
+        className="relative flex items-center justify-center h-[500px] md:h-[650px] w-full"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
         {MOCKUP_IMAGES.map((src, index) => {
           const posIndex = (index - activeIndex + 5) % 5;
           const pos = POSITIONS[posIndex];
           
-          const getClamp = (vw: number) => {
-            const maxPx = vw * 12.5; // based on 1250px container
+          const getTranslateX = (vw: number, px: number) => {
+            if (windowWidth === 0) return px;
+            const vwInPx = (vw / 100) * windowWidth;
+            const maxPx = vw * 12.5;
             const minBound = Math.min(0, maxPx);
             const maxBound = Math.max(0, maxPx);
-            return `clamp(${minBound}px, ${vw}vw, ${maxBound}px)`;
+            const clampedVw = Math.max(minBound, Math.min(vwInPx, maxBound));
+            return px + clampedVw;
           };
 
           return (
             <motion.div
               key={index}
-              className="absolute overflow-hidden rounded-[30px] md:rounded-[40px] bg-[#0a0a0a] w-[220px] h-[480px] md:w-[280px] md:h-[600px]"
+              className="absolute overflow-hidden rounded-[30px] md:rounded-[40px] bg-[#0a0a0a] w-[220px] h-[480px] md:w-[280px] md:h-[600px] left-1/2 -ml-[110px] md:-ml-[140px] top-1/2 -mt-[240px] md:-mt-[300px]"
               initial={false}
               animate={{
-                x: `calc(-50% + ${pos.xPx}px + ${getClamp(pos.xVw)})`,
-                y: "-50%",
+                x: getTranslateX(pos.xVw, pos.xPx),
+                y: 0,
                 scale: pos.scale,
                 opacity: pos.opacity,
                 zIndex: pos.zIndex,
@@ -114,9 +162,7 @@ export function AppMockupsSection() {
                 ease: [0.16, 1, 0.3, 1], // Smooth premium ease similar to Apple/Hero section
               }}
               style={{
-                top: "50%",
-                left: "50%",
-                willChange: "transform, opacity, z-index, box-shadow",
+                willChange: "transform, opacity",
               }}
             >
               {/* --- GOLDEN BORDER (Active Center) --- */}
@@ -209,7 +255,7 @@ export function AppMockupsSection() {
                 alt={`App Mockup ${index}`} 
                 fill 
                 className="object-cover z-0" 
-                priority={index === 0} 
+                priority
                 sizes="(max-width: 768px) 220px, 280px"
               />
               
