@@ -434,7 +434,7 @@ export function HeroSection() {
                   alt={`Luxury fashion item ${index + 1}`}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 25vw"
+                  sizes="(max-width: 640px) 240px, (max-width: 768px) 300px, 360px"
                   priority={index === 0}
                 />
 

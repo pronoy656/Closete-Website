@@ -204,7 +204,14 @@ export function AppMockupsSection() {
                 <path d="M -1 1.5 L 5 1.5 C 10 1.5, 12 2.5, 14 5.5 L 17 12.5 C 18 15.5, 19 16.5, 23 16.5 L 97 16.5 C 101 16.5, 102 15.5, 103 12.5 L 106 5.5 C 108 2.5, 110 1.5, 115 1.5 L 121 1.5 L 121 -10 L -1 -10 Z" fill="#0a0a0a" />
               </svg>
 
-              <Image src={src} alt={`App Mockup ${index}`} fill className="object-cover z-0" priority={index === 0} />
+              <Image 
+                src={src} 
+                alt={`App Mockup ${index}`} 
+                fill 
+                className="object-cover z-0" 
+                priority={index === 0} 
+                sizes="(max-width: 768px) 220px, 280px"
+              />
               
               {/* Gradient Overlay for unfocused mockups */}
               <motion.div 
