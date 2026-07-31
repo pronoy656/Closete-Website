@@ -63,20 +63,20 @@ const TrustSection = () => {
 
       {/* Cards Container with the Horizontal Line */}
       <div className="relative container mx-auto px-4 lg:px-12">
-        
+
         {/* The horizontal "wire" line */}
         <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[4px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
 
         <div className="flex flex-nowrap overflow-x-auto overflow-y-hidden scrollbar-hide gap-[40px] pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 justify-items-center">
           {features.map((item, index) => (
-            <div key={index} className="relative group pt-12 flex-none w-[260px] md:w-[320px] lg:w-[240px] xl:w-[280px] 2xl:w-[300px] mx-auto cursor-pointer">
-              
+            <div key={index} className="relative group pt-12 flex-none w-[220px] md:w-[320px] lg:w-[240px] xl:w-[280px] 2xl:w-[300px] mx-auto cursor-pointer">
+
               {/* Hanging "Hook" Image */}
               <div className="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
                 {/* Default Hook */}
                 <Image src="/Group 1707483204.png" alt="Card Hanger" fill className="object-contain transition-opacity duration-500 group-hover:opacity-0" />
                 {/* Golden Gradient Hook on Hover */}
-                <div 
+                <div
                   className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   style={{
                     background: 'linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)',
@@ -89,20 +89,20 @@ const TrustSection = () => {
               </div>
 
               {/* The Card */}
-              <div 
-                className="relative h-[250px] md:h-full flex flex-col items-center justify-center text-center p-4 md:p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden"
+              <div
+                className="relative h-[290px] md:h-full flex flex-col items-center justify-center text-center px-6 py-8 md:p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden"
               >
                 {/* Exact Linear Gradient Background on Hover */}
-                <div 
+                <div
                   className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"
                   style={{
                     background: "linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)"
                   }}
                 />
-                
+
                 {/* Icon Circle Wrapper */}
                 <div className="relative z-10 mb-8 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
-                  
+
                   {/* The icon */}
                   <div className="relative z-10 brightness-0 invert group-hover:invert-0 transition-all duration-500">
                     {item.icon}
@@ -110,25 +110,25 @@ const TrustSection = () => {
 
                   {/* Ellipse Base Glow */}
                   <div className="absolute top-[60%] left-1/2 -translate-x-1/2 w-[220px] h-[70px] pointer-events-none z-0 transition-opacity duration-500">
-                    <Image 
+                    <Image
                       src="/Ellipse 4867 (1).png"
-                      alt="Base Glow" 
-                      fill 
-                      className="object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-500" 
+                      alt="Base Glow"
+                      fill
+                      className="object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                     />
-                    <Image 
+                    <Image
                       src="/Ellipse 4867.png"
-                      alt="Base Glow" 
-                      fill 
-                      className="object-contain opacity-100 group-hover:opacity-0 transition-opacity duration-500" 
+                      alt="Base Glow"
+                      fill
+                      className="object-contain opacity-100 group-hover:opacity-0 transition-opacity duration-500"
                     />
                   </div>
                 </div>
 
-                <h3 className="relative z-10 text-[20px] font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">
+                <h3 className="relative z-10 text-[16px] md:text-[20px] font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">
                   {item.title}
                 </h3>
-                
+
                 <p className="relative z-10 text-[14px] md:text-[18px] leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">
                   {item.description}
                 </p>

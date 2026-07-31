@@ -228,7 +228,7 @@ export default function PrivacyPage() {
       <main className="flex-grow bg-[#111] min-h-[100dvh] pb-24 text-white">
         
         {/* Hero Section */}
-        <div className="relative w-full overflow-hidden flex flex-col items-center justify-center pt-32 pb-8" style={{ minHeight: "350px" }}>
+        <div className="relative w-full overflow-hidden flex flex-col items-center justify-center pt-24 md:pt-32 pb-8 min-h-[250px] md:min-h-[350px]">
           {/* ── Layer 1: Wide outer glow ─────────────────────── */}
           <div
             className="absolute pointer-events-none"
@@ -326,7 +326,7 @@ export default function PrivacyPage() {
 
           <div className="relative z-20 flex flex-col items-center justify-center text-center px-4 space-y-2">
             <h1 className={`text-4xl md:text-5xl lg:text-6xl ${playfair.className} font-semibold tracking-tight`}>
-              <span className="text-gradient-gold block mb-2 text-3xl md:text-5xl lg:text-5xl tracking-normal">Closeté</span>
+              <span className="text-gradient-gold block mb-2 text-5xl md:text-6xl lg:text-6xl tracking-normal">Closeté</span>
               <span className="text-white">Privacy Policy</span>
             </h1>
             <p className={`text-gray-400 mt-6 text-sm md:text-base ${dmSans.className}`}>
