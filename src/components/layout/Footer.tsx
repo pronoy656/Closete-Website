@@ -46,9 +46,48 @@ export function Footer() {
               NAVIGATION
             </h4>
             <ul className="space-y-3 mt-5">
-              <li><Link href="/privacy" className="text-white text-[14px] hover:text-gold-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-white text-[14px] hover:text-gold-400 transition-colors">Terms & Conditions</Link></li>
-              <li><Link href="/delivery" className="text-white text-[14px] hover:text-gold-400 transition-colors">Returns & Delivery Policy</Link></li>
+              <li>
+                <Link 
+                  href="/privacy" 
+                  onClick={(e) => {
+                    if (pathname === '/privacy') {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
+                  className="text-white text-[14px] hover:text-gold-400 transition-colors"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/terms" 
+                  onClick={(e) => {
+                    if (pathname === '/terms') {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
+                  className="text-white text-[14px] hover:text-gold-400 transition-colors"
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/delivery" 
+                  onClick={(e) => {
+                    if (pathname === '/delivery') {
+                      e.preventDefault();
+                      window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                  }}
+                  className="text-white text-[14px] hover:text-gold-400 transition-colors"
+                >
+                  Returns & Delivery Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
