@@ -14,7 +14,7 @@ export function CtaBannerSection() {
           style={{ transitionDuration: '0.8s' }}
         >
         <Image 
-          src="/Group 1707483234 (1).png" 
+          src="/cta-background.webp" 
           alt="Call to Action Desktop" 
           width={1250}
           height={500}
@@ -22,7 +22,7 @@ export function CtaBannerSection() {
         />
         {/* Mobile/Responsive Image */}
         <Image 
-          src="/Group 1707483252.png" 
+          src="/cta-foreground.webp" 
           alt="Call to Action Mobile" 
           width={800}
           height={800}
