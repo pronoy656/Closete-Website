@@ -94,3 +94,29 @@
   opacity: 0;
   animation: fade-in-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Scroll Reveal Utilities */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Default variations */
+.reveal-up { transform: translateY(20px); }
+.reveal-down { transform: translateY(-20px); }
+.reveal-left { transform: translateX(30px); }
+.reveal-right { transform: translateX(-30px); }
+.reveal-scale { transform: scale(0.9); }
+
+/* Delay variations (in JS we can set inline style for specific delays, or use these utility classes) */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+

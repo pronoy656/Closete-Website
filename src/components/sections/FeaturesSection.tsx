@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Zap, Shield, Search, Smartphone, Layers, LineChart } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 const features = [
   {
@@ -37,47 +37,41 @@ const features = [
 ];
 
 export function FeaturesSection() {
+  const { ref: headerRef, isIntersecting: headerIsVisible } = useInView({ triggerOnce: true });
+  const { ref: gridRef, isIntersecting: gridIsVisible } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
     <section id="features" className="py-24 relative">
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-500/50 to-transparent" />
       
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-            className="text-3xl md:text-5xl font-bold mb-6"
+        <div ref={headerRef} className="text-center max-w-3xl mx-auto mb-16">
+          <h2 
+            className={`text-3xl md:text-5xl font-bold mb-6 reveal reveal-up ${headerIsVisible ? 'is-visible' : ''}`}
           >
             Powerful <span className="text-gradient">Features</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-            transition={{ delay: 0.1 }}
-            className="text-slate-400 text-lg"
+          </h2>
+          <p 
+            className={`text-slate-400 text-lg reveal reveal-up ${headerIsVisible ? 'is-visible' : ''}`}
+            style={{ transitionDelay: '0.1s' }}
           >
             Everything you need to launch a successful marketing campaign and convert visitors into loyal customers.
-          </motion.p>
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-              transition={{ delay: index * 0.1 }}
-              className="glass p-8 rounded-2xl hover:glass-dark transition-all duration-300 group cursor-pointer"
+              className={`glass p-8 rounded-2xl hover:glass-dark transition-all duration-300 group cursor-pointer reveal reveal-up ${gridIsVisible ? 'is-visible' : ''}`}
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <div className="w-12 h-12 rounded-full bg-brand-500/10 flex items-center justify-center mb-6 group-hover:bg-brand-500/20 transition-colors">
                 {feature.icon}
               </div>
               <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
               <p className="text-slate-400 leading-relaxed">{feature.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

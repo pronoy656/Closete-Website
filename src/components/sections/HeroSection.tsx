@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Heart, ArrowRight } from "lucide-react";
 import { GoldButton } from "@/components/ui/GoldButton";
 
@@ -400,34 +399,44 @@ export function HeroSection() {
             };
 
             return (
-              <motion.div
+              <div
                 key={index}
-                className="absolute overflow-hidden left-1/2 -ml-[120px] sm:-ml-[150px] md:-ml-[180px] w-[240px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[360px] md:h-[480px]"
-                initial={false}
-                animate={{
-                  x: getTranslateX(pos.xVw, pos.xPx),
-                  y: "-50%",
-                  z: 0,
-                  scale: pos.scale,
+                className="absolute left-1/2 -ml-[120px] sm:-ml-[150px] md:-ml-[180px] w-[240px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[360px] md:h-[480px]"
+                style={{
+                  transform: `translate(${getTranslateX(pos.xVw, pos.xPx)}px, -50%) scale(${pos.scale})`,
                   opacity: pos.opacity,
                   zIndex: pos.zIndex,
-                  boxShadow: pos.isCenter
-                    ? "0 24px 48px rgba(0,0,0,0.6)"
-                    : "0 8px 32px rgba(0,0,0,0.4)",
-                }}
-                transition={{
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1], // Apple-style premium smooth ease
-                }}
-                style={{
+                  transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                   top: "50%",
-                  borderRadius: "16px",
-                  border: pos.isCenter ? "3px solid transparent" : "none",
-                  background: pos.isCenter 
-                    ? "linear-gradient(#0f0f0f, #0f0f0f) padding-box, linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box"
-                    : "none",
                 }}
               >
+                {/* Base Shadow Layer */}
+                <div 
+                  className="absolute inset-0 rounded-[16px] pointer-events-none" 
+                  style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.4)" }} 
+                />
+                
+                {/* Active Shadow Layer (crossfades opacity) */}
+                <div 
+                  className="absolute inset-0 rounded-[16px] pointer-events-none" 
+                  style={{
+                    boxShadow: "0 24px 48px rgba(0,0,0,0.6)",
+                    opacity: pos.isCenter ? 1 : 0,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                  }}
+                />
+
+                {/* Inner Content Wrapper */}
+                <div
+                  className="absolute inset-0 overflow-hidden"
+                  style={{
+                    borderRadius: "16px",
+                    border: pos.isCenter ? "3px solid transparent" : "none",
+                    background: pos.isCenter 
+                      ? "linear-gradient(#0f0f0f, #0f0f0f) padding-box, linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%) border-box"
+                      : "none",
+                  }}
+                >
                 {/* Card image */}
                 <Image
                   src={item.image}
@@ -475,7 +484,8 @@ export function HeroSection() {
                     opacity: pos.overlayOpacity 
                   }}
                 />
-              </motion.div>
+                </div>
+              </div>
             );
           })}
         </div>

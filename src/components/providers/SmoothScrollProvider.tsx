@@ -9,6 +9,12 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Disable Lenis on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      document.documentElement.style.scrollBehavior = 'smooth';
+      return;
+    }
+
     const lenis = new Lenis({
       lerp: 0.1, // A good default for smooth scrolling
       wheelMultiplier: 1,
@@ -36,6 +42,8 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     if (lenisRef.current) {
       // Smoothly scroll to top when path changes
       lenisRef.current.scrollTo(0, { duration: 1.5 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [pathname]);
 

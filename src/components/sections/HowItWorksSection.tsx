@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { Bebas_Neue } from 'next/font/google';
+import { useInView } from '@/hooks/useInView';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',
@@ -34,16 +34,18 @@ const desktopCards = [
 ];
 
 export function HowItWorksSection() {
+  const { ref: headerRef, isIntersecting: headerIsVisible } = useInView({ triggerOnce: true });
+  const { ref: desktopRef, isIntersecting: desktopIsVisible } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const { ref: mobileRef, isIntersecting: mobileIsVisible } = useInView({ triggerOnce: true, threshold: 0.1 });
+
   return (
     <section id="how-it-works" className="relative scroll-mt-[86px] lg:scroll-mt-[60px] pt-[70px] lg:pt-20 pb-0 lg:pb-20 overflow-hidden bg-transparent">
       <div className="container mx-auto px-4 lg:px-12 relative z-10 pt-0 lg:pt-6">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-          className="mb-16 text-center lg:text-left"
+        <div
+          ref={headerRef}
+          className={`mb-16 text-center lg:text-left reveal reveal-up ${headerIsVisible ? 'is-visible' : ''}`}
         >
           <h2 className="font-serif text-white mb-2" style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}>
             How Closete works
@@ -51,11 +53,11 @@ export function HowItWorksSection() {
           <p className="text-[14px] lg:text-[18px]" style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }}>
             Discover, verify, and receive luxury pieces with complete confidence.
           </p>
-        </motion.div>
+        </div>
 
         <div className="max-w-7xl mx-auto w-full lg:px-4">
           {/* ── Desktop View (>= lg) ── */}
-          <div className="hidden lg:block relative w-full max-w-[1400px] mx-auto aspect-[1400/640]">
+          <div ref={desktopRef} className="hidden lg:block relative w-full max-w-[1400px] mx-auto aspect-[1400/640]">
 
             <style>
               {`
@@ -212,20 +214,18 @@ export function HowItWorksSection() {
 
             {/* Cards */}
             {desktopCards.map((step, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
+                className={`flex items-center gap-4 xl:gap-8 z-10 reveal reveal-left ${desktopIsVisible ? 'is-visible' : ''}`}
                 style={{
+                  transitionDuration: '0.5s',
+                  transitionDelay: `${i * 0.15}s`,
                   position: "absolute",
                   left: `${(step.x / 1400) * 100}%`,
                   top: `${(step.y / 640) * 100}%`,
                   width: `${(step.w / 1400) * 100}%`,
                   height: `${(step.h / 640) * 100}%`,
                 }}
-                className="flex items-center gap-4 xl:gap-8 z-10"
               >
                 <div className={`shrink-0 text-[50px] xl:text-[70px] font-bold select-none leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent ${bebasNeue.className}`}>
                   {step.number}.
@@ -249,12 +249,12 @@ export function HowItWorksSection() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* ── Mobile & Tablet View (< lg) ── */}
-          <div className="lg:hidden flex flex-col items-center relative w-full pt-4 pb-0 lg:pb-12">
+          <div ref={mobileRef} className="lg:hidden flex flex-col items-center relative w-full pt-4 pb-0 lg:pb-12">
 
             {/* Removed old Background Glow Image for Mobile */}
 
@@ -279,11 +279,8 @@ export function HowItWorksSection() {
                 <Image src="/Group (1).png" alt="Sunburst glow" fill className="object-contain" />
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-                className="relative w-[150px] h-[150px] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(201,156,65,0.25)]"
+              <div
+                className={`relative w-[150px] h-[150px] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(201,156,65,0.25)] reveal reveal-scale ${mobileIsVisible ? 'is-visible' : ''}`}
                 style={{ background: 'linear-gradient(90deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%)' }}
               >
                 <span
@@ -298,7 +295,7 @@ export function HowItWorksSection() {
                 >
                   Closeté
                 </span>
-              </motion.div>
+              </div>
             </div>
 
             {/* Stacked Cards */}
@@ -307,13 +304,10 @@ export function HowItWorksSection() {
               <div className="absolute left-1/2 top-[-20px] bottom-10 w-px border-l border-dashed border-[#C99C41]/30 -translate-x-1/2 z-0" />
 
               {steps.map((step, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`w-full relative flex flex-col ${i === steps.length - 1 ? 'mb-12' : 'mb-0'} z-10`}
+                  className={`w-full relative flex flex-col ${i === steps.length - 1 ? 'mb-12' : 'mb-0'} z-10 reveal reveal-up ${mobileIsVisible ? 'is-visible' : ''}`}
+                  style={{ transitionDelay: `${i * 0.1}s` }}
                 >
                   {/* Arrow */}
                   <div className={`relative w-full h-[8px] ${i === 0 ? 'mt-2 mb-4' : 'my-4'} z-10`}>
@@ -348,7 +342,7 @@ export function HowItWorksSection() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

@@ -1,17 +1,17 @@
 "use client";
-import { motion } from "framer-motion";
+import { useInView } from "@/hooks/useInView";
 import Image from "next/image";
 
 export function CtaBannerSection() {
+  const { ref, isIntersecting } = useInView({ triggerOnce: true });
+
   return (
     <section className="pt-[70px] pb-12 md:py-24 relative flex justify-center overflow-hidden">
       <div className="container mx-auto px-4 lg:px-12 w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-          transition={{ duration: 0.8 }}
-          className="w-full relative rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl flex items-center justify-center bg-[#0a0a0a]"
+        <div
+          ref={ref}
+          className={`w-full relative rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl flex items-center justify-center bg-[#0a0a0a] reveal reveal-up ${isIntersecting ? 'is-visible' : ''}`}
+          style={{ transitionDuration: '0.8s' }}
         >
         <Image 
           src="/Group 1707483234 (1).png" 
@@ -28,7 +28,7 @@ export function CtaBannerSection() {
           height={800}
           className="block md:hidden w-full h-auto object-cover" 
         />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

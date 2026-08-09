@@ -2,28 +2,32 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { useInView } from '@/hooks/useInView';
 
-const TypingText = ({ text, className = "", highlight = true }: { text: string; className?: string; highlight?: boolean }) => {
+const TypingText = ({ text, className = "", highlight = true, isVisible = false }: { text: string; className?: string; highlight?: boolean; isVisible?: boolean }) => {
   return (
     <span className={className}>
       {text.split("").map((char, index) => (
-        <motion.span
+        <span
           key={index}
-          variants={{
-            hidden: { color: "rgba(242, 242, 242, 0.2)" }, // ash/grey by default
-            visible: { color: highlight ? "rgba(255, 255, 255, 1)" : "rgba(242, 242, 242, 0.2)" }
+          style={{ 
+            color: isVisible ? (highlight ? "rgba(255, 255, 255, 1)" : "rgba(242, 242, 242, 0.2)") : "rgba(242, 242, 242, 0.2)",
+            transition: 'color 0.1s linear',
+            transitionDelay: `${0.2 + index * 0.03}s`
           }}
-          transition={{ duration: 0.1 }}
         >
           {char}
-        </motion.span>
+        </span>
       ))}
     </span>
   );
 };
 
 export function VisionSection() {
+  const { ref: headerRef, isIntersecting: headerIsVisible } = useInView({ triggerOnce: true });
+  const { ref: textRef1, isIntersecting: text1IsVisible } = useInView({ triggerOnce: true });
+  const { ref: textRef2, isIntersecting: text2IsVisible } = useInView({ triggerOnce: true });
+
   return (
     <section 
       id="our-vision" 
@@ -69,18 +73,14 @@ export function VisionSection() {
       {/* --- CONTENT LAYER --- */}
       <div className="relative z-10 max-w-5xl text-center space-y-12">
         {/* Header Text */}
-        <div className="space-y-4 relative top-[20px] md:top-[30px]">
+        <div ref={headerRef} className="space-y-4 relative top-[20px] md:top-[30px]">
           <h2 className="text-[32px] md:text-6xl font-serif tracking-tight">Our Vision</h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px" }}
-            className="text-[14px] md:text-[18px] max-w-xl mx-auto leading-relaxed"
+          <p 
+            className={`text-[14px] md:text-[18px] max-w-xl mx-auto leading-relaxed reveal reveal-up ${headerIsVisible ? 'is-visible' : ''}`}
+            style={{ color: "rgba(242,242,242,0.75)", wordSpacing: "1px", transitionDuration: '0.8s', transitionDelay: '0.2s' }}
           >
             Closete was created to bring trust, transparency, and simplicity to the luxury resale market.
-          </motion.p>
+          </p>
         </div>
 
         {/* Mobile: Top Floating Elements in flow */}
@@ -99,54 +99,34 @@ export function VisionSection() {
         {/* Hero Text */}
         <div className="mt-4 md:mt-48 relative">
           {/* Desktop Version */}
-          <motion.h1 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.03,
-                  delayChildren: 0.2,
-                }
-              }
-            }}
+          <h1 
+            ref={textRef1}
             className="hidden md:block text-[20px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full max-w-6xl relative z-10 font-sans"
           >
-            <TypingText text="WE BELIEVE BUYING AND SELLING HIGH-VALUE " highlight={true} />
+            <TypingText text="WE BELIEVE BUYING AND SELLING HIGH-VALUE " highlight={true} isVisible={text1IsVisible} />
             <br />
-            <TypingText text="ITEMS SHOULD FEEL SEAMLESS, SECURE, AND " highlight={true} />
+            <TypingText text="ITEMS SHOULD FEEL SEAMLESS, SECURE, AND " highlight={true} isVisible={text1IsVisible} />
             <br />
-            <TypingText text="PREMIUM AT EVERY STEP." highlight={true} />
-          </motion.h1>
+            <TypingText text="PREMIUM AT EVERY STEP." highlight={true} isVisible={text1IsVisible} />
+          </h1>
 
           {/* Mobile Version */}
-          <motion.h1 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.03,
-                  delayChildren: 0.2,
-                }
-              }
-            }}
+          <h1 
+            ref={textRef2}
             className="md:hidden text-[20px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full relative z-10 font-sans"
           >
-            <TypingText text="WE BELIEVE BUYING " highlight={true} />
+            <TypingText text="WE BELIEVE BUYING " highlight={true} isVisible={text2IsVisible} />
             <br />
-            <TypingText text="AND SELLING HIGH-" highlight={true} />
+            <TypingText text="AND SELLING HIGH-" highlight={true} isVisible={text2IsVisible} />
             <br />
-            <TypingText text="VALUE ITEMS SHOULD " highlight={true} />
+            <TypingText text="VALUE ITEMS SHOULD " highlight={true} isVisible={text2IsVisible} />
             <br />
-            <TypingText text="FEEL SEAMLESS, " highlight={true} />
+            <TypingText text="FEEL SEAMLESS, " highlight={true} isVisible={text2IsVisible} />
             <br />
-            <TypingText text="SECURE, AND PREMIUM " highlight={true} />
+            <TypingText text="SECURE, AND PREMIUM " highlight={true} isVisible={text2IsVisible} />
             <br />
-            <TypingText text="AT EVERY STEP." highlight={true} />
-          </motion.h1>
+            <TypingText text="AT EVERY STEP." highlight={true} isVisible={text2IsVisible} />
+          </h1>
         </div>
 
         {/* Mobile: Bottom Floating Elements in flow */}

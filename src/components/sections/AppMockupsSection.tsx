@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 const POSITIONS = [
@@ -145,33 +144,24 @@ export function AppMockupsSection() {
             };
 
             return (
-              <motion.div
+              <div
                 key={index}
                 className="absolute overflow-hidden rounded-[30px] md:rounded-[40px] bg-[#0a0a0a] w-[220px] h-[480px] md:w-[280px] md:h-[600px] left-1/2 -ml-[110px] md:-ml-[140px] top-1/2 -mt-[240px] md:-mt-[300px]"
-                initial={false}
-                animate={{
-                  x: getTranslateX(pos.xVw, pos.xPx),
-                  y: 0,
-                  scale: pos.scale,
+                style={{
+                  transform: `translate3d(${getTranslateX(pos.xVw, pos.xPx)}px, 0, 0) scale(${pos.scale})`,
                   opacity: pos.opacity,
                   zIndex: pos.zIndex,
                   boxShadow: pos.isCenter ? "none" : "0 10px 30px rgba(0,0,0,0.8)",
-                }}
-                transition={{
-                  duration: 0.8,
-                  ease: [0.16, 1, 0.3, 1], // Smooth premium ease similar to Apple/Hero section
-                }}
-                style={{
+                  transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                   willChange: "transform, opacity",
                 }}
               >
                 {/* --- GOLDEN BORDER (Active Center) --- */}
-                <motion.div
+                <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 notch-main-clip"
-                  initial={false}
-                  animate={{ opacity: pos.isCenter ? 1 : 0 }}
-                  transition={{ duration: 0.8 }}
                   style={{
+                    opacity: pos.isCenter ? 1 : 0,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                     padding: "3px",
                     background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
                     WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -181,35 +171,32 @@ export function AppMockupsSection() {
                 />
 
                 {/* Notch Border (Desktop) */}
-                <motion.div
+                <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 hidden md:block"
-                  initial={false}
-                  animate={{ opacity: pos.isCenter ? 1 : 0 }}
-                  transition={{ duration: 0.8 }}
                   style={{
+                    opacity: pos.isCenter ? 1 : 0,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                     background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
                     WebkitMask: `url("data:image/svg+xml,%3Csvg width='280' height='600' viewBox='0 0 280 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 64 1.5 L 80 1.5 C 85 1.5, 87 2.5, 89 6.5 L 92 15.5 C 94 18.5, 96 20.5, 100 20.5 L 180 20.5 C 184 20.5, 186 18.5, 188 15.5 L 191 6.5 C 193 2.5, 195 1.5, 200 1.5 L 216 1.5' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E")`,
                   }}
                 />
                 {/* Notch Border (Mobile) */}
-                <motion.div
+                <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 block md:hidden"
-                  initial={false}
-                  animate={{ opacity: pos.isCenter ? 1 : 0 }}
-                  transition={{ duration: 0.8 }}
                   style={{
+                    opacity: pos.isCenter ? 1 : 0,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                     background: "linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%)",
                     WebkitMask: `url("data:image/svg+xml,%3Csvg width='220' height='480' viewBox='0 0 220 480' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 49 1.5 L 55 1.5 C 60 1.5, 62 2.5, 64 5.5 L 67 12.5 C 68 15.5, 69 16.5, 73 16.5 L 147 16.5 C 151 16.5, 152 15.5, 153 12.5 L 156 5.5 C 158 2.5, 160 1.5, 165 1.5 L 171 1.5' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E")`,
                   }}
                 />
 
                 {/* --- GREY BORDER 1PX (Inactive Sides) --- */}
-                <motion.div
+                <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 notch-main-clip"
-                  initial={false}
-                  animate={{ opacity: pos.isCenter ? 0 : 1 }}
-                  transition={{ duration: 0.8 }}
                   style={{
+                    opacity: pos.isCenter ? 0 : 1,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                     padding: "1px",
                     background: "rgba(255,255,255,0.2)",
                     WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
@@ -218,23 +205,21 @@ export function AppMockupsSection() {
                   }}
                 />
                 {/* Grey Notch Border (Desktop) */}
-                <motion.div
+                <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 hidden md:block"
-                  initial={false}
-                  animate={{ opacity: pos.isCenter ? 0 : 1 }}
-                  transition={{ duration: 0.8 }}
                   style={{
+                    opacity: pos.isCenter ? 0 : 1,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                     background: "rgba(255,255,255,0.2)",
                     WebkitMask: `url("data:image/svg+xml,%3Csvg width='280' height='600' viewBox='0 0 280 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 64 0.5 L 80 0.5 C 85 0.5, 87 1.5, 89 5.5 L 92 14.5 C 94 17.5, 96 19.5, 100 19.5 L 180 19.5 C 184 19.5, 186 17.5, 188 14.5 L 191 5.5 C 193 1.5, 195 0.5, 200 0.5 L 216 0.5' stroke='black' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
                   }}
                 />
                 {/* Grey Notch Border (Mobile) */}
-                <motion.div
+                <div
                   className="absolute inset-0 rounded-[inherit] pointer-events-none z-30 block md:hidden"
-                  initial={false}
-                  animate={{ opacity: pos.isCenter ? 0 : 1 }}
-                  transition={{ duration: 0.8 }}
                   style={{
+                    opacity: pos.isCenter ? 0 : 1,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                     background: "rgba(255,255,255,0.2)",
                     WebkitMask: `url("data:image/svg+xml,%3Csvg width='220' height='480' viewBox='0 0 220 480' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 49 0.5 L 55 0.5 C 60 0.5, 62 1.5, 64 4.5 L 67 11.5 C 68 14.5, 69 15.5, 73 15.5 L 147 15.5 C 151 15.5, 152 14.5, 153 11.5 L 156 4.5 C 158 1.5, 160 0.5, 165 0.5 L 171 0.5' stroke='black' stroke-width='1' fill='none'/%3E%3C/svg%3E")`,
                   }}
@@ -260,15 +245,15 @@ export function AppMockupsSection() {
                 />
 
                 {/* Gradient Overlay for unfocused mockups */}
-                <motion.div
+                <div
                   className="absolute inset-0 pointer-events-none z-10"
                   style={{
-                    background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%)"
+                    background: "linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%)",
+                    opacity: pos.overlayOpacity,
+                    transition: 'opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)'
                   }}
-                  animate={{ opacity: pos.overlayOpacity }}
-                  transition={{ duration: 0.8 }}
                 />
-              </motion.div>
+              </div>
             );
           })}
         </div>

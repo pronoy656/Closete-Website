@@ -1,19 +1,20 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 export function AboutSection() {
+  const { ref: leftRef, isIntersecting: leftIsVisible } = useInView({ triggerOnce: true });
+  const { ref: rightRef, isIntersecting: rightIsVisible } = useInView({ triggerOnce: true });
   return (
     <section id="about" className="py-24 relative overflow-hidden">
       <div className="container mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-            transition={{ duration: 0.6 }}
+          <div
+            ref={leftRef}
+            className={`reveal reveal-right ${leftIsVisible ? 'is-visible' : ''}`}
+            style={{ transitionDuration: '0.6s' }}
           >
             <div className="relative rounded-3xl overflow-hidden glass p-2 border border-white/10 shadow-2xl">
               <div className="aspect-square rounded-2xl overflow-hidden relative bg-gradient-to-br from-brand-900 to-slate-900">
@@ -32,13 +33,12 @@ export function AboutSection() {
                 <p className="text-sm text-slate-400">Client Satisfaction</p>
               </div>
             </div>
-          </motion.div>
+          </div>
           
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "0px 0px 300px 0px" }}
-            transition={{ duration: 0.6 }}
+          <div
+            ref={rightRef}
+            className={`reveal reveal-left ${rightIsVisible ? 'is-visible' : ''}`}
+            style={{ transitionDuration: '0.6s' }}
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               Design that <span className="text-gradient">Inspires</span>,<br />
@@ -65,7 +65,7 @@ export function AboutSection() {
             <a href="#contact" className="inline-block px-8 py-4 rounded-full bg-white text-slate-950 font-semibold transition-all hover:bg-slate-200">
               Discover Our Process
             </a>
-          </motion.div>
+          </div>
           
         </div>
       </div>
