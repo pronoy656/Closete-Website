@@ -77,7 +77,8 @@ export function Header() {
           <div className="flex items-center gap-2 lg:gap-0">
             {/* Mobile Menu Toggle */}
             <button
-              className="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348] cursor-pointer touch-manipulation"
+              className="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-all hover:bg-[#404348] active:scale-90 cursor-pointer touch-manipulation"
+              style={{ WebkitTapHighlightColor: "transparent" }}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X size={20} strokeWidth={2.5} color="#ffffff" /> : <Menu size={20} strokeWidth={2.5} color="#ffffff" />}
@@ -137,36 +138,36 @@ export function Header() {
       </div>
 
       {/* Mobile Nav */}
-      {isMobileMenuOpen && (
-        <motion.nav
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/95 border-b border-white/10 flex flex-col items-center py-6 gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
-        >
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className={`text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 ${activeLink === link.href ? "text-gold-400" : "text-[#f2f2f2]/70 hover:text-[#f2f2f2]"}`}
-              onClick={(e) => {
-                handleNavClick(e, link.href);
-                setIsMobileMenuOpen(false);
-              }}
-            >
-              {link.name}
-            </Link>
-          ))}
-          <GoldButton
-            href="mailto:support@closete.app"
-            size="md"
-            className="flex items-center justify-center gap-2 h-auto py-3 cursor-pointer touch-manipulation"
-            onClick={() => setIsMobileMenuOpen(false)}
+      <nav
+        className={`lg:hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/95 border-b border-white/10 flex flex-col items-center py-6 gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.6)] transition-all duration-300 ease-out origin-top ${
+          isMobileMenuOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-4 pointer-events-none"
+        }`}
+      >
+        {navLinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className={`text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 ${activeLink === link.href ? "text-gold-400" : "text-[#f2f2f2]/70 hover:text-[#f2f2f2]"}`}
+            onClick={(e) => {
+              handleNavClick(e, link.href);
+              setIsMobileMenuOpen(false);
+            }}
           >
-            Contact Us
-            <ArrowRight color="black" className="w-5 h-5" />
-          </GoldButton>
-        </motion.nav>
-      )}
+            {link.name}
+          </Link>
+        ))}
+        <GoldButton
+          href="mailto:support@closete.app"
+          size="md"
+          className="flex items-center justify-center gap-2 h-auto py-3 cursor-pointer touch-manipulation"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Contact Us
+          <ArrowRight color="black" className="w-5 h-5" />
+        </GoldButton>
+      </nav>
     </header>
   );
 }
