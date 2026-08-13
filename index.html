@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closeté | Authentic Luxury</title>
+    <meta name="description" content="Buy & Sell Authentic Luxury with Closeté.">
+    <meta name="keywords" content="luxury, authentic, buy, sell, premium, closete">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Closeté | Authentic Luxury">
+    <meta property="og:description" content="Buy & Sell Authentic Luxury with Closeté.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./public/1024.png">
+
+    <!-- Fonts (DM Sans & Playfair Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS v4 Browser Build -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <!-- Tailwind Custom Config -->
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+        --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+        
+        --color-gold-300: #e5c87a;
+        --color-gold-400: #d4af37;
+        --color-gold-500: #c19b62;
+        --color-gold-600: #a67c00;
+        
+        --color-brand-900: #1a1a1a;
+        --color-brand-950: #0f0f0f;
+      }
+    </style>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-full flex flex-col bg-[#0f0f0f] text-[#f2f2f2] font-sans selection:bg-[#d4af37]/30">
+
+    <!-- Header -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 lg:py-6 bg-transparent">
+      <div class="container mx-auto px-4 lg:px-12">
+        <!-- Navbar Gradient Border Wrapper (Mobile only) -->
+        <div class="w-full rounded-full p-[1px] lg:p-0 bg-gradient-to-r from-white from-10% via-gray-400/80 via-70% to-transparent lg:bg-none">
+          <!-- Navbar Inner Wrapper -->
+          <div id="navbar-inner" class="w-full flex items-center justify-between bg-gradient-to-r from-[#1F2125] to-[#101113] lg:bg-none lg:bg-transparent rounded-full lg:border-none px-2 h-[58px] lg:h-auto lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none lg:backdrop-blur-none transition-all duration-300">
+          
+          <!-- Left Group (Hamburger + Logo) -->
+          <div class="flex items-center gap-2 lg:gap-0">
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348] cursor-pointer touch-manipulation">
+              <svg id="menu-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+              <svg id="menu-icon-close" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+
+            <!-- Logo -->
+            <a href="#home" class="text-[30px] lg:text-[44px] font-serif font-medium antialiased text-gradient-gold tracking-tight ml-2 lg:ml-0 drop-shadow-sm">
+              Closeté
+            </a>
+          </div>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex items-center gap-1 relative px-2 py-1.5 rounded-full" style="background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
+            <a href="#home" class="nav-link active relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white" style="background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.1);">Home</a>
+            <a href="#how-it-works" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">How It Works</a>
+            <a href="#why-choose-us" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">Why choose us?</a>
+            <a href="#app-preview" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">App Preview</a>
+            <a href="#our-vision" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">Our Vision</a>
+          </nav>
+
+          <div class="flex items-center">
+            <a href="mailto:support@closete.app" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-1 h-[46px] lg:h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[15px] lg:text-base font-normal whitespace-nowrap">
+              Contact Us
+              <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 lg:w-4 lg:h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+
+        </div>
+        </div>
+      </div>
+
+      <!-- Mobile Nav -->
+      <nav id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/70 backdrop-blur-[24px] border-b border-white/10 flex-col items-center py-6 gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform origin-top transition-all duration-300 opacity-0 -translate-y-4">
+        <a href="#home" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-gold-400">Home</a>
+        <a href="#how-it-works" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">How It Works</a>
+        <a href="#why-choose-us" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">Why choose us?</a>
+        <a href="#app-preview" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">App Preview</a>
+        <a href="#our-vision" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">Our Vision</a>
+        
+        <a href="mailto:support@closete.app" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-2 h-auto py-3 px-6 rounded-full text-sm font-normal touch-manipulation">
+          Contact Us
+          <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative flex flex-col items-center overflow-hidden">
+            <!-- Background Layers -->
+            <div class="absolute pointer-events-none" style="top: -20%; left: 50%; transform: translateX(-50%); width: 1600px; height: 1000px; background: radial-gradient(ellipse at 50% 18%, rgba(210,140,10,0.55) 0%, rgba(175,100,5,0.35) 30%, rgba(120,60,0,0.12) 55%, transparent 72%); filter: blur(8px);"></div>
+            <div class="absolute pointer-events-none" style="top: -8%; left: 50%; transform: translateX(-50%); width: 900px; height: 700px; background: radial-gradient(ellipse at 50% 12%, rgba(255,215,60,0.45) 0%, rgba(230,170,30,0.3) 28%, rgba(180,110,10,0.12) 52%, transparent 68%); filter: blur(4px);"></div>
+            <div class="absolute pointer-events-none" style="top: -4%; left: 50%; transform: translateX(-50%); width: 360px; height: 260px; background: radial-gradient(ellipse at 50% 10%, rgba(255,245,160,0.35) 0%, rgba(255,210,60,0.15) 38%, transparent 65%); filter: blur(2px);"></div>
+            <div class="absolute pointer-events-none" style="top: 0%; left: 50%; transform: translateX(-50%); width: 1200px; height: 600px; background: linear-gradient(to bottom, transparent 0%, rgba(210,140,10,0.15) 10%, rgba(120,60,0,0.05) 50%, transparent 100%); clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%); filter: blur(60px);"></div>
+            
+            <!-- Stars Container -->
+            <div id="stars-container" class="absolute inset-0 overflow-hidden pointer-events-none"></div>
+
+            <div class="container mx-auto px-6 lg:px-12 relative z-10 flex flex-col items-center text-center pt-[125px] md:pt-40 pb-0">
+                <!-- Heading -->
+                <h1 class="font-light leading-[1.1] tracking-normal text-center mb-4 animate-fade-in-up" style="font-family: var(--font-serif)">
+                    <span class="block mb-2 text-[36px] md:text-[72px] pb-1 md:pb-2 text-gradient-gold">Buy <span class="font-['Georgia'] font-normal">&amp;</span> Sell</span>
+                    <span class="block text-[36px] md:text-[68px] pb-2" style="background: linear-gradient(89.94deg, #FFFFFF 52.51%, #999999 107.86%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Authentic Luxury, Safely</span>
+                </h1>
+
+                <!-- Subtext -->
+                <p class="leading-relaxed mb-8 font-sans text-[14px] md:text-[18px] text-white/90 font-light max-w-[850px] tracking-wide animate-fade-in-up" style="animation-delay: 0.1s">
+                    Closete is a curated marketplace for luxury fashion, combining authentication, secure payments, <br class="hidden md:block" />
+                    and controlled delivery – so you can buy and sell with complete confidence.
+                </p>
+
+                <!-- Dubai Pill -->
+                <div class="inline-flex items-center justify-center gap-2.5 px-3 py-[10px] md:py-2.5 rounded-[32px] mb-10 w-fit max-w-[95vw] mx-auto animate-fade-in-up glass" style="animation-delay: 0.18s; background-color: rgba(255,255,255,0.08); border-top: 1px solid rgba(255,255,255,0.25);">
+                    <span class="text-[#f2f2f2]/90 font-sans text-[12px] sm:text-[13px] md:text-[15px] leading-snug flex-1 text-center md:text-left">
+                        Now live in <strong class="text-white font-sans">Dubai</strong>. Expanding <br class="block md:hidden" />
+                        across <span class="text-gradient-gold font-semibold font-sans whitespace-nowrap">the UAE soon.</span>
+                    </span>
+                    <div class="w-[24px] h-[24px] md:w-[48px] md:h-[32px] rounded-full flex items-center justify-center flex-shrink-0 ml-1.5" style="background: #ffffff">
+                        <svg class="w-[16px] h-[16px] md:w-[28px] md:h-[28px] block" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C12.5 8 16 11.5 24 12C16 12.5 12.5 16 12 24C11.5 16 8 12.5 0 12C8 11.5 11.5 8 12 0Z" fill="black" stroke="black" stroke-width="0.75" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col md:flex-row items-stretch md:items-center justify-center gap-4 mb-[30px] md:mb-[74px] w-full max-w-[340px] md:max-w-none animate-fade-in-up" style="animation-delay: 0.25s">
+                    <a href="#ios" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-2 h-12 px-8 rounded-full text-base font-normal w-full md:w-[280px] whitespace-nowrap">
+                        Download On iOS
+                        <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 flex-shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <a href="#android" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-2 h-12 px-8 rounded-full text-base font-normal w-full md:w-[280px] whitespace-nowrap">
+                        Download On Android
+                        <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 flex-shrink-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Carousel Area -->
+            <div class="container mx-auto px-4 lg:px-12 w-full relative z-10">
+                <div id="hero-carousel" class="relative w-full h-[380px] sm:h-[440px] md:h-[500px] overflow-hidden animate-fade-in-up" style="animation-delay: 0.4s; mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);">
+                    <!-- Carousel items will be injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section class="pt-[70px] lg:pt-40 pb-0 lg:pb-10 bg-transparent relative z-10 w-full flex justify-center reveal reveal-up">
+            <div class="container mx-auto px-4 lg:px-12 relative">
+                <picture>
+                    <source media="(min-width: 768px)" srcset="./public/map.webp" />
+                    <source media="(max-width: 767px)" srcset="./public/where-we-operate-mobile.webp" />
+                    <img src="./public/where-we-operate-mobile.webp" alt="Where we Operate" class="w-full h-auto object-contain" />
+                </picture>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="relative scroll-mt-[86px] lg:scroll-mt-[60px] pt-[70px] lg:pt-20 pb-0 lg:pb-20 overflow-hidden bg-transparent">
+            <div class="container mx-auto px-4 lg:px-12 relative z-10 pt-0 lg:pt-6">
+
+                <!-- Header -->
+                <div class="mb-16 text-center lg:text-left reveal reveal-up">
+                    <h2 class="font-serif text-white mb-2" style="font-size: clamp(2rem, 4vw, 3rem);">
+                        How Closete works
+                    </h2>
+                    <p class="text-[14px] lg:text-[18px]" style="color: rgba(242,242,242,0.75); word-spacing: 1px;">
+                        Discover, verify, and receive luxury pieces with complete confidence.
+                    </p>
+                </div>
+
+                <div class="max-w-7xl mx-auto w-full lg:px-4">
+                    <!-- Desktop View (>= lg) -->
+                    <div class="hidden lg:block relative w-full max-w-[1400px] mx-auto aspect-[1400/640] reveal reveal-up">
+                        <style>
+                            @keyframes dash-flow {
+                                from { stroke-dashoffset: 26; }
+                                to { stroke-dashoffset: 0; }
+                            }
+                            .animate-flow {
+                                animation: dash-flow 1.5s linear infinite;
+                                will-change: stroke-dashoffset;
+                                transform: translateZ(0);
+                            }
+                        </style>
+
+                        <!-- Background Glow Image -->
+                        <div class="absolute pointer-events-none" style="left: -200px; top: 50%; transform: translateY(-50%); width: 390px; height: 550px; z-index: 0; mix-blend-mode: screen; opacity: 0.9;">
+                            <img src="./public/Frame 2087328317.png" alt="Background stars and rays" class="w-full h-full object-cover object-right">
+                        </div>
+
+                        <!-- Soft Golden Connection Glow -->
+                        <div class="absolute pointer-events-none z-0" style="left: -640px; top: 50%; transform: translateY(-50%); width: 1600px; height: 800px; background: linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%); opacity: 0.08; filter: blur(140px); mask-image: radial-gradient(ellipse 50% 50% at center, black 0%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 50% 50% at center, black 0%, transparent 100%);"></div>
+
+                        <!-- SVG Lines & Circle -->
+                        <svg viewBox="0 0 1400 640" style="overflow: visible;" class="absolute inset-0 w-full h-full pointer-events-none z-0">
+                            <defs>
+                                <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="4.77%" stop-color="#AF7413" stop-opacity="1" />
+                                    <stop offset="19.33%" stop-color="#C98C28" stop-opacity="1" />
+                                    <stop offset="38.93%" stop-color="#E2B744" stop-opacity="1" />
+                                    <stop offset="50.54%" stop-color="#FFED81" stop-opacity="1" />
+                                    <stop offset="62.1%" stop-color="#E1C24E" stop-opacity="1" />
+                                    <stop offset="90.74%" stop-color="#A06008" stop-opacity="1" />
+                                </linearGradient>
+
+                                <path id="path1" d="M 262 280 L 420 280 Q 440 280, 440 260 L 440 130 Q 440 110, 460 110 L 540 110" />
+                                <path id="path2" d="M 1240 110 L 1420 110 Q 1440 110, 1440 130 L 1440 260 Q 1440 280, 1420 280 L 1370 280" />
+                                <path id="path3" d="M 1370 360 L 1420 360 Q 1440 360, 1440 380 L 1440 510 Q 1440 530, 1420 530 L 1240 530" />
+                                <path id="path4" d="M 540 530 L 460 530 Q 440 530, 440 510 L 440 380 Q 440 360, 420 360 L 262 360" />
+                            </defs>
+
+                            <image href="./public/Ellipse 4864 (1).png" x="39" y="199" width="242" height="242" opacity="0.8" />
+
+                            <use href="#path1" class="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" stroke-width="1.5" stroke-dasharray="6 7" stroke-linecap="round" />
+                            <use href="#path2" class="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" stroke-width="1.5" stroke-dasharray="6 7" stroke-linecap="round" />
+                            <use href="#path3" class="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" stroke-width="1.5" stroke-dasharray="6 7" stroke-linecap="round" />
+                            <use href="#path4" class="animate-flow" fill="none" stroke="rgba(180,140,30,0.55)" stroke-width="1.5" stroke-dasharray="6 7" stroke-linecap="round" />
+
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="3s" repeatCount="indefinite" rotate="auto"><mpath href="#path1" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" />
+                            </g>
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" rotate="auto"><mpath href="#path1" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" begin="1.5s" repeatCount="indefinite" />
+                            </g>
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#path2" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
+                            </g>
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="4s" begin="2s" repeatCount="indefinite" rotate="auto"><mpath href="#path2" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" begin="2s" repeatCount="indefinite" />
+                            </g>
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="4s" repeatCount="indefinite" rotate="auto"><mpath href="#path3" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" repeatCount="indefinite" />
+                            </g>
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="4s" begin="2s" repeatCount="indefinite" rotate="auto"><mpath href="#path3" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="4s" begin="2s" repeatCount="indefinite" />
+                            </g>
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="3s" repeatCount="indefinite" rotate="auto"><mpath href="#path4" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" repeatCount="indefinite" />
+                            </g>
+                            <g fill="rgba(255,220,80,0.9)">
+                                <polygon points="-8,-6 4,0 -8,6" />
+                                <animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" rotate="auto"><mpath href="#path4" /></animateMotion>
+                                <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.9;1" dur="3s" begin="1.5s" repeatCount="indefinite" />
+                            </g>
+
+                            <circle cx="160" cy="320" r="110" fill="url(#circleGrad)" />
+                            <text x="160" y="334" text-anchor="middle" font-family="'Schnyder L', serif" font-size="44" font-weight="300" letter-spacing="0" fill="#1a0e02">
+                                Closeté
+                            </text>
+                        </svg>
+
+                        <!-- Cards -->
+                        <!-- Card 1 -->
+                        <div class="flex items-center gap-4 xl:gap-8 z-10 reveal reveal-left absolute" style="transition-duration: 0.5s; transition-delay: 0s; left: 38.57%; top: 1.56%; width: 57.14%; height: 28.125%;">
+                            <div class="shrink-0 text-[50px] xl:text-[70px] font-bold select-none leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent font-['Bebas_Neue']">01.</div>
+                            <div class="relative w-full h-full p-[1px] rounded-[1.2rem] overflow-hidden group shadow-xl" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);">
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative w-full h-full backdrop-blur-md p-5 xl:px-8 xl:py-6 rounded-[1.1rem] flex flex-col justify-center" style="background: linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%);">
+                                    <h3 class="text-white text-sm xl:text-base font-bold tracking-[0.08em] mb-2 xl:mb-2.5 uppercase">LIST OR DISCOVER</h3>
+                                    <p class="bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent text-[18px] leading-relaxed pr-2 xl:pr-6">
+                                        Browse a curated selection of luxury pieces or list your own in minutes with guided pricing and intelligent recommendations.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="flex items-center gap-4 xl:gap-8 z-10 reveal reveal-left absolute" style="transition-duration: 0.5s; transition-delay: 0.15s; left: 51.42%; top: 34.375%; width: 57.14%; height: 28.125%;">
+                            <div class="shrink-0 text-[50px] xl:text-[70px] font-bold select-none leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent font-['Bebas_Neue']">02.</div>
+                            <div class="relative w-full h-full p-[1px] rounded-[1.2rem] overflow-hidden group shadow-xl" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);">
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative w-full h-full backdrop-blur-md p-5 xl:px-8 xl:py-6 rounded-[1.1rem] flex flex-col justify-center" style="background: linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%);">
+                                    <h3 class="text-white text-sm xl:text-base font-bold tracking-[0.08em] mb-2 xl:mb-2.5 uppercase">AUTHENTICATION</h3>
+                                    <p class="bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent text-[18px] leading-relaxed pr-2 xl:pr-6">
+                                        Each item undergoes a structured verification process using advanced AI and expert review to ensure authenticity.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="flex items-center gap-4 xl:gap-8 z-10 reveal reveal-left absolute" style="transition-duration: 0.5s; transition-delay: 0.3s; left: 38.57%; top: 67.1875%; width: 57.14%; height: 28.125%;">
+                            <div class="shrink-0 text-[50px] xl:text-[70px] font-bold select-none leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent font-['Bebas_Neue']">03.</div>
+                            <div class="relative w-full h-full p-[1px] rounded-[1.2rem] overflow-hidden group shadow-xl" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);">
+                                <div class="absolute inset-0 bg-gradient-to-r from-transparent to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                <div class="relative w-full h-full backdrop-blur-md p-5 xl:px-8 xl:py-6 rounded-[1.1rem] flex flex-col justify-center" style="background: linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%);">
+                                    <h3 class="text-white text-sm xl:text-base font-bold tracking-[0.08em] mb-2 xl:mb-2.5 uppercase">SECURE DELIVERY & PAYMENT</h3>
+                                    <p class="bg-gradient-to-r from-gray-400 to-white bg-clip-text text-transparent text-[18px] leading-relaxed pr-2 xl:pr-6">
+                                        Items are delivered securely, and payment is only released once the buyer has received and accepted the item.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Mobile & Tablet View (< lg) -->
+                    <div class="lg:hidden flex flex-col items-center relative w-full pt-4 pb-0 lg:pb-12 reveal reveal-up">
+
+                        <div class="relative flex items-center justify-center w-[172px] h-[172px] z-10 bg-cover bg-center" style="background-image: url('/Ellipse 4864 (1).png');">
+                            <div class="absolute pointer-events-none z-[-2]" style="width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%, -50%); background: linear-gradient(90deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%); opacity: 0.15; filter: blur(60px); border-radius: 50%;"></div>
+                            <div class="absolute pointer-events-none z-[-1]" style="width: 600px; height: 600px; top: 50%; left: 50%; transform: translate(-50%, -65%); mix-blend-mode: screen; opacity: 0.9;">
+                                <img src="./public/Group (1).png" alt="Sunburst glow" class="w-full h-full object-contain">
+                            </div>
+
+                            <div class="relative w-[150px] h-[150px] rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(201,156,65,0.25)] reveal reveal-scale" style="background: linear-gradient(90deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);">
+                                <span class="font-serif text-[#1a0e02] text-center" style="font-family: 'Schnyder L', serif; font-size: 44px; font-weight: 300; letter-spacing: 0%; line-height: 100%;">
+                                    Closeté
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col w-full max-w-sm relative mt-[25px] z-0">
+                            <div class="absolute left-1/2 top-[-20px] bottom-10 w-px border-l border-dashed border-[#C99C41]/30 -translate-x-1/2 z-0"></div>
+
+                            <!-- Mobile Card 1 -->
+                            <div class="w-full relative flex flex-col mb-0 z-10 reveal reveal-up" style="transition-delay: 0s;">
+                                <div class="relative w-full h-[8px] mt-2 mb-4 z-10">
+                                    <div class="absolute left-1/2 top-0 -translate-x-1/2">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M1 1L7 7L13 1" stroke="rgba(201,140,40,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                                    </div>
+                                </div>
+                                <div class="w-full flex justify-start px-2 sm:px-6 mb-[10px] z-20 relative">
+                                    <div class="text-[65px] font-bold leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent font-['Bebas_Neue']">01.</div>
+                                </div>
+                                <div class="relative w-full p-[1px] rounded-[1.2rem] shadow-xl z-10" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);">
+                                    <div class="relative w-full h-full backdrop-blur-md p-6 sm:p-7 rounded-[1.1rem] flex flex-col justify-center" style="background: linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%);">
+                                        <h3 class="text-white text-[15px] sm:text-base font-bold tracking-[0.05em] mb-2 sm:mb-3 uppercase">LIST OR DISCOVER</h3>
+                                        <p class="text-[#a1a1aa] text-[14px] leading-[1.6]">Browse a curated selection of luxury pieces or list your own in minutes with guided pricing and intelligent recommendations.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Card 2 -->
+                            <div class="w-full relative flex flex-col mb-0 z-10 reveal reveal-up" style="transition-delay: 0.1s;">
+                                <div class="relative w-full h-[8px] my-4 z-10">
+                                    <div class="absolute left-1/2 top-0 -translate-x-1/2">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M1 1L7 7L13 1" stroke="rgba(201,140,40,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                                    </div>
+                                </div>
+                                <div class="w-full flex justify-end px-2 sm:px-6 mb-[10px] z-20 relative">
+                                    <div class="text-[65px] font-bold leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent font-['Bebas_Neue']">02.</div>
+                                </div>
+                                <div class="relative w-full p-[1px] rounded-[1.2rem] shadow-xl z-10" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);">
+                                    <div class="relative w-full h-full backdrop-blur-md p-6 sm:p-7 rounded-[1.1rem] flex flex-col justify-center" style="background: linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%);">
+                                        <h3 class="text-white text-[15px] sm:text-base font-bold tracking-[0.05em] mb-2 sm:mb-3 uppercase">AUTHENTICATION</h3>
+                                        <p class="text-[#a1a1aa] text-[14px] leading-[1.6]">Each item undergoes a structured verification process using advanced AI and expert review to ensure authenticity.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Mobile Card 3 -->
+                            <div class="w-full relative flex flex-col mb-12 z-10 reveal reveal-up" style="transition-delay: 0.2s;">
+                                <div class="relative w-full h-[8px] my-4 z-10">
+                                    <div class="absolute left-1/2 top-0 -translate-x-1/2">
+                                        <svg width="14" height="8" viewBox="0 0 14 8" fill="none"><path d="M1 1L7 7L13 1" stroke="rgba(201,140,40,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                                    </div>
+                                </div>
+                                <div class="w-full flex justify-start px-2 sm:px-6 mb-[10px] z-20 relative">
+                                    <div class="text-[65px] font-bold leading-none bg-gradient-to-b from-[#C99C41] to-[#6A501E] bg-clip-text text-transparent font-['Bebas_Neue']">03.</div>
+                                </div>
+                                <div class="relative w-full p-[1px] rounded-[1.2rem] shadow-xl z-10" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);">
+                                    <div class="relative w-full h-full backdrop-blur-md p-6 sm:p-7 rounded-[1.1rem] flex flex-col justify-center" style="background: linear-gradient(270.21deg, #2B2D32 -23.83%, #1C1D20 92.92%);">
+                                        <h3 class="text-white text-[15px] sm:text-base font-bold tracking-[0.05em] mb-2 sm:mb-3 uppercase">SECURE DELIVERY & PAYMENT</h3>
+                                        <p class="text-[#a1a1aa] text-[14px] leading-[1.6]">Items are delivered securely, and payment is only released once the buyer has received and accepted the item.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section id="why-choose-us" class="scroll-mt-[86px] lg:scroll-mt-[60px] bg-[#FFFFFF0A] pt-[30px] lg:pt-[100px] pb-4 md:pb-16 px-6 text-white overflow-hidden font-sans">
+            <!-- Header -->
+            <div class="max-w-4xl mx-auto text-center mb-12 space-y-2 reveal reveal-up">
+                <h2 class="font-serif text-[32px] md:text-5xl lg:text-7xl font-medium tracking-tight">
+                    Built on Trust
+                </h2>
+                <p style="color: rgba(242,242,242,0.75); word-spacing: 1px;" class="text-[14px] md:text-[18px] max-w-xl mx-auto leading-relaxed">
+                    From verification to payment protection, every step is designed to keep buyers and sellers confident.
+                </p>
+            </div>
+
+            <!-- Cards Container -->
+            <div class="relative container mx-auto px-4 lg:px-12 reveal reveal-up">
+                <!-- The horizontal "wire" line -->
+                <div class="absolute top-[14px] left-1/2 -translate-x-1/2 w-screen h-[4px] bg-gradient-to-r from-transparent via-[#333] to-transparent z-0"></div>
+
+                <div class="flex flex-nowrap overflow-x-auto overflow-y-hidden scrollbar-hide gap-[40px] pb-6 pt-4 w-full md:grid md:grid-cols-2 lg:grid-cols-4 justify-items-center">
+                    
+                    <!-- Card 1 -->
+                    <div class="relative group pt-12 flex-none w-[220px] md:w-[320px] lg:w-[240px] xl:w-[280px] 2xl:w-[300px] mx-auto cursor-pointer">
+                        <div class="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
+                            <img src="./public/Group 1707483204.png" alt="Card Hanger" class="w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0" />
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%); mask-image: url('./public/Group 1707483204.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center; -webkit-mask-image: url('./public/Group 1707483204.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;"></div>
+                        </div>
+                        <div class="relative h-[290px] md:h-full flex flex-col items-center justify-center text-center px-6 py-8 md:p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden">
+                            <div class="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);"></div>
+                            <div class="relative z-10 mb-8 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                                <div class="relative z-10 w-12 h-12 brightness-0 invert group-hover:invert-0 transition-all duration-500">
+                                    <img src="./public/Layer_1 (1).png" alt="Authentication" class="w-full h-full object-contain" />
+                                </div>
+                                <div class="absolute top-[60%] left-1/2 -translate-x-1/2 w-[220px] h-[70px] pointer-events-none z-0 transition-opacity duration-500">
+                                    <img src="./public/Ellipse 4867 (1).png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <img src="./public/Ellipse 4867.png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                                </div>
+                            </div>
+                            <h3 class="relative z-10 text-[16px] md:text-[20px] font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">Authentication Guarantee</h3>
+                            <p class="relative z-10 text-[14px] md:text-[18px] leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">Every item is verified through a combination of technology and expert validation.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="relative group pt-12 flex-none w-[220px] md:w-[320px] lg:w-[240px] xl:w-[280px] 2xl:w-[300px] mx-auto cursor-pointer">
+                        <div class="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
+                            <img src="./public/Group 1707483204.png" alt="Card Hanger" class="w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0" />
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%); mask-image: url('./public/Group 1707483204.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center; -webkit-mask-image: url('./public/Group 1707483204.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;"></div>
+                        </div>
+                        <div class="relative h-[290px] md:h-full flex flex-col items-center justify-center text-center px-6 py-8 md:p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden">
+                            <div class="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);"></div>
+                            <div class="relative z-10 mb-8 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                                <div class="relative z-10 w-12 h-12 brightness-0 invert group-hover:invert-0 transition-all duration-500">
+                                    <img src="./public/Capa_1.png" alt="Secure Payments" class="w-full h-full object-contain" />
+                                </div>
+                                <div class="absolute top-[60%] left-1/2 -translate-x-1/2 w-[220px] h-[70px] pointer-events-none z-0 transition-opacity duration-500">
+                                    <img src="./public/Ellipse 4867 (1).png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <img src="./public/Ellipse 4867.png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                                </div>
+                            </div>
+                            <h3 class="relative z-10 text-[16px] md:text-[20px] font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">Secure<br>Payments</h3>
+                            <p class="relative z-10 text-[14px] md:text-[18px] leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">Funds are held securely and only released once the buyer confirms the item meets expectations.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="relative group pt-12 flex-none w-[220px] md:w-[320px] lg:w-[240px] xl:w-[280px] 2xl:w-[300px] mx-auto cursor-pointer">
+                        <div class="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
+                            <img src="./public/Group 1707483204.png" alt="Card Hanger" class="w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0" />
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%); mask-image: url('./public/Group 1707483204.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center; -webkit-mask-image: url('./public/Group 1707483204.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;"></div>
+                        </div>
+                        <div class="relative h-[290px] md:h-full flex flex-col items-center justify-center text-center px-6 py-8 md:p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden">
+                            <div class="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);"></div>
+                            <div class="relative z-10 mb-8 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                                <div class="relative z-10 w-12 h-12 brightness-0 invert group-hover:invert-0 transition-all duration-500">
+                                    <img src="./public/Layer_1 (2).png" alt="Controlled Delivery" class="w-full h-full object-contain" />
+                                </div>
+                                <div class="absolute top-[60%] left-1/2 -translate-x-1/2 w-[220px] h-[70px] pointer-events-none z-0 transition-opacity duration-500">
+                                    <img src="./public/Ellipse 4867 (1).png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <img src="./public/Ellipse 4867.png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                                </div>
+                            </div>
+                            <h3 class="relative z-10 text-[16px] md:text-[20px] font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">Controlled<br>Delivery</h3>
+                            <p class="relative z-10 text-[14px] md:text-[18px] leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">We manage the delivery process within Dubai to ensure a smooth and reliable handover.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="relative group pt-12 flex-none w-[220px] md:w-[320px] lg:w-[240px] xl:w-[280px] 2xl:w-[300px] mx-auto cursor-pointer">
+                        <div class="absolute top-[-2px] left-1/2 -translate-x-1/2 w-[60px] h-[50px] z-10 transition-all duration-500">
+                            <img src="./public/Group 1707483204.png" alt="Card Hanger" class="w-full h-full object-contain transition-opacity duration-500 group-hover:opacity-0" />
+                            <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%); mask-image: url('./public/Group 1707483204.png'); mask-size: contain; mask-repeat: no-repeat; mask-position: center; -webkit-mask-image: url('./public/Group 1707483204.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;"></div>
+                        </div>
+                        <div class="relative h-[290px] md:h-full flex flex-col items-center justify-center text-center px-6 py-8 md:p-8 rounded-[2rem] transition-all duration-500 bg-[#FFFFFF1A] border border-white/5 backdrop-blur-sm group-hover:border-transparent overflow-hidden">
+                            <div class="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0" style="background: linear-gradient(99.37deg, #AF7413 4.77%, #C98C28 19.33%, #E2B744 38.93%, #FFED81 50.54%, #E1C24E 62.1%, #A06008 90.74%);"></div>
+                            <div class="relative z-10 mb-8 flex flex-col items-center justify-center transition-transform duration-500 group-hover:scale-110">
+                                <div class="relative z-10 w-12 h-12 brightness-0 invert group-hover:invert-0 transition-all duration-500">
+                                    <img src="./public/Layer_1 (3).png" alt="Buyer Protection" class="w-full h-full object-contain" />
+                                </div>
+                                <div class="absolute top-[60%] left-1/2 -translate-x-1/2 w-[220px] h-[70px] pointer-events-none z-0 transition-opacity duration-500">
+                                    <img src="./public/Ellipse 4867 (1).png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                    <img src="./public/Ellipse 4867.png" alt="Base Glow" class="absolute inset-0 w-full h-full object-contain opacity-100 group-hover:opacity-0 transition-opacity duration-500" />
+                                </div>
+                            </div>
+                            <h3 class="relative z-10 text-[16px] md:text-[20px] font-bold uppercase tracking-widest mb-4 leading-tight text-white group-hover:text-black transition-colors duration-500">Buyer<br>Protection</h3>
+                            <p class="relative z-10 text-[14px] md:text-[18px] leading-relaxed font-light text-gray-200 group-hover:text-black transition-colors duration-500">If an item does not meet expectations, it can be rejected at delivery with no payment released.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- App Mockups Section -->
+        <section id="app-preview" class="scroll-mt-[86px] lg:scroll-mt-[60px] bg-[#0a0a0a] pt-[70px] lg:pt-30 pb-0 lg:pb-12 overflow-hidden text-white">
+            <style>
+                .notch-main-clip {
+                    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 60px) 0%, calc(50% + 60px) 30px, calc(50% - 60px) 30px, calc(50% - 60px) 0%);
+                }
+                @media (min-width: 768px) {
+                    .notch-main-clip {
+                        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%, calc(50% + 75px) 0%, calc(50% + 75px) 35px, calc(50% - 75px) 35px, calc(50% - 75px) 0%);
+                    }
+                }
+            </style>
+            <div class="container mx-auto px-4 lg:px-12">
+                <!-- Header -->
+                <div class="max-w-5xl mx-auto text-center mb-8 space-y-2 md:space-y-6 relative z-20 reveal reveal-up">
+                    <h2 class="text-[32px] md:text-6xl text-gray-100 font-serif">
+                        Designed for a Seamless Experience
+                    </h2>
+                    <p style="color: rgba(242,242,242,0.75); word-spacing: 1px;" class="text-[14px] md:text-[18px] max-w-2xl mx-auto leading-relaxed">
+                        Closete is designed to make buying and selling luxury effortless
+                        — from discovery to delivery.
+                    </p>
+                </div>
+
+                <!-- Carousel Area -->
+                <div id="mockups-carousel" class="relative flex items-center justify-center h-[500px] md:h-[650px] w-full reveal reveal-up" style="transition-delay: 0.1s">
+                    <!-- Carousel items injected by JS -->
+                </div>
+
+                <!-- Controls -->
+                <div class="flex items-center justify-center gap-6 md:gap-8 mt-[20px] md:mt-12 relative z-40 reveal reveal-up">
+                    <button id="mockup-prev" class="w-11 h-11 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors" aria-label="Previous mockup">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="m15 18-6-6 6-6"/></svg>
+                    </button>
+
+                    <div id="mockup-dots" class="flex items-center gap-3">
+                        <!-- Dots injected by JS -->
+                    </div>
+
+                    <button id="mockup-next" class="w-11 h-11 rounded-full bg-[#1a1a1a] flex md:hidden items-center justify-center hover:bg-[#333] transition-colors" aria-label="Next mockup">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="m9 18 6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="our-vision" class="relative w-full min-h-[600px] md:min-h-[850px] bg-[#0a0a0a] text-white flex flex-col items-center justify-start overflow-hidden px-6 pt-[70px] md:pt-20 pb-0 md:pb-52 font-sans scroll-mt-[86px] lg:scroll-mt-[60px]">
+            <!-- Background Particle/Star Effect -->
+            <div class="absolute inset-0 pointer-events-none">
+                <!-- Premium Masked Dot Grid -->
+                <div class="absolute inset-0 z-0 opacity-[0.25]" style="background-image: radial-gradient(rgba(255, 255, 255, 1) 1px, transparent 1px); background-size: 24px 24px; -webkit-mask-image: radial-gradient(ellipse 65% 60% at center, black, transparent); mask-image: radial-gradient(ellipse 65% 60% at center, black, transparent);"></div>
+                
+                <!-- Golden glow gradient behind text -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[1400px] h-[220%] opacity-15" style="background: linear-gradient(99.37deg, #AF7413 0%, #C98C28 17%, #E1B744 40%, #FFED81 53%, #E1C24E 67%, #A06008 100%); filter: blur(120px); -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 85%); mask-image: radial-gradient(ellipse at center, black 0%, transparent 85%);"></div>
+
+                <!-- Gradient overlays -->
+                <div class="absolute top-0 left-0 w-full h-[100px] md:h-[150px] bg-gradient-to-b from-[#0a0a0a] to-transparent"></div>
+                <div class="absolute bottom-0 left-0 w-full h-32 md:h-48 bg-gradient-to-t from-[#0f0f0f] to-transparent"></div>
+                <div class="absolute top-0 left-0 w-16 md:w-48 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent"></div>
+                <div class="absolute top-0 right-0 w-16 md:w-48 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent"></div>
+            </div>
+
+            <!-- CONTENT LAYER -->
+            <div class="relative z-10 max-w-5xl text-center space-y-12">
+                <!-- Header Text -->
+                <div class="space-y-4 relative top-[20px] md:top-[30px] reveal reveal-up">
+                    <h2 class="text-[32px] md:text-6xl font-serif tracking-tight">Our Vision</h2>
+                    <p class="text-[14px] md:text-[18px] max-w-xl mx-auto leading-relaxed" style="color: rgba(242,242,242,0.75); word-spacing: 1px;">
+                        Closete was created to bring trust, transparency, and simplicity to the luxury resale market.
+                    </p>
+                </div>
+
+                <!-- Mobile: Top Floating Elements in flow -->
+                <div class="md:hidden flex justify-between items-center w-full px-0 mt-2">
+                    <div class="relative w-[115px] h-[115px]">
+                        <img src="./public/Group 1707483227.png" alt="Shield Icon" class="w-full h-full object-contain" />
+                    </div>
+                    <div class="relative w-[120px] rotate-[2deg]">
+                        <img src="./public/Rectangle 34626008.png" alt="Watch Frame Background" width="340" height="260" class="w-full h-auto object-contain drop-shadow-2xl" />
+                        <div class="absolute inset-1.5 rounded-[8px] overflow-hidden">
+                            <img src="./public/Rectangle 34626007 (1).png" alt="Luxury Watch" class="absolute inset-0 w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Text -->
+                <div class="mt-4 md:mt-48 relative typing-container">
+                    <!-- Desktop Version -->
+                    <h1 class="hidden md:block text-[20px] sm:text-[28px] md:text-[34px] lg:text-[40px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full max-w-6xl relative z-10 font-sans">
+                        <span class="typing-text" data-text="WE BELIEVE BUYING AND SELLING HIGH-VALUE "></span><br>
+                        <span class="typing-text" data-text="ITEMS SHOULD FEEL SEAMLESS, SECURE, AND "></span><br>
+                        <span class="typing-text" data-text="PREMIUM AT EVERY STEP."></span>
+                    </h1>
+
+                    <!-- Mobile Version -->
+                    <h1 class="md:hidden text-[20px] font-bold uppercase tracking-wide leading-[1.6] text-center w-full relative z-10 font-sans">
+                        <span class="typing-text" data-text="WE BELIEVE BUYING "></span><br>
+                        <span class="typing-text" data-text="AND SELLING HIGH-"></span><br>
+                        <span class="typing-text" data-text="VALUE ITEMS SHOULD "></span><br>
+                        <span class="typing-text" data-text="FEEL SEAMLESS, "></span><br>
+                        <span class="typing-text" data-text="SECURE, AND PREMIUM "></span><br>
+                        <span class="typing-text" data-text="AT EVERY STEP."></span>
+                    </h1>
+                </div>
+
+                <!-- Mobile: Bottom Floating Elements in flow -->
+                <div class="md:hidden flex justify-between items-center w-full px-0 mt-2 mb-0 relative z-10">
+                    <div class="relative w-[140px] -rotate-[2deg]">
+                        <img src="./public/Rectangle 34626008 (1).png" alt="Bag Frame Background" width="340" height="260" class="w-full h-auto object-contain drop-shadow-2xl" />
+                        <div class="absolute inset-1.5 rounded-[10px] overflow-hidden">
+                            <img src="./public/Rectangle 34626007 (2).png" alt="Luxury Handbag" class="absolute inset-0 w-full h-full object-cover" />
+                        </div>
+                    </div>
+                    <div class="relative w-[115px] h-[115px]">
+                        <img src="./public/Group 1707483228.png" alt="Crown Icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+
+            <!-- FLOATING DECORATIONS (Desktop Only) -->
+            <div class="absolute inset-0 w-full max-w-[1920px] mx-auto pointer-events-none hidden md:block">
+                <!-- Top Left: Shield/Lock Icon -->
+                <div class="absolute top-[20%] left-[18%] transition-transform hover:scale-105 pointer-events-auto">
+                    <div class="relative w-[180px] h-[180px]">
+                        <img src="./public/Group 1707483227.png" alt="Shield Icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+
+                <!-- Top Right: Watch Image -->
+                <div class="absolute top-[27%] right-[18%] rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
+                    <div class="relative inline-flex items-center justify-center shadow-2xl">
+                        <img src="./public/Rectangle 34626008.png" alt="Watch Frame Background" width="340" height="260" class="w-[180px] h-auto object-contain drop-shadow-2xl" />
+                        <div class="absolute inset-2.5 rounded-[18px] overflow-hidden">
+                            <img src="./public/Rectangle 34626007 (1).png" alt="Luxury Watch" class="absolute inset-0 w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Left: Bag Image -->
+                <div class="absolute bottom-[10%] left-[20%] -rotate-[12deg] transition-transform hover:scale-105 pointer-events-auto">
+                    <div class="relative inline-flex items-center justify-center shadow-2xl">
+                        <img src="./public/Rectangle 34626008 (1).png" alt="Bag Frame Background" width="340" height="260" class="w-[180px] h-auto object-contain drop-shadow-2xl" />
+                        <div class="absolute inset-2.5 rounded-[18px] overflow-hidden">
+                            <img src="./public/Rectangle 34626007 (2).png" alt="Luxury Handbag" class="absolute inset-0 w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Right: Crown Icon -->
+                <div class="absolute bottom-[12%] right-[24%] transition-transform hover:scale-105 pointer-events-auto">
+                    <div class="relative w-[180px] h-[180px]">
+                        <img src="./public/Group 1707483228.png" alt="Crown Icon" class="w-full h-full object-contain" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Banner Section -->
+        <section class="pt-[70px] pb-12 md:py-24 relative flex justify-center overflow-hidden">
+            <div class="container mx-auto px-4 lg:px-12 w-full">
+                <div class="w-full relative rounded-[30px] md:rounded-[40px] overflow-hidden shadow-2xl flex items-center justify-center bg-[#0a0a0a] reveal reveal-up">
+                    <img src="./public/cta-background.webp" alt="Call to Action Desktop" width="1250" height="500" class="hidden md:block w-full h-auto object-cover" />
+                    <!-- Mobile/Responsive Image -->
+                    <img src="./public/cta-foreground.webp" alt="Call to Action Mobile" width="800" height="800" class="block md:hidden w-full h-auto object-cover" />
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#121212] pt-[41px] md:pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between">
+        <div class="container mx-auto px-4 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-6 md:mb-8 lg:mb-10 relative z-10">
+                <!-- Column 1 -->
+                <div class="col-span-1 sm:col-span-2 md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
+                    <a href="#home" class="text-[42px] md:text-4xl font-serif text-gradient-gold mb-2 md:mb-6 inline-block tracking-tight">Closeté</a>
+                    <p class="text-[#f2f2f2]/80 text-[14px] md:text-[16px] max-w-[340px] md:max-w-[290px] mx-auto md:mx-0 leading-relaxed">Luxury Resale Secured. Authenticated, insured, and curated for the archival fashion collector.</p>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="col-span-1 md:col-span-3">
+                    <h4 class="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">NAVIGATION</h4>
+                    <ul class="space-y-3 mt-5">
+                        <li><a href="privacy.html" class="text-white text-[14px] hover:text-[#C98C28] transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-white text-[14px] hover:text-[#C98C28] transition-colors">Terms & Conditions</a></li>
+                        <li><a href="delivery.html" class="text-white text-[14px] hover:text-[#C98C28] transition-colors">Authenticity & Delivery Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-span-1 md:col-span-3">
+                    <h4 class="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">CONTACT US</h4>
+                    <div class="mt-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[#f2f2f2]/50 text-[14px] mb-1">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <span>Email</span>
+                        </div>
+                        <a href="mailto:support@closete.app" class="text-white text-[14px] hover:opacity-80 transition-colors">support@closete.app</a>
+                    </div>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">LOCATION</h4>
+                    <div class="mt-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[#f2f2f2]/50 text-[14px] mb-1">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Country</span>
+                        </div>
+                        <span class="text-white text-[14px]">Dubai, UAE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Giant Watermark Logo -->
+        <div class="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 mb-[-18px] md:mb-[-48px] pointer-events-none select-none relative z-0">
+            <svg viewBox="0 0 660 220" overflow="visible" class="w-full h-auto text-white/[0.08]">
+                <text x="50%" y="75%" text-anchor="middle" fill="currentColor" class="font-serif" style="font-size: 200px; letter-spacing: -0.02em;">Closeté</text>
+            </svg>
+        </div>
+        
+        <div class="container mx-auto px-4 lg:px-12 border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10 flex justify-center items-center">
+            <p class="relative z-10">© 2026 Closete. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

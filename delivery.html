@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closeté | Authentic Luxury</title>
+    <meta name="description" content="Buy & Sell Authentic Luxury with Closeté.">
+    <meta name="keywords" content="luxury, authentic, buy, sell, premium, closete">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Closeté | Authentic Luxury">
+    <meta property="og:description" content="Buy & Sell Authentic Luxury with Closeté.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./public/1024.png">
+
+    <!-- Fonts (DM Sans & Playfair Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS v4 Browser Build -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <!-- Tailwind Custom Config -->
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+        --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+        
+        --color-gold-300: #e5c87a;
+        --color-gold-400: #d4af37;
+        --color-gold-500: #c19b62;
+        --color-gold-600: #a67c00;
+        
+        --color-brand-900: #1a1a1a;
+        --color-brand-950: #0f0f0f;
+      }
+    </style>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-full flex flex-col bg-[#0f0f0f] text-[#f2f2f2] font-sans selection:bg-[#d4af37]/30">
+
+    <!-- Header -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 lg:py-6 bg-transparent">
+      <div class="container mx-auto px-4 lg:px-12">
+        <!-- Navbar Gradient Border Wrapper (Mobile only) -->
+        <div class="w-full rounded-full p-[1px] lg:p-0 bg-gradient-to-r from-white from-10% via-gray-400/80 via-70% to-transparent lg:bg-none">
+          <!-- Navbar Inner Wrapper -->
+          <div id="navbar-inner" class="w-full flex items-center justify-between bg-gradient-to-r from-[#1F2125] to-[#101113] lg:bg-none lg:bg-transparent rounded-full lg:border-none px-2 h-[58px] lg:h-auto lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none lg:backdrop-blur-none transition-all duration-300">
+          
+          <!-- Left Group (Hamburger + Logo) -->
+          <div class="flex items-center gap-2 lg:gap-0">
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348] cursor-pointer touch-manipulation">
+              <svg id="menu-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+              <svg id="menu-icon-close" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+
+            <!-- Logo -->
+            <a href="index.html" class="text-[30px] lg:text-[44px] font-serif font-medium antialiased text-gradient-gold tracking-tight ml-2 lg:ml-0 drop-shadow-sm">
+              Closeté
+            </a>
+          </div>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex items-center gap-1 relative px-2 py-1.5 rounded-full" style="background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
+            <a href="index.html#home" class="nav-link active relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white" style="background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.1);">Home</a>
+            <a href="index.html#how-it-works" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">How It Works</a>
+            <a href="index.html#why-choose-us" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">Why choose us?</a>
+            <a href="index.html#app-preview" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">App Preview</a>
+            <a href="index.html#our-vision" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">Our Vision</a>
+          </nav>
+
+          <div class="flex items-center">
+            <a href="mailto:support@closete.app" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-1 h-[46px] lg:h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[15px] lg:text-base font-normal whitespace-nowrap">
+              Contact Us
+              <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 lg:w-4 lg:h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+
+        </div>
+        </div>
+      </div>
+
+      <!-- Mobile Nav -->
+      <nav id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/70 backdrop-blur-[24px] border-b border-white/10 flex-col items-center py-6 gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform origin-top transition-all duration-300 opacity-0 -translate-y-4">
+        <a href="index.html#home" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-gold-400">Home</a>
+        <a href="index.html#how-it-works" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">How It Works</a>
+        <a href="index.html#why-choose-us" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">Why choose us?</a>
+        <a href="index.html#app-preview" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">App Preview</a>
+        <a href="index.html#our-vision" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">Our Vision</a>
+        
+        <a href="mailto:support@closete.app" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-2 h-auto py-3 px-6 rounded-full text-sm font-normal touch-manipulation">
+          Contact Us
+          <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </header>
+      <main style="flex-grow: 1; background-color: #111; min-height: 100vh; padding-bottom: 96px; color: white;">
+        <!-- Hero Section -->
+        <div style="position: relative; width: 100%; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top: 128px; padding-bottom: 32px; min-height: 350px;">
+          <!-- Layer 1: Wide outer glow -->
+          <div style="position: absolute; pointer-events: none; top: -20%; left: 50%; transform: translateX(-50%); width: 1600px; height: 1000px; background: radial-gradient(ellipse at 50% 18%, rgba(210,140,10,0.55) 0%, rgba(175,100,5,0.35) 30%, rgba(120,60,0,0.12) 55%, transparent 72%); filter: blur(8px);"></div>
+          
+          <!-- Layer 2: Bright golden core -->
+          <div style="position: absolute; pointer-events: none; top: -8%; left: 50%; transform: translateX(-50%); width: 900px; height: 700px; background: radial-gradient(ellipse at 50% 12%, rgba(255,215,60,0.45) 0%, rgba(230,170,30,0.3) 28%, rgba(180,110,10,0.12) 52%, transparent 68%); filter: blur(4px);"></div>
+          
+          <!-- Layer 3: Specular hot-spot -->
+          <div style="position: absolute; pointer-events: none; top: -4%; left: 50%; transform: translateX(-50%); width: 360px; height: 260px; background: radial-gradient(ellipse at 50% 10%, rgba(255,245,160,0.35) 0%, rgba(255,210,60,0.15) 38%, transparent 65%); filter: blur(2px);"></div>
+          
+          <!-- Torchlight 1: Narrow Beam -->
+          <div style="position: absolute; pointer-events: none; top: 0%; left: 50%; transform: translateX(-50%); width: 500px; height: 550px; background: linear-gradient(to bottom, transparent 0%, rgba(255,215,60,0.15) 5%, rgba(230,170,30,0.05) 40%, transparent 100%); clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%); filter: blur(140px);"></div>
+          
+          <!-- Torchlight 2: Medium Beam -->
+          <div style="position: absolute; pointer-events: none; top: 0%; left: 50%; transform: translateX(-50%); width: 900px; height: 600px; background: linear-gradient(to bottom, transparent 0%, rgba(210,140,10,0.12) 8%, rgba(180,110,10,0.03) 45%, transparent 100%); clip-path: polygon(42% 0, 58% 0, 100% 100%, 0 100%); filter: blur(180px);"></div>
+          
+          <!-- Torchlight 3: Wide Beam -->
+          <div style="position: absolute; pointer-events: none; top: 0%; left: 50%; transform: translateX(-50%); width: 1400px; height: 650px; background: linear-gradient(to bottom, transparent 0%, rgba(175,100,5,0.08) 12%, rgba(120,60,0,0.02) 50%, transparent 100%); clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%); filter: blur(220px);"></div>
+
+          <!-- Stars Container -->
+          <div id="stars-container-delivery" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; pointer-events: none;"></div>
+
+          <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 128px; pointer-events: none; z-index: 10; background: linear-gradient(to top, #111, transparent);"></div>
+          
+          <div style="position: relative; z-index: 20; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding-left: 16px; padding-right: 16px;">
+            <h1 class="font-serif font-semibold tracking-tight" style="font-size: 3.5rem; line-height: 1.1; margin: 0;">
+              <span style="display: block; margin-bottom: 8px; font-size: 4rem; background: linear-gradient(90.13deg, #AF7413 0.11%, #C98C28 17.58%, #E2B744 41.1%, #FFED81 55.03%, #E1C24E 68.91%, #A06008 103.24%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: transparent;">Closeté</span>
+              <span style="color: white;">Authenticity & Delivery Policy</span>
+            </h1>
+            <p class="font-sans" style="margin-top: 24px; color: #9ca3af; font-size: 1rem;">
+              Last updated: June 2026
+            </p>
+          </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="font-sans" style="max-width: 1200px; margin: 32px auto 80px auto; padding-left: 16px; padding-right: 16px;">
+          <div style="background-color: #141517; padding: 32px; border-radius: 28px; border: 1px solid rgba(255,255,255,0.05);">
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  OVERVIEW
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>Closeté operates a verification-before-delivery model.</p>
+        <p>Every item is:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">Collected</li>
+          <li style="margin-bottom: 8px;">Authenticated</li>
+          <li style="margin-bottom: 8px;">Delivered only after approval</li>
+        </ul>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  NO TRADITIONAL RETURNS
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>Closeté does not operate a traditional returns policy.</p>
+        <p>This is because:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">Buyers inspect items at the point of delivery</li>
+          <li style="margin-bottom: 8px;">Acceptance happens before payment is released</li>
+        </ul>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  BUYER ACCEPTANCE AT DELIVERY
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>At delivery, the buyer can:</p>
+        <div>
+          <p style="margin-bottom: 8px; color: rgba(255,255,255,0.9); font-weight: 500;">Accept the item</p>
+          <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+            <li style="margin-bottom: 8px;">Transaction is completed</li>
+            <li style="margin-bottom: 8px;">Payment is released to the seller</li>
+          </ul>
+        </div>
+        <div>
+          <p style="margin-bottom: 8px; color: rgba(255,255,255,0.9); font-weight: 500;">Reject the item</p>
+          <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+            <li style="margin-bottom: 8px;">Item is returned to the seller</li>
+            <li style="margin-bottom: 8px;">Buyer receives a full refund</li>
+            <li style="margin-bottom: 8px;">Seller is not paid</li>
+          </ul>
+        </div>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  AUTHENTICATION PROTECTION
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>If an item:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">Fails authentication</li>
+          <li style="margin-bottom: 8px;">Is significantly not as described</li>
+        </ul>
+        <p>Closeté will:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">Cancel the transaction</li>
+          <li style="margin-bottom: 8px;">Refund the buyer in full</li>
+          <li style="margin-bottom: 8px;">Return the item to the seller</li>
+        </ul>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  FINAL SALE AFTER ACCEPTANCE
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>Once the buyer accepts the item: The transaction is final</p>
+        <p>Closeté is not responsible for:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">Change of mind</li>
+          <li style="margin-bottom: 8px;">Fit or sizing issues</li>
+          <li style="margin-bottom: 8px;">Subjective preferences</li>
+        </ul>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  FRAUD PREVENTION
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>Closeté may:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">Perform additional verification checks</li>
+          <li style="margin-bottom: 8px;">Delay or cancel transactions if risk is detected</li>
+        </ul>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  DAMAGED ITEMS
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>If damage occurs while in Closeté&apos;s control:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">The issue will be reviewed</li>
+          <li style="margin-bottom: 8px;">Appropriate resolution will be determined</li>
+        </ul>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  REFUNDS
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>Where applicable, refunds will be:</p>
+        <ul style="list-style-type: disc; padding-left: 24px; margin-top: 8px; margin-bottom: 16px; display: flex; flex-direction: column; gap: 8px;">
+          <li style="margin-bottom: 8px;">Issued to the original payment method</li>
+          <li style="margin-bottom: 8px;">Processed within a reasonable timeframe</li>
+        </ul>
+      </div>
+                </div>
+              </div>
+            
+              <div style="padding: 32px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); position: relative; overflow: hidden; background: linear-gradient(to right, #1C1D20 0%, #2B2D32 100%); border: 1px solid rgba(255, 255, 255, 0.1); margin-bottom: 24px;">
+                <h2 style="font-weight: bold; letter-spacing: 0.05em; margin-bottom: 16px; color: white; font-size: 1.25rem;">
+                  CONTACT
+                </h2>
+                <div style="line-height: 1.6; font-weight: 300; color: #d1d5db; font-size: 1rem;">
+                  <div style="display: flex; flex-direction: column; gap: 16px;">
+        <p>For any questions:</p>
+        <div class="flex items-center gap-2">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#FFAF2C]" style="color: #FFAF2C; margin-right: 8px;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> 
+          <a href="mailto:support@closete.app" class="text-[#FFAF2C] hover:opacity-80 transition-all">
+            support@closete.app
+          </a>
+        </div>
+      </div>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+      </main>
+      <script>
+        // Inline script to add stars since script.js might not target this container properly
+        document.addEventListener('DOMContentLoaded', () => {
+          const starsContainer = document.getElementById('stars-container-delivery');
+          if (starsContainer) {
+            for (let i = 0; i < 50; i++) {
+              const star = document.createElement('div');
+              star.className = 'absolute rounded-full bg-white';
+              const size = Math.random() * 2 + 1;
+              star.style.width = size + 'px';
+              star.style.height = size + 'px';
+              star.style.left = Math.random() * 100 + '%';
+              star.style.top = Math.random() * 100 + '%';
+              star.style.opacity = Math.random() * 0.7 + 0.3;
+              star.style.boxShadow = '0 0 ' + (Math.random() * 3 + 1) + 'px rgba(255,255,255,0.8)';
+              starsContainer.appendChild(star);
+            }
+          }
+        });
+      </script>
+  <footer class="bg-[#121212] pt-[41px] md:pt-24 relative overflow-hidden border-t border-white/5 flex flex-col justify-between">
+        <div class="container mx-auto px-4 lg:px-12 relative z-10">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-10 md:gap-6 lg:gap-10 mb-6 md:mb-8 lg:mb-10 relative z-10">
+                <!-- Column 1 -->
+                <div class="col-span-1 sm:col-span-2 md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
+                    <a href="#home" class="text-[42px] md:text-4xl font-serif text-gradient-gold mb-2 md:mb-6 inline-block tracking-tight">Closeté</a>
+                    <p class="text-[#f2f2f2]/80 text-[14px] md:text-[16px] max-w-[340px] md:max-w-[290px] mx-auto md:mx-0 leading-relaxed">Luxury Resale Secured. Authenticated, insured, and curated for the archival fashion collector.</p>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="col-span-1 md:col-span-3">
+                    <h4 class="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">NAVIGATION</h4>
+                    <ul class="space-y-3 mt-5">
+                        <li style="margin-bottom: 8px;"><a href="privacy.html" class="text-white text-[14px] hover:text-[#C98C28] transition-colors">Privacy Policy</a></li>
+                        <li style="margin-bottom: 8px;"><a href="terms.html" class="text-white text-[14px] hover:text-[#C98C28] transition-colors">Terms & Conditions</a></li>
+                        <li style="margin-bottom: 8px;"><a href="delivery.html" class="text-white text-[14px] hover:text-[#C98C28] transition-colors">Authenticity & Delivery Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3 -->
+                <div class="col-span-1 md:col-span-3">
+                    <h4 class="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">CONTACT US</h4>
+                    <div class="mt-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[#f2f2f2]/50 text-[14px] mb-1">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <span>Email</span>
+                        </div>
+                        <a href="mailto:support@closete.app" class="text-white text-[14px] hover:opacity-80 transition-colors">support@closete.app</a>
+                    </div>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="col-span-1 md:col-span-2">
+                    <h4 class="text-white font-medium text-xs tracking-widest mb-3 pb-3 border-b border-white/10 uppercase">LOCATION</h4>
+                    <div class="mt-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[#f2f2f2]/50 text-[14px] mb-1">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>Country</span>
+                        </div>
+                        <span class="text-white text-[14px]">Dubai, UAE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Giant Watermark Logo -->
+        <div class="container mx-auto px-4 lg:px-12 flex justify-center items-end mt-4 mb-[-18px] md:mb-[-48px] pointer-events-none select-none relative z-0">
+            <svg viewBox="0 0 660 220" overflow="visible" class="w-full h-auto text-white/[0.08]">
+                <text x="50%" y="75%" text-anchor="middle" fill="currentColor" class="font-serif" style="font-size: 200px; letter-spacing: -0.02em;">Closeté</text>
+            </svg>
+        </div>
+        
+        <div class="container mx-auto px-4 lg:px-12 border-t border-white/10 py-6 text-center text-[13px] text-[#f2f2f2]/70 relative z-10 flex justify-center items-center">
+            <p class="relative z-10">© 2026 Closete. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

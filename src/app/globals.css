@@ -30,13 +30,21 @@
   }
   
   .glass {
-    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)];
-    -webkit-backdrop-filter: blur(12px);
+    @apply bg-[#1a1a1a]/95 md:bg-white/5 md:backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.3)];
+  }
+  @media (min-width: 768px) {
+    .glass {
+      -webkit-backdrop-filter: blur(12px);
+    }
   }
   
   .glass-dark {
-    @apply bg-[#151515]/80 backdrop-blur-xl border border-white/10 shadow-2xl;
-    -webkit-backdrop-filter: blur(24px);
+    @apply bg-[#0b0b0b] md:bg-[#151515]/80 md:backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+  @media (min-width: 768px) {
+    .glass-dark {
+      -webkit-backdrop-filter: blur(24px);
+    }
   }
   
   .text-gradient-gold {

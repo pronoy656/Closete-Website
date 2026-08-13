@@ -39,6 +39,26 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
   }, []);
 
   useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        try {
+          const el = document.querySelector<HTMLElement>(hash);
+          if (el) {
+            if (lenisRef.current) {
+              lenisRef.current.scrollTo(el, { immediate: true });
+            } else {
+              el.scrollIntoView();
+            }
+            return;
+          }
+        } catch (e) {
+          // ignore invalid selectors
+        }
+      }, 50);
+      return;
+    }
+
     if (lenisRef.current) {
       // Smoothly scroll to top when path changes
       lenisRef.current.scrollTo(0, { duration: 1.5 });

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full antialiased scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closeté | Authentic Luxury</title>
+    <meta name="description" content="Buy & Sell Authentic Luxury with Closeté.">
+    <meta name="keywords" content="luxury, authentic, buy, sell, premium, closete">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Closeté | Authentic Luxury">
+    <meta property="og:description" content="Buy & Sell Authentic Luxury with Closeté.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./public/1024.png">
+
+    <!-- Fonts (DM Sans & Playfair Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS v4 Browser Build -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <!-- Tailwind Custom Config -->
+    <style type="text/tailwindcss">
+      @theme {
+        --font-sans: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+        --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+        
+        --color-gold-300: #e5c87a;
+        --color-gold-400: #d4af37;
+        --color-gold-500: #c19b62;
+        --color-gold-600: #a67c00;
+        
+        --color-brand-900: #1a1a1a;
+        --color-brand-950: #0f0f0f;
+      }
+    </style>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="min-h-full flex flex-col bg-[#0f0f0f] text-[#f2f2f2] font-sans selection:bg-[#d4af37]/30">
+
+    <!-- Header -->
+    <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4 lg:py-6 bg-transparent">
+      <div class="container mx-auto px-4 lg:px-12">
+        <!-- Navbar Gradient Border Wrapper (Mobile only) -->
+        <div class="w-full rounded-full p-[1px] lg:p-0 bg-gradient-to-r from-white from-10% via-gray-400/80 via-70% to-transparent lg:bg-none">
+          <!-- Navbar Inner Wrapper -->
+          <div id="navbar-inner" class="w-full flex items-center justify-between bg-gradient-to-r from-[#1F2125] to-[#101113] lg:bg-none lg:bg-transparent rounded-full lg:border-none px-2 h-[58px] lg:h-auto lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none lg:backdrop-blur-none transition-all duration-300">
+          
+          <!-- Left Group (Hamburger + Logo) -->
+          <div class="flex items-center gap-2 lg:gap-0">
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 rounded-full bg-[#35373c] text-white flex items-center justify-center border border-white/5 shadow-inner transition-colors hover:bg-[#404348] cursor-pointer touch-manipulation">
+              <svg id="menu-icon-open" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+              <svg id="menu-icon-close" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+
+            <!-- Logo -->
+            <a href="index.html" class="text-[30px] lg:text-[44px] font-serif font-medium antialiased text-gradient-gold tracking-tight ml-2 lg:ml-0 drop-shadow-sm">
+              Closeté
+            </a>
+          </div>
+
+          <!-- Desktop Nav -->
+          <nav class="hidden lg:flex items-center gap-1 relative px-2 py-1.5 rounded-full" style="background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.02) 100%); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);">
+            <a href="index.html#home" class="nav-link active relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white" style="background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%); box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.1);">Home</a>
+            <a href="index.html#how-it-works" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">How It Works</a>
+            <a href="index.html#why-choose-us" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">Why choose us?</a>
+            <a href="index.html#app-preview" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">App Preview</a>
+            <a href="index.html#our-vision" class="nav-link relative text-[14px] lg:text-[18px] font-medium px-5 py-2 rounded-full transition-all duration-300 focus:outline-none outline-none text-white/80 hover:text-white hover:bg-white/5" style="background: transparent; box-shadow: none; border: 1px solid transparent;">Our Vision</a>
+          </nav>
+
+          <div class="flex items-center">
+            <a href="mailto:support@closete.app" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-1 h-[46px] lg:h-auto py-2 px-4 lg:py-2.5 lg:px-5 rounded-full text-[15px] lg:text-base font-normal whitespace-nowrap">
+              Contact Us
+              <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 lg:w-4 lg:h-4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+
+        </div>
+        </div>
+      </div>
+
+      <!-- Mobile Nav -->
+      <nav id="mobile-menu" class="hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/70 backdrop-blur-[24px] border-b border-white/10 flex-col items-center py-6 gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.6)] transform origin-top transition-all duration-300 opacity-0 -translate-y-4">
+        <a href="index.html#home" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-gold-400">Home</a>
+        <a href="index.html#how-it-works" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">How It Works</a>
+        <a href="index.html#why-choose-us" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">Why choose us?</a>
+        <a href="index.html#app-preview" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">App Preview</a>
+        <a href="index.html#our-vision" class="mobile-nav-link text-lg font-medium focus:outline-none outline-none cursor-pointer touch-manipulation w-full text-center py-2 text-[#f2f2f2]/70 hover:text-[#f2f2f2]">Our Vision</a>
+        
+        <a href="mailto:support@closete.app" class="inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer select-none border border-[#E2B744] text-black shadow-[0_0_20px_rgba(175,116,19,0.4)] hover:shadow-[0_0_32px_rgba(175,116,19,0.65)] bg-gradient-gold gap-2 h-auto py-3 px-6 rounded-full text-sm font-normal touch-manipulation">
+          Contact Us
+          <svg viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </header>

@@ -141,7 +141,7 @@ export function Header() {
         <motion.nav
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/70 backdrop-blur-[24px] border-b border-white/10 flex flex-col items-center py-6 gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
+          className="lg:hidden absolute top-full left-0 right-0 bg-[#0a0a0a]/95 border-b border-white/10 flex flex-col items-center py-6 gap-6 shadow-[0_20px_40px_rgba(0,0,0,0.6)]"
         >
           {navLinks.map((link) => (
             <Link

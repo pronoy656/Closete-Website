@@ -151,8 +151,8 @@ export function AppMockupsSection() {
                   transform: `translate3d(${getTranslateX(pos.xVw, pos.xPx)}px, 0, 0) scale(${pos.scale})`,
                   opacity: pos.opacity,
                   zIndex: pos.zIndex,
-                  boxShadow: pos.isCenter ? "none" : "0 10px 30px rgba(0,0,0,0.8)",
-                  transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                  boxShadow: "0 10px 30px rgba(0,0,0,0.8)",
+                  transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
                   willChange: "transform, opacity",
                 }}
               >
