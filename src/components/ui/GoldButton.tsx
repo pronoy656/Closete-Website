@@ -23,7 +23,7 @@ export function GoldButton({
   ...props
 }: GoldButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-semibold tracking-wide transition-all duration-300 ease-out cursor-pointer whitespace-nowrap select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/60 disabled:pointer-events-none disabled:opacity-50 touch-manipulation";
+    "inline-flex items-center justify-center font-semibold tracking-wide transition-shadow transition-transform transition-colors duration-300 ease-out cursor-pointer whitespace-nowrap select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-yellow-400/60 disabled:pointer-events-none disabled:opacity-50 touch-manipulation";
 
   const sizeStyles: Record<string, string> = {
     sm: "h-8 px-4 text-xs rounded-full gap-1.5",
@@ -49,7 +49,7 @@ export function GoldButton({
 
   const filledStyle =
     variant === "filled"
-      ? { background: GOLD_GRADIENT, ...style }
+      ? { backgroundImage: GOLD_GRADIENT, ...style }
       : style;
 
   if (href) {
