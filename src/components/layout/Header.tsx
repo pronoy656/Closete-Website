@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { GoldButton } from "@/components/ui/GoldButton";
@@ -12,6 +12,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("#home");
   const pathname = usePathname();
+  const router = useRouter();
   const isHomePage = pathname === '/';
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -39,6 +40,11 @@ export function Header() {
         }
         window.history.pushState(null, "", href);
       }
+    } else {
+      // Force navigation for cross-page links to avoid iOS getting stuck
+      e.preventDefault();
+      setIsMobileMenuOpen(false);
+      router.push(href);
     }
   };
 
@@ -63,7 +69,7 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-[100] transform-gpu transition-all duration-300 ease-in-out ${
         isScrolled ? "lg:bg-black/40 lg:backdrop-blur-md py-4 shadow-none lg:shadow-lg" : "py-4 lg:py-6 bg-transparent"
       }`}
     >
@@ -71,7 +77,7 @@ export function Header() {
         {/* Navbar Gradient Border Wrapper (Mobile only) */}
         <div className="w-full rounded-full p-[1px] lg:p-0 bg-gradient-to-r from-white from-10% via-gray-400/80 via-70% to-transparent lg:bg-none">
           {/* Navbar Inner Wrapper (Pill on Mobile, Transparent on Desktop) */}
-          <div className={`w-full flex items-center justify-between bg-gradient-to-r from-[#1F2125] to-[#101113] lg:bg-none lg:bg-transparent rounded-full lg:border-none px-2 h-[58px] lg:h-auto lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none ${isScrolled ? 'backdrop-blur-xl' : 'backdrop-blur-none'} lg:backdrop-blur-none transition-all duration-300`}>
+          <div className={`w-full flex items-center justify-between bg-gradient-to-r from-[#1F2125] to-[#101113] lg:bg-none lg:bg-transparent rounded-full lg:border-none px-2 h-[58px] lg:h-auto lg:p-0 shadow-[0_8px_32px_rgba(0,0,0,0.4)] lg:shadow-none ${isScrolled ? 'backdrop-blur-xl' : 'backdrop-blur-none'} lg:backdrop-blur-none transition-all duration-300 transform-gpu`}>
           
           {/* Left Group (Hamburger + Logo) */}
           <div className="flex items-center gap-2 lg:gap-0">

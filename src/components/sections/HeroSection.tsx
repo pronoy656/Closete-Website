@@ -234,7 +234,7 @@ export function HeroSection() {
         style={{
           top: "-20%",
           left: "50%",
-          transform: "translateX(-50%)",
+          transform: "translate3d(-50%, 0, 0)",
           width: "1600px",
           height: "1000px",
           background:
@@ -249,7 +249,7 @@ export function HeroSection() {
         style={{
           top: "-8%",
           left: "50%",
-          transform: "translateX(-50%)",
+          transform: "translate3d(-50%, 0, 0)",
           width: "900px",
           height: "700px",
           background:
@@ -264,7 +264,7 @@ export function HeroSection() {
         style={{
           top: "-4%",
           left: "50%",
-          transform: "translateX(-50%)",
+          transform: "translate3d(-50%, 0, 0)",
           width: "360px",
           height: "260px",
           background:
@@ -279,7 +279,7 @@ export function HeroSection() {
         style={{
           top: "0%",
           left: "50%",
-          transform: "translateX(-50%)",
+          transform: "translate3d(-50%, 0, 0)",
           width: "1200px",
           height: "600px",
           background: "linear-gradient(to bottom, transparent 0%, rgba(210,140,10,0.15) 10%, rgba(120,60,0,0.05) 50%, transparent 100%)",
@@ -403,10 +403,11 @@ export function HeroSection() {
                 key={index}
                 className="absolute left-1/2 -ml-[120px] sm:-ml-[150px] md:-ml-[180px] w-[240px] h-[340px] sm:w-[300px] sm:h-[400px] md:w-[360px] md:h-[480px]"
                 style={{
-                  transform: `translate(${getTranslateX(pos.xVw, pos.xPx)}px, -50%) scale(${pos.scale})`,
+                  transform: `translate3d(${getTranslateX(pos.xVw, pos.xPx)}px, -50%, 0) scale(${pos.scale})`,
                   opacity: pos.opacity,
                   zIndex: pos.zIndex,
                   transition: 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)',
+                  willChange: 'transform, opacity',
                   top: "50%",
                 }}
               >

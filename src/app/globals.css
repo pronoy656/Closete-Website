@@ -81,20 +81,20 @@
 }
 
 @keyframes particle-fall {
-  0% { transform: translateY(-15vh); opacity: 0; }
+  0% { transform: translate3d(0, -15vh, 0); opacity: 0; }
   10% { opacity: 0.8; }
   80% { opacity: 0.8; }
-  100% { transform: translateY(100vh); opacity: 0; }
+  100% { transform: translate3d(0, 100vh, 0); opacity: 0; }
 }
 
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translate3d(0, 24px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 

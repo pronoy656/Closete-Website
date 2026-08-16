@@ -341,7 +341,7 @@ export default function PrivacyPage() {
             {PRIVACY_SECTIONS.map((section, index) => (
               <div 
                 key={index} 
-                className="p-6 md:p-8 rounded-[12px] md:rounded-[20px] text-gray-400 shadow-2xl relative overflow-hidden"
+                className="p-6 md:p-8 rounded-[12px] md:rounded-[20px] text-gray-400 shadow-2xl relative"
                 style={{
                   background: "linear-gradient(to right, #1C1D20 0%, #2B2D32 100%)",
                   border: "1px solid rgba(255, 255, 255, 0.1)"

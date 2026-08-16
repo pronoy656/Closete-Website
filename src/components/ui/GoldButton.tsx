@@ -53,13 +53,11 @@ export function GoldButton({
       : style;
 
   if (href) {
-    const isMailto = href.startsWith("mailto:");
     return (
       <a 
         href={href} 
         className={combinedClassName} 
         style={filledStyle}
-        target={isMailto ? "_top" : undefined}
       >
         {children}
       </a>
