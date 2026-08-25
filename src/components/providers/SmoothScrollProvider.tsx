@@ -16,25 +16,39 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     }
 
     const lenis = new Lenis({
-      lerp: 0.1, // A good default for smooth scrolling
+      lerp: 0.1,
       wheelMultiplier: 1,
-      touchMultiplier: 2,
+      touchMultiplier: 1.5,
+      autoResize: true,
     });
     
     lenisRef.current = lenis;
     // @ts-ignore
     window.lenis = lenis;
 
+    let animationFrameId: number;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    animationFrameId = requestAnimationFrame(raf);
+
+    // Observe document body size changes so Lenis recalculates bounds dynamically
+    const resizeObserver = new ResizeObserver(() => {
+      lenis.resize();
+    });
+    if (document.body) {
+      resizeObserver.observe(document.body);
+    }
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
+      resizeObserver.disconnect();
       lenis.destroy();
       lenisRef.current = null;
+      // @ts-ignore
+      delete window.lenis;
     };
   }, []);
 
@@ -60,11 +74,23 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
     }
 
     if (lenisRef.current) {
-      // Smoothly scroll to top when path changes
-      lenisRef.current.scrollTo(0, { duration: 1.5 });
+      lenisRef.current.scrollTo(0, { immediate: true });
+      lenisRef.current.resize();
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
     }
+
+    const timers = [100, 300, 600].map((delay) =>
+      setTimeout(() => {
+        if (lenisRef.current) {
+          lenisRef.current.resize();
+        }
+      }, delay)
+    );
+
+    return () => {
+      timers.forEach(clearTimeout);
+    };
   }, [pathname]);
 
   return <>{children}</>;

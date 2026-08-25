@@ -248,7 +248,7 @@ export default function TermsPage() {
   return (
     <>
       <Header />
-      <main className="flex-grow bg-transparent min-h-[100dvh] pb-24 text-white">
+      <main className="flex-grow bg-transparent min-h-screen pb-0 text-white">
         
         {/* Hero Section */}
         <div className="relative w-full overflow-hidden flex flex-col items-center justify-center pt-24 md:pt-32 pb-8 min-h-[250px] md:min-h-[350px]">
@@ -359,7 +359,7 @@ export default function TermsPage() {
         </div>
 
         {/* Content Section */}
-        <div className={`container mx-auto px-4 max-w-7xl mt-8 md:mt-12 mb-20 ${dmSans.className}`}>
+        <div className={`container mx-auto px-4 max-w-7xl mt-8 md:mt-12 mb-6 md:mb-8 ${dmSans.className}`}>
           <div className="bg-[#141517] p-[20px] md:p-6 lg:p-8 rounded-[20px] md:rounded-[28px] space-y-4">
             {TERMS_SECTIONS.map((section, index) => (
               <div 

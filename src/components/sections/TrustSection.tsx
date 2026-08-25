@@ -8,7 +8,7 @@ const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'
 const TrustSection = () => {
   const features = [
     {
-      title: "Authentication Guarantee",
+      title: "Authentication Verified",
       description: "Every item is verified through a combination of technology and expert validation.",
       icon: (
         <div className="relative w-12 h-12">
