@@ -2,7 +2,6 @@ import React from 'react';
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Stars } from "@/components/sections/HeroSection";
-import { Mail } from "lucide-react";
 import { Playfair_Display, DM_Sans } from 'next/font/google';
 
 const playfair = Playfair_Display({ subsets: ['latin'] });
@@ -10,134 +9,128 @@ const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'
 
 const DELIVERY_SECTIONS = [
   {
-    title: "OVERVIEW",
+    title: "1. OVERVIEW",
     content: (
       <div className="space-y-4">
-        <p>Closeté operates a verification-before-delivery model.</p>
+        <p>Closeté operates an authentication-before-delivery model.</p>
         <p>Every item is:</p>
         <ul className="list-disc pl-5 space-y-2">
           <li>Collected</li>
           <li>Authenticated</li>
-          <li>Delivered only after approval</li>
+          <li>Delivered only after successful authentication</li>
         </ul>
       </div>
     )
   },
   {
-    title: "NO TRADITIONAL RETURNS",
+    title: "2. NO TRADITIONAL RETURNS",
     content: (
       <div className="space-y-4">
         <p>Closeté does not operate a traditional returns policy.</p>
         <p>This is because:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Buyers inspect items at the point of delivery</li>
-          <li>Acceptance happens before payment is released</li>
+          <li>Buyers inspect items at the point of delivery.</li>
+          <li>Acceptance takes place before payment is released to the Seller.</li>
+          <li>Once an item has been accepted, the transaction is considered final.</li>
         </ul>
       </div>
     )
   },
   {
-    title: "BUYER ACCEPTANCE AT DELIVERY",
+    title: "3. BUYER ACCEPTANCE AT DELIVERY",
     content: (
-      <div className="space-y-4">
-        <p>At delivery, the buyer can:</p>
+      <div className="space-y-6">
+        <p>At delivery, the Buyer may:</p>
+
         <div>
-          <p className="mb-2 text-white/90">Accept the item</p>
+          <p className="mb-2 text-white/90 font-medium">Accept the item</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>Transaction is completed</li>
-            <li>Payment is released to the seller</li>
+            <li>The transaction is completed.</li>
+            <li>Payment is released to the Seller.</li>
           </ul>
         </div>
+
         <div>
-          <p className="mb-2 text-white/90">Reject the item</p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Item is returned to the seller</li>
-            <li>Buyer receives a full refund</li>
-            <li>Seller is not paid</li>
-          </ul>
+          <p className="mb-2 text-white/90 font-medium">Reject the item</p>
+          <div className="space-y-4">
+            <div>
+              <p className="mb-2">If the item is rejected because it is not as described, its condition materially differs from the listing, or due to an issue attributable to Closeté or the Seller:</p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>The item is returned to the Seller.</li>
+                <li>The Buyer receives a full refund.</li>
+                <li>The Seller is not paid.</li>
+              </ul>
+            </div>
+
+            <div>
+              <p className="mb-2">If the item is rejected solely due to a change of mind, personal preference, or any reason unrelated to the item&apos;s authenticity, condition, or conformity with its listing:</p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>The item is returned to the Seller.</li>
+                <li>The Buyer receives a refund less the applicable Closeté Handling Fee.</li>
+                <li>The Seller is not paid.</li>
+              </ul>
+            </div>
+
+            <p>Repeated instances of rejecting items due to a change of mind may result in Closeté restricting or suspending the Buyer&apos;s account.</p>
+          </div>
         </div>
       </div>
     )
   },
   {
-    title: "AUTHENTICATION PROTECTION",
+    title: "4. AUTHENTICATION PROTECTION",
     content: (
       <div className="space-y-4">
         <p>If an item:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Fails authentication</li>
-          <li>Is significantly not as described</li>
+          <li>Fails authentication; or</li>
+          <li>Is materially different from its listing,</li>
         </ul>
         <p>Closeté will:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Cancel the transaction</li>
-          <li>Refund the buyer in full</li>
-          <li>Return the item to the seller</li>
+          <li>Cancel the transaction.</li>
+          <li>Refund the Buyer in full.</li>
+          <li>Return the item to the Seller.</li>
         </ul>
       </div>
     )
   },
   {
-    title: "FINAL SALE AFTER ACCEPTANCE",
+    title: "5. FINAL SALE AFTER ACCEPTANCE",
     content: (
       <div className="space-y-4">
-        <p>Once the buyer accepts the item: The transaction is final</p>
+        <p>Once the Buyer accepts the item at delivery, the transaction is final.</p>
         <p>Closeté is not responsible for:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Change of mind</li>
-          <li>Fit or sizing issues</li>
-          <li>Subjective preferences</li>
+          <li>Change of mind after acceptance.</li>
+          <li>Fit or sizing preferences.</li>
+          <li>Subjective preferences that were apparent at the time of delivery.</li>
         </ul>
       </div>
     )
   },
   {
-    title: "FRAUD PREVENTION",
+    title: "6. FRAUD PREVENTION",
     content: (
       <div className="space-y-4">
         <p>Closeté may:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Perform additional verification checks</li>
-          <li>Delay or cancel transactions if risk is detected</li>
+          <li>Perform additional authentication or verification checks.</li>
+          <li>Delay or cancel transactions where fraudulent or suspicious activity is suspected.</li>
+          <li>Suspend or terminate accounts involved in fraudulent activity.</li>
         </ul>
       </div>
     )
   },
   {
-    title: "DAMAGED ITEMS",
+    title: "7. DAMAGED ITEMS",
     content: (
       <div className="space-y-4">
-        <p>If damage occurs while in Closeté&apos;s control:</p>
+        <p>If an item is damaged while in Closeté&apos;s possession or control:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>The issue will be reviewed</li>
-          <li>Appropriate resolution will be determined</li>
+          <li>The matter will be investigated.</li>
+          <li>An appropriate resolution will be determined at Closeté&apos;s discretion.</li>
         </ul>
-      </div>
-    )
-  },
-  {
-    title: "REFUNDS",
-    content: (
-      <div className="space-y-4">
-        <p>Where applicable, refunds will be:</p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Issued to the original payment method</li>
-          <li>Processed within a reasonable timeframe</li>
-        </ul>
-      </div>
-    )
-  },
-  {
-    title: "CONTACT",
-    content: (
-      <div className="space-y-4">
-        <p>For any questions:</p>
-        <div className="flex items-center gap-2">
-          <Mail size={18} className="text-[#FFAF2C]" />
-          <a href="mailto:support@closete.app" className="text-[#FFAF2C] hover:opacity-80 transition-all">
-            support@closete.app
-          </a>
-        </div>
       </div>
     )
   }

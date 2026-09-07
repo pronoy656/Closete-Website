@@ -105,15 +105,11 @@ const TERMS_SECTIONS = [
     title: "PAYMENTS",
     content: (
       <div className="space-y-4">
+        <p>Payments are securely processed via third-party providers</p>
+        <p>Funds are held until:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Payments are securely processed via third-party providers</li>
-          <li>
-            Funds are held until:
-            <ul className="list-[circle] pl-5 mt-2 space-y-2">
-              <li>Item is verified</li>
-              <li>Buyer accepts delivery</li>
-            </ul>
-          </li>
+          <li>The item has successfully passed authentication</li>
+          <li>The Buyer accepts delivery</li>
         </ul>
         <p>Payment is only released to the seller after successful delivery acceptance</p>
       </div>
@@ -145,15 +141,25 @@ const TERMS_SECTIONS = [
     title: "REJECTION AT DELIVERY",
     content: (
       <div className="space-y-4">
-        <p>At delivery, the buyer has the right to:</p>
-        <p>Accept or reject the item</p>
-        <p>If rejected:</p>
+        <p>At delivery, the Buyer has the right to:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>The item is returned to the seller</li>
-          <li>The buyer receives a full refund</li>
-          <li>The seller is not paid</li>
+          <li>Accept the item; or</li>
+          <li>Reject the item.</li>
         </ul>
-        <p>This replaces the need for a traditional returns process</p>
+        <p>If the item is rejected because it is not as described, its condition materially differs from the listing, or due to any issue attributable to Closeté or the Seller:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>The item will be returned to the Seller.</li>
+          <li>The Buyer will receive a full refund.</li>
+          <li>The Seller will not be paid.</li>
+        </ul>
+        <p>If the Buyer rejects the item solely due to a change of mind, personal preference, or any reason unrelated to the item&apos;s authenticity, condition, or conformity with its listing:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>The item will be returned to the Seller.</li>
+          <li>The Buyer will receive a refund less the applicable Closeté Handling Fee, which covers costs already incurred, including payment processing, collection, authentication, handling, logistics, and delivery.</li>
+          <li>The Seller will not be paid.</li>
+        </ul>
+        <p>Repeated instances of rejecting items due to a change of mind may result in Closeté restricting or suspending the Buyer&apos;s account at its sole discretion.</p>
+        <p>This process replaces the need for a traditional returns process.</p>
       </div>
     )
   },

@@ -10,210 +10,225 @@ const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'
 
 const PRIVACY_SECTIONS = [
   {
-    title: "INTRODUCTION",
+    title: "1. INTRODUCTION",
     content: (
       <div className="space-y-4">
         <p>Closeté (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) respects your privacy and is committed to protecting your personal data.</p>
-        <p>This Privacy Policy explains how we collect, use, and protect your information when you use the Closeté mobile application and services.</p>
+        <p>This Privacy Policy explains how we collect, use, store, disclose, and protect your personal information when you use the Closeté mobile application and related services.</p>
       </div>
     )
   },
   {
-    title: "INFORMATION WE COLLECT",
+    title: "2. INFORMATION WE COLLECT",
     content: (
       <div className="space-y-6">
         <div>
-          <p className="mb-2 text-white/90">Account Information</p>
+          <p className="mb-2 text-white/90 font-medium">Account Information</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Name</li>
             <li>Email address</li>
             <li>Phone number</li>
           </ul>
         </div>
-        
+
         <div>
-          <p className="mb-2 text-white/90">Transaction & Listing Information</p>
+          <p className="mb-2 text-white/90 font-medium">Transaction &amp; Listing Information</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>Item details (photos, videos, descriptions)</li>
-            <li>Pricing and listing data</li>
-            <li>Purchase and order history</li>
+            <li>Item details (including photos, videos, descriptions, and condition)</li>
+            <li>Pricing and listing information</li>
+            <li>Purchase history</li>
+            <li>Order history</li>
           </ul>
         </div>
 
         <div>
-          <p className="mb-2 text-white/90">Location & Delivery Information</p>
+          <p className="mb-2 text-white/90 font-medium">Collection &amp; Delivery Information</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>Collection address (for sellers)</li>
-            <li>Delivery address (for buyers)</li>
+            <li>Collection address (for Sellers)</li>
+            <li>Delivery address (for Buyers)</li>
+            <li>Collection and delivery status</li>
           </ul>
         </div>
 
         <div>
-          <p className="mb-2 text-white/90">Payment Information</p>
+          <p className="mb-2 text-white/90 font-medium">Payment Information</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>Payment details (processed securely via third-party providers)</li>
-            <li>We do not store full card details</li>
+            <li>Payment details processed securely by third-party payment providers</li>
+            <li>We do not store your full payment card details</li>
           </ul>
         </div>
 
         <div>
-          <p className="mb-2 text-white/90">Authentication Data</p>
+          <p className="mb-2 text-white/90 font-medium">Authentication Information</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>Images and scans used for item verification</li>
-            <li>Results of authentication checks</li>
+            <li>Images and information submitted for authentication</li>
+            <li>Authentication results</li>
+            <li>Operational records relating to the authentication process</li>
           </ul>
         </div>
 
         <div>
-          <p className="mb-2 text-white/90">Device & Usage Data</p>
+          <p className="mb-2 text-white/90 font-medium">Device &amp; Usage Information</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Device type</li>
-            <li>App usage</li>
-            <li>Log data (for performance and security)</li>
+            <li>Operating system</li>
+            <li>App usage information</li>
+            <li>Log data for security, diagnostics, and performance</li>
           </ul>
         </div>
       </div>
     )
   },
   {
-    title: "HOW WE USE YOUR INFORMATION",
+    title: "3. HOW WE USE YOUR INFORMATION",
     content: (
       <div className="space-y-4">
-        <p>We use your data to:</p>
+        <p>We use your information to:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Facilitate buying and selling of luxury items</li>
-          <li>Arrange collection and delivery</li>
-          <li>Authenticate items and prevent fraud</li>
-          <li>Process payments securely</li>
-          <li>Improve app performance and user experience</li>
-          <li>Communicate updates, orders, and support</li>
+          <li>Facilitate the buying and selling of luxury items.</li>
+          <li>Arrange collection and delivery.</li>
+          <li>Authenticate items and protect against fraud.</li>
+          <li>Process payments and refunds securely.</li>
+          <li>Communicate order updates, notifications, and customer support.</li>
+          <li>Improve the performance, security, and functionality of the Closeté platform.</li>
+          <li>Comply with applicable legal and regulatory obligations.</li>
         </ul>
       </div>
     )
   },
   {
-    title: "AUTHENTICATION & FRAUD PREVENTION",
+    title: "4. AUTHENTICATION & FRAUD PREVENTION",
     content: (
       <div className="space-y-4">
-        <p>Closeté uses a combination of:</p>
+        <p>To maintain trust within the Closeté marketplace, we use a combination of:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Internal verification processes</li>
-          <li>Third-party authentication tools</li>
+          <li>Internal authentication procedures.</li>
+          <li>Third-party authentication providers and tools.</li>
         </ul>
-        <p>We may analyze submitted item data to detect potential fraud and ensure platform trust.</p>
+        <p>We may review item information, images, and related data to authenticate items, detect fraudulent activity, investigate disputes, and protect the integrity of the platform.</p>
       </div>
     )
   },
   {
-    title: "SHARING YOUR INFORMATION",
+    title: "5. SHARING YOUR INFORMATION",
     content: (
       <div className="space-y-6">
-        <p>We only share data when necessary:</p>
-        
+        <p>We only share your information where necessary to operate the Closeté platform.</p>
+
         <div>
-          <p className="mb-2 text-white/90">With Service Providers</p>
+          <p className="mb-1 text-white/90 font-medium">Service Providers</p>
+          <p className="mb-2">Including:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Payment processors</li>
-            <li>Delivery partners</li>
+            <li>Delivery and logistics partners</li>
             <li>Authentication providers</li>
-          </ul>
-        </div>
-        
-        <div>
-          <p className="mb-2 text-white/90">With Other Users</p>
-          <ul className="list-disc pl-5 space-y-2">
-            <li>Limited information (e.g. first name, listing details)</li>
+            <li>Technology and cloud service providers</li>
           </ul>
         </div>
 
         <div>
-          <p className="mb-2 text-white/90">Legal Requirements</p>
+          <p className="mb-2 text-white/90 font-medium">Other Users</p>
+          <p>We may share limited information necessary to complete a transaction, including listing information and first names where appropriate.</p>
+        </div>
+
+        <div>
+          <p className="mb-2 text-white/90 font-medium">Legal Requirements</p>
+          <p className="mb-2">We may disclose information where required by law or where reasonably necessary to:</p>
           <ul className="list-disc pl-5 space-y-2">
-            <li>If required by law or to protect our platform</li>
+            <li>Comply with legal obligations.</li>
+            <li>Prevent fraud.</li>
+            <li>Protect the rights, property, safety, or security of Closeté, our users, or third parties.</li>
           </ul>
         </div>
       </div>
     )
   },
   {
-    title: "DATA SECURITY",
+    title: "6. DATA SECURITY",
     content: (
       <div className="space-y-4">
-        <p>We implement appropriate security measures to protect your data, including:</p>
+        <p>We implement appropriate technical and organisational measures designed to protect your personal information, including:</p>
         <ul className="list-disc pl-5 space-y-2">
-          <li>Encrypted data transmission</li>
-          <li>Secure storage systems</li>
-          <li>Access controls</li>
+          <li>Encrypted data transmission.</li>
+          <li>Secure storage systems.</li>
+          <li>Access controls.</li>
+          <li>Ongoing monitoring and security practices.</li>
+        </ul>
+        <p>While we take reasonable steps to protect your information, no method of electronic transmission or storage is completely secure.</p>
+      </div>
+    )
+  },
+  {
+    title: "7. YOUR RIGHTS",
+    content: (
+      <div className="space-y-4">
+        <p>Subject to applicable law, you may have the right to:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Access your personal information.</li>
+          <li>Request correction of inaccurate information.</li>
+          <li>Request deletion of your personal information.</li>
+          <li>Withdraw consent where applicable.</li>
+        </ul>
+        <p>To exercise your rights, please contact:</p>
+        <p>
+          Email:{" "}
+          <a href="mailto:Closeteapp@gmail.com" className="text-[#FFAF2C] hover:underline transition-all">
+            Closeteapp@gmail.com
+          </a>
+        </p>
+      </div>
+    )
+  },
+  {
+    title: "8. DATA RETENTION",
+    content: (
+      <div className="space-y-4">
+        <p>We retain personal information only for as long as reasonably necessary to:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>Provide our services.</li>
+          <li>Complete transactions.</li>
+          <li>Meet legal and regulatory obligations.</li>
+          <li>Resolve disputes.</li>
+          <li>Enforce our agreements.</li>
         </ul>
       </div>
     )
   },
   {
-    title: "YOUR RIGHTS",
-    content: (
-      <div className="space-y-4">
-        <p>You have the right to:</p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Access your data</li>
-          <li>Request correction</li>
-          <li>Request deletion</li>
-          <li>Withdraw consent</li>
-        </ul>
-        <p>To do so, contact us at:</p>
-        <a href="mailto:support@closete.app" className="text-[#FFAF2C] hover:underline transition-all inline-block">
-          support@closete.app
-        </a>
-      </div>
-    )
-  },
-  {
-    title: "DATA RETENTION",
-    content: (
-      <div className="space-y-4">
-        <p>We retain your data only as long as necessary to:</p>
-        <ul className="list-disc pl-5 space-y-2">
-          <li>Provide our services</li>
-          <li>Comply with legal obligations</li>
-          <li>Resolve disputes</li>
-        </ul>
-      </div>
-    )
-  },
-  {
-    title: "LOCATION OF SERVICE",
+    title: "9. INTERNATIONAL TRANSFERS",
     content: (
       <div className="space-y-4">
         <p>Closeté currently operates in Dubai, United Arab Emirates.</p>
-        <p>Some features may be limited based on your location.</p>
+        <p>Your information may be processed or stored by trusted third-party service providers located in other jurisdictions where necessary to provide our services. Where applicable, we take reasonable steps to ensure your information receives an appropriate level of protection.</p>
       </div>
     )
   },
   {
-    title: "UPDATES TO THIS POLICY",
+    title: "10. UPDATES TO THIS POLICY",
     content: (
       <div className="space-y-4">
         <p>We may update this Privacy Policy from time to time.</p>
-        <p>Changes will be reflected with an updated &quot;Last updated&quot; date.</p>
+        <p>Any changes will become effective when the updated Privacy Policy is published within the Closeté platform and the &ldquo;Last updated&rdquo; date is revised.</p>
       </div>
     )
   },
   {
-    title: "CONTACT US",
+    title: "11. CONTACT US",
     content: (
       <div className="space-y-4">
-        <p>For any questions:</p>
+        <p>For any questions regarding this Privacy Policy or your personal information, please contact:</p>
         <div className="flex flex-col gap-3">
           <div className="flex items-center gap-2">
             <Mail size={18} className="text-[#FFAF2C]" />
-            <a href="mailto:support@closete.app" className="text-[#FFAF2C] font-medium hover:opacity-80 transition-all">
-              support@closete.app
+            <a href="mailto:Closeteapp@gmail.com" className="text-[#FFAF2C] font-medium hover:opacity-80 transition-all">
+              Closeteapp@gmail.com
             </a>
           </div>
           <div className="flex items-center gap-2">
             <Globe size={18} className="text-[#FFAF2C]" />
-            <a href="#" className="text-[#FFAF2C] font-medium hover:opacity-80 transition-all">
+            <span className="text-[#FFAF2C] font-medium">
               Closeté
-            </a>
+            </span>
           </div>
         </div>
       </div>
@@ -226,7 +241,7 @@ export default function PrivacyPage() {
     <>
       <Header />
       <main className="flex-grow bg-[#111] min-h-screen pb-0 text-white">
-        
+
         {/* Hero Section */}
         <div className="relative w-full overflow-hidden flex flex-col items-center justify-center pt-24 md:pt-32 pb-8 min-h-[250px] md:min-h-[350px]">
           {/* ── Layer 1: Wide outer glow ─────────────────────── */}
@@ -339,8 +354,8 @@ export default function PrivacyPage() {
         <div className={`container mx-auto px-4 max-w-7xl mt-8 md:mt-12 mb-6 md:mb-8 ${dmSans.className}`}>
           <div className="bg-[#141517] p-[20px] md:p-6 lg:p-8 rounded-[20px] md:rounded-[28px] space-y-4">
             {PRIVACY_SECTIONS.map((section, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="p-6 md:p-8 rounded-[12px] md:rounded-[20px] text-gray-400 shadow-2xl relative"
                 style={{
                   background: "linear-gradient(to right, #1C1D20 0%, #2B2D32 100%)",
